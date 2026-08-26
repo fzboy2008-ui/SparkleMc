@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SparkleMc — Official Minecraft Survival & Lifesteal Server. Join SparkleMc and become part of the community.">
+  <meta name="keywords" content="SparkleMc, Sparkle MC, Minecraft server, Minecraft Survival, Minecraft Lifesteal">
+  <meta name="author" content="FZ BOY">
+  <meta property="og:title" content="SparkleMc — Official Minecraft Server">
+  <meta property="og:description" content="Official website of SparkleMc Minecraft Server.">
+  <meta property="og:type" content="website">
+  <title>SparkleMc — Official Minecraft Server</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#home">
+      <img src="logo.png" alt="SparkleMc Logo">
+      <span>SparkleMc</span>
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#server">Server</a>
+      <a href="#community">Community</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <span class="badge">OFFICIAL MINECRAFT SERVER</span>
+        <h1>Welcome to <span>SparkleMc</span></h1>
+        <p>Survive. Fight. Build. Dominate.</p>
+        <p class="sub">Join the SparkleMc community and start your Minecraft journey.</p>
+        <div class="buttons">
+          <a class="btn primary" href="https://discord.gg/62xxMq2NKv" target="_blank" rel="noopener">Join Discord</a>
+          <button class="btn secondary" onclick="copyIP()">Copy Server IP</button>
+        </div>
+        <div id="copyStatus" class="copy-status"></div>
+      </div>
+      <div class="hero-logo">
+        <img src="logo.png" alt="SparkleMc">
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-title">
+        <span>01</span>
+        <h2>About SparkleMc</h2>
+      </div>
+      <p class="lead">
+        SparkleMc is a Minecraft community focused on creating an enjoyable and competitive
+        server experience. Build your base, make alliances, fight your rivals and create
+        your own story.
+      </p>
+      <div class="cards">
+        <article class="card"><div class="icon">⚔</div><h3>Survival</h3><p>Build, explore and progress with the community.</p></article>
+        <article class="card"><div class="icon">◆</div><h3>Lifesteal</h3><p>Fight your enemies and fight for your hearts.</p></article>
+        <article class="card"><div class="icon">✦</div><h3>Community</h3><p>Join our Discord and stay connected with SparkleMc.</p></article>
+      </div>
+    </section>
+
+    <section id="server" class="section dark-section">
+      <div class="section-title">
+        <span>02</span>
+        <h2>Server Information</h2>
+      </div>
+      <div class="server-grid">
+        <div class="info-box">
+          <small>SERVER IP</small>
+          <strong>play.sparklemc.fun</strong>
+        </div>
+        <div class="info-box">
+          <small>PORT</small>
+          <strong>19136</strong>
+        </div>
+        <div class="info-box">
+          <small>GAME MODES</small>
+          <strong>Survival • Lifesteal</strong>
+        </div>
+        <div class="info-box">
+          <small>OWNER</small>
+          <strong>FZ BOY</strong>
+        </div>
+      </div>
+      <div class="join-box">
+        <h3>Ready to play?</h3>
+        <p>Use the server address below to join SparkleMc.</p>
+        <code>play.sparklemc.fun:19136</code>
+        <button class="btn primary" onclick="copyIP()">Copy IP</button>
+      </div>
+    </section>
+
+    <section id="community" class="section community">
+      <div class="section-title">
+        <span>03</span>
+        <h2>Official Community</h2>
+      </div>
+      <p class="lead">All official updates, announcements and support are available through our Discord community.</p>
+      <a class="discord-card" href="https://discord.gg/62xxMq2NKv" target="_blank" rel="noopener">
+        <div>
+          <small>OFFICIAL DISCORD</small>
+          <h3>Join the SparkleMc Community</h3>
+          <p>Connect with players and get the latest updates.</p>
+        </div>
+        <span>→</span>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <img src="logo.png" alt="SparkleMc Logo">
+    <div>
+      <strong>SparkleMc</strong>
+      <p>Official Minecraft Server</p>
+    </div>
+    <span>© 2026 SparkleMc. All rights reserved.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
