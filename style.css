@@ -808,6 +808,13 @@ body {
     color: #fff;
 }
 
+.server-ip-badge {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
     .support-container {
         grid-template-columns: 1fr;
