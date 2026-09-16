@@ -30,22 +30,28 @@
 
     <!-- HERO SECTION -->
     <header id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <span class="badge">🔥 Next Gen Minecraft Network</span>
-            <h1>Unleash Power on <span class="glow-text">SparkleMc</span></h1>
-            <p>Join our top tier Minecraft survival & lifesteal experience. Grab exclusive ranks, legendary weapons, coins, and abilities!</p>
-            
-            <div class="hero-actions">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="badge">🔥 Next Gen Minecraft Network</span>
+        <h1>Unleash Power on <span class="glow-text">SparkleMc</span></h1>
+        <p>Join our top tier Minecraft survival & lifesteal experience. Grab exclusive ranks, legendary weapons, coins, and abilities!</p>
+        
+        <div class="hero-actions">
+            <div class="server-ip-badge">
                 <button class="btn btn-primary" onclick="copyIP('play.sparklemc.fun')">
-                    <i class="fas fa-gamepad"></i> <span id="ip-text">play.sparklemc.fun</span>
-                    <span class="copy-badge" id="copy-badge">Click to Copy</span>
+                    <i class="fas fa-desktop"></i> Java: <span>play.sparklemc.fun</span>
+                    <span class="copy-badge" id="copy-badge-java">Copy</span>
                 </button>
-                <a href="#store" class="btn btn-secondary">
-                    <i class="fas fa-shopping-cart"></i> Open Store
-                </a>
+                <button class="btn btn-primary" onclick="copyBedrock('play.sparklemc.fun', '19133')">
+                    <i class="fas fa-mobile-alt"></i> Bedrock / PE: Port <span>19133</span>
+                    <span class="copy-badge" id="copy-badge-bedrock">Copy</span>
+                </button>
             </div>
+            <a href="#store" class="btn btn-secondary">
+                <i class="fas fa-shopping-cart"></i> Open Store
+            </a>
         </div>
+    </div>
     </header>
 
     <!-- STORE SECTION -->
