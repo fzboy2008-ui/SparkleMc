@@ -1,122 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SparkleMc — Official Minecraft Survival & Lifesteal Server. Join SparkleMc and become part of the community.">
-  <meta name="keywords" content="SparkleMc, Sparkle MC, Minecraft server, Minecraft Survival, Minecraft Lifesteal">
-  <meta name="author" content="FZ BOY">
-  <meta property="og:title" content="SparkleMc — Official Minecraft Server">
-  <meta property="og:description" content="Official website of SparkleMc Minecraft Server.">
-  <meta property="og:type" content="website">
-  <title>SparkleMc — Official Minecraft Server</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkleMc — Official Store & Server</title>
+    <meta name="description" content="Official Minecraft Server and Store for SparkleMc. Join now at play.sparklemc.fun and get exclusive in-game ranks.">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="navbar">
-    <a class="brand" href="#home">
-      <img src="logo.png" alt="SparkleMc Logo">
-      <span>SparkleMc</span>
-    </a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#server">Server</a>
-      <a href="#community">Community</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="SparkleMc Logo" onerror="this.style.display='none'">
+                <span>Sparkle<span>Mc</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#store">Store</a>
+                <a href="#ticket">Support Ticket</a>
+                <a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank" class="nav-btn discord-nav">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <span class="badge">OFFICIAL MINECRAFT SERVER</span>
-        <h1>Welcome to <span>SparkleMc</span></h1>
-        <p>Survive. Fight. Build. Dominate.</p>
-        <p class="sub">Join the SparkleMc community and start your Minecraft journey.</p>
-        <div class="buttons">
-          <a class="btn primary" href="https://discord.gg/62xxMq2NKv" target="_blank" rel="noopener">Join Discord</a>
-          <button class="btn secondary" onclick="copyIP()">Copy Server IP</button>
+    <!-- HERO SECTION -->
+    <header id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">🔥 Next Gen Minecraft Network</span>
+            <h1>Dominate The Arena on <span class="glow-text">SparkleMc</span></h1>
+            <p>Join thousands of players in survival, lifesteal, and custom adventures. Unlock elite ranks, exclusive kits, and flex your powers!</p>
+            
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="copyIP('play.sparklemc.fun')">
+                    <i class="fas fa-gamepad"></i> <span id="ip-text">play.sparklemc.fun</span>
+                    <span class="copy-badge" id="copy-badge">Click to Copy</span>
+                </button>
+                <a href="#store" class="btn btn-secondary">
+                    <i class="fas fa-shopping-cart"></i> Explore Store
+                </a>
+            </div>
         </div>
-        <div id="copyStatus" class="copy-status"></div>
-      </div>
-      <div class="hero-logo">
-        <img src="logo.png" alt="SparkleMc">
-      </div>
+    </header>
+
+    <!-- STORE / RANKS SECTION -->
+    <section id="store" class="section">
+        <div class="section-title">
+            <h2>Server <span class="glow-text">Ranks</span></h2>
+            <p>Support the server and get powerful perks, unique cosmetics & kits!</p>
+        </div>
+
+        <div class="ranks-grid">
+            <!-- RANK 1: VIP -->
+            <div class="rank-card">
+                <div class="rank-header">
+                    <div class="rank-badge">Tier I</div>
+                    <h3>VIP</h3>
+                    <div class="price">₹120 <span>/ Lifetime</span></div>
+                </div>
+                <ul class="perks">
+                    <li><i class="fas fa-check"></i> VIP Discord Role</li>
+                    <li><i class="fas fa-check"></i> VIP Kit & Armor</li>
+                    <li><i class="fas fa-check"></i> 2 Extra Homes (/sethome)</li>
+                    <li><i class="fas fa-check"></i> Priority Queue Access</li>
+                </ul>
+                <button class="btn-buy" onclick="openPayment('VIP', 120)">Buy VIP</button>
+            </div>
+
+            <!-- RANK 2: BLOOD -->
+            <div class="rank-card">
+                <div class="rank-header">
+                    <div class="rank-badge">Tier II</div>
+                    <h3>BLOOD</h3>
+                    <div class="price">₹230 <span>/ Lifetime</span></div>
+                </div>
+                <ul class="perks">
+                    <li><i class="fas fa-check"></i> All VIP Perks Included</li>
+                    <li><i class="fas fa-check"></i> Blood Custom Chat Prefix</li>
+                    <li><i class="fas fa-check"></i> Exclusive Weapon Kit</li>
+                    <li><i class="fas fa-check"></i> 4 Extra Homes</li>
+                </ul>
+                <button class="btn-buy" onclick="openPayment('BLOOD', 230)">Buy BLOOD</button>
+            </div>
+
+            <!-- RANK 3: REAPER -->
+            <div class="rank-card highlight">
+                <div class="popular-ribbon">POPULAR</div>
+                <div class="rank-header">
+                    <div class="rank-badge">Tier III</div>
+                    <h3>REAPER</h3>
+                    <div class="price">₹340 <span>/ Lifetime</span></div>
+                </div>
+                <ul class="perks">
+                    <li><i class="fas fa-check"></i> All Blood Perks Included</li>
+                    <li><i class="fas fa-check"></i> Reaper Armor & Weapon Kit</li>
+                    <li><i class="fas fa-check"></i> /fly in Claimed Areas</li>
+                    <li><i class="fas fa-check"></i> 6 Extra Homes</li>
+                </ul>
+                <button class="btn-buy pulse" onclick="openPayment('REAPER', 340)">Buy REAPER</button>
+            </div>
+
+            <!-- RANK 4: VAMPIRE -->
+            <div class="rank-card">
+                <div class="rank-header">
+                    <div class="rank-badge">Tier IV</div>
+                    <h3>VAMPIRE</h3>
+                    <div class="price">₹450 <span>/ Lifetime</span></div>
+                </div>
+                <ul class="perks">
+                    <li><i class="fas fa-check"></i> All Reaper Perks Included</li>
+                    <li><i class="fas fa-check"></i> Night Vision & Speed Boost</li>
+                    <li><i class="fas fa-check"></i> Godly Vampire Kit</li>
+                    <li><i class="fas fa-check"></i> 8 Extra Homes</li>
+                </ul>
+                <button class="btn-buy" onclick="openPayment('VAMPIRE', 450)">Buy VAMPIRE</button>
+            </div>
+
+            <!-- RANK 5: SPARK+ -->
+            <div class="rank-card supreme">
+                <div class="supreme-ribbon">ULTIMATE</div>
+                <div class="rank-header">
+                    <div class="rank-badge">Tier V</div>
+                    <h3>SPARK+</h3>
+                    <div class="price">₹600 <span>/ Lifetime</span></div>
+                </div>
+                <ul class="perks">
+                    <li><i class="fas fa-crown"></i> Ultimate Supreme Prefix</li>
+                    <li><i class="fas fa-check"></i> Unlimited Homes</li>
+                    <li><i class="fas fa-check"></i> Max Tier Kit & Monthly Crates</li>
+                    <li><i class="fas fa-check"></i> Direct Admin Support Priority</li>
+                </ul>
+                <button class="btn-buy spark-btn" onclick="openPayment('SPARK+', 600)">Buy SPARK+</button>
+            </div>
+        </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="section-title">
-        <span>01</span>
-        <h2>About SparkleMc</h2>
-      </div>
-      <p class="lead">
-        SparkleMc is a Minecraft community focused on creating an enjoyable and competitive
-        server experience. Build your base, make alliances, fight your rivals and create
-        your own story.
-      </p>
-      <div class="cards">
-        <article class="card"><div class="icon">⚔</div><h3>Survival</h3><p>Build, explore and progress with the community.</p></article>
-        <article class="card"><div class="icon">◆</div><h3>Lifesteal</h3><p>Fight your enemies and fight for your hearts.</p></article>
-        <article class="card"><div class="icon">✦</div><h3>Community</h3><p>Join our Discord and stay connected with SparkleMc.</p></article>
-      </div>
+    <!-- TICKET & SUPPORT SECTION -->
+    <section id="ticket" class="section support-section">
+        <div class="section-title">
+            <h2>Support <span class="glow-text">Ticket</span></h2>
+            <p>Faced an issue or submitted a payment? Contact server owners directly.</p>
+        </div>
+
+        <div class="support-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>Have questions about server commands, purchase verification, or reporting a player?</p>
+                <div class="info-item">
+                    <i class="fab fa-discord"></i>
+                    <div>
+                        <strong>Discord Server</strong>
+                        <p><a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">Join SparkleMc Discord</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email Support</strong>
+                        <p><a href="mailto:support@sparklemc.fun">support@sparklemc.fun</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-server"></i>
+                    <div>
+                        <strong>Server IP</strong>
+                        <p>play.sparklemc.fun</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct Ticket Form (Using FormSubmit.co for free automatic emails) -->
+            <form class="ticket-form" action="https://formsubmit.co/YOUR_EMAIL@GMAIL.COM" method="POST">
+                <!-- Replace YOUR_EMAIL@GMAIL.COM with your actual email -->
+                <input type="hidden" name="_subject" value="New SparkleMc Support Ticket!">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-group">
+                    <label>Minecraft Username *</label>
+                    <input type="text" name="Minecraft_Username" placeholder="e.g. Steve_24" required>
+                </div>
+                <div class="form-group">
+                    <label>Discord Username / Tag *</label>
+                    <input type="text" name="Discord_User" placeholder="e.g. user#1234 or @username" required>
+                </div>
+                <div class="form-group">
+                    <label>Issue Type *</label>
+                    <select name="Ticket_Type" required>
+                        <option value="Rank Purchase Verification">Rank Purchase Verification</option>
+                        <option value="In-Game Bug/Glitch">In-Game Bug / Glitch</option>
+                        <option value="Player Report">Report a Player</option>
+                        <option value="Other">Other Query</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Payment UTR / Transaction ID (If bought rank)</label>
+                    <input type="text" name="Transaction_UTR" placeholder="12-digit UPI UTR number">
+                </div>
+                <div class="form-group">
+                    <label>Detailed Message *</label>
+                    <textarea name="Message" rows="4" placeholder="Describe your issue or order..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Ticket
+                </button>
+            </form>
+        </div>
     </section>
 
-    <section id="server" class="section dark-section">
-      <div class="section-title">
-        <span>02</span>
-        <h2>Server Information</h2>
-      </div>
-      <div class="server-grid">
-        <div class="info-box">
-          <small>SERVER IP</small>
-          <strong>play.sparklemc.fun</strong>
-        </div>
-        <div class="info-box">
-          <small>PORT</small>
-          <strong>19136</strong>
-        </div>
-        <div class="info-box">
-          <small>GAME MODES</small>
-          <strong>Survival • Lifesteal</strong>
-        </div>
-        <div class="info-box">
-          <small>OWNER</small>
-          <strong>FZ BOY</strong>
-        </div>
-      </div>
-      <div class="join-box">
-        <h3>Ready to play?</h3>
-        <p>Use the server address below to join SparkleMc.</p>
-        <code>play.sparklemc.fun:19136</code>
-        <button class="btn primary" onclick="copyIP()">Copy IP</button>
-      </div>
-    </section>
+    <!-- PAYMENT MODAL -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closePayment()">&times;</span>
+            <div class="modal-header">
+                <h2>Purchase <span id="modal-rank-name" class="glow-text">RANK</span></h2>
+                <div class="modal-price" id="modal-rank-price">₹0</div>
+            </div>
+            
+            <div class="modal-body">
+                <p class="modal-desc">Scan the UPI QR code below with Paytm, PhonePe, Google Pay, or any UPI app to complete payment.</p>
+                
+                <div class="qr-container">
+                    <img src="qr.jpg" alt="UPI QR Code - Fouzan Tariq" class="qr-img">
+                </div>
 
-    <section id="community" class="section community">
-      <div class="section-title">
-        <span>03</span>
-        <h2>Official Community</h2>
-      </div>
-      <p class="lead">All official updates, announcements and support are available through our Discord community.</p>
-      <a class="discord-card" href="https://discord.gg/62xxMq2NKv" target="_blank" rel="noopener">
-        <div>
-          <small>OFFICIAL DISCORD</small>
-          <h3>Join the SparkleMc Community</h3>
-          <p>Connect with players and get the latest updates.</p>
-        </div>
-        <span>→</span>
-      </a>
-    </section>
-  </main>
+                <div class="upi-details">
+                    <span>UPI ID: <strong>6006283334@ptyes</strong></span>
+                    <button class="btn-copy-upi" onclick="copyUPI()">Copy UPI</button>
+                </div>
 
-  <footer>
-    <img src="logo.png" alt="SparkleMc Logo">
-    <div>
-      <strong>SparkleMc</strong>
-      <p>Official Minecraft Server</p>
+                <div class="modal-steps">
+                    <h4>Steps after payment:</h4>
+                    <ol>
+                        <li>Copy the <strong>12-digit UTR / Transaction Number</strong> from your UPI app.</li>
+                        <li>Scroll down to our <strong>Support Ticket</strong> section.</li>
+                        <li>Submit your In-game name and UTR. Your rank will be activated promptly!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#ticket" class="btn btn-primary" onclick="closePayment()">
+                    Submit Verification Ticket
+                </a>
+            </div>
+        </div>
     </div>
-    <span>© 2026 SparkleMc. All rights reserved.</span>
-  </footer>
 
-  <script src="script.js"></script>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 SparkleMc Network. Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+            <div class="footer-links">
+                <a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+                <a href="mailto:support@sparklemc.fun"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-</html>
+                      </html>
+                      
