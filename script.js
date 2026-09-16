@@ -38,21 +38,29 @@ function buyCoins() {
     openPayment(`${totalCoins} Coins Package`, amount);
 }
 
-// Copy Server IP
+// Copy Java IP
 function copyIP(ip) {
     navigator.clipboard.writeText(ip).then(() => {
-        const badge = document.getElementById('copy-badge');
-        const originalText = badge.innerText;
+        const badge = document.getElementById('copy-badge-java');
         badge.innerText = 'Copied!';
         badge.style.background = '#22c55e';
-        badge.style.color = '#fff';
-
         setTimeout(() => {
-            badge.innerText = originalText;
+            badge.innerText = 'Copy';
             badge.style.background = 'rgba(0, 0, 0, 0.35)';
-        }, 2500);
-    }).catch(err => {
-        alert('Server IP: ' + ip);
+        }, 2000);
+    });
+}
+
+// Copy Bedrock IP & Port
+function copyBedrock(ip, port) {
+    navigator.clipboard.writeText(`${ip}:${port}`).then(() => {
+        const badge = document.getElementById('copy-badge-bedrock');
+        badge.innerText = 'Copied!';
+        badge.style.background = '#22c55e';
+        setTimeout(() => {
+            badge.innerText = 'Copy';
+            badge.style.background = 'rgba(0, 0, 0, 0.35)';
+        }, 2000);
     });
 }
 
