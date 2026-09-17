@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleMc — Council & Staff Team</title>
+    <title>SparkleMc — Staff Team</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=fresh_5.0">
+    <link rel="stylesheet" href="style.css?v=6.0">
 </head>
 <body>
 
@@ -27,95 +27,71 @@
         </div>
     </header>
 
-    <section class="staff-sec">
-        <div class="staff-header">
-            <h1 class="staff-main-title">COUNCIL</h1>
-            <p class="staff-subtitle">The guardians of the realm. Click on any member to message them directly on Discord.</p>
+    <section class="draco-staff-sec">
+        <div class="draco-header">
+            <h1 class="draco-title">STAFF TEAM</h1>
+            <p class="draco-sub">The leaders & administrators of SparkleMc. Click on any member to contact them on Discord.</p>
         </div>
 
-        <div class="staff-grid">
+        <div class="draco-grid">
             <!-- FZBOY (OWNER) -->
-            <a href="https://discord.com/users/fzboy786" target="_blank" class="staff-card">
-                <div class="staff-avatar-box">
-                    <img src="https://mc-heads.net/avatar/FZBOY/100" alt="FZBOY Skin" class="staff-skin-head" onerror="this.src='logo.png'">
-                    <span class="status-dot online"></span>
+            <a href="https://discord.com/users/fzboy786" target="_blank" class="draco-card">
+                <div class="draco-head-box">
+                    <img src="https://api.mineatar.io/face/steve?scale=16" alt="FZBOY" class="draco-face">
+                    <span class="draco-status"></span>
                 </div>
-                <div class="staff-info">
-                    <h3 class="staff-name">FZBOY</h3>
-                    <span class="staff-role role-owner">OWNER</span>
-                    <span class="staff-handle">@fzboy786</span>
+                <div class="draco-details">
+                    <div class="draco-name">FZBOY</div>
+                    <div class="draco-rank rank-owner">OWNER</div>
+                    <div class="draco-discord"><i class="fab fa-discord"></i> @fzboy786</div>
                 </div>
             </a>
 
             <!-- DAREQUEEN (CO-OWNER) -->
-            <a href="https://discord.com/users/dareque3n" target="_blank" class="staff-card">
-                <div class="staff-avatar-box">
-                    <img src="https://mc-heads.net/avatar/DAREQUEEN/100" alt="DareQueen Skin" class="staff-skin-head" onerror="this.src='logo.png'">
-                    <span class="status-dot online"></span>
+            <a href="https://discord.com/users/dareque3n" target="_blank" class="draco-card">
+                <div class="draco-head-box">
+                    <img src="https://api.mineatar.io/face/alex?scale=16" alt="DAREQUEEN" class="draco-face">
+                    <span class="draco-status"></span>
                 </div>
-                <div class="staff-info">
-                    <h3 class="staff-name">DAREQUEEN</h3>
-                    <span class="staff-role role-coowner">CO-OWNER</span>
-                    <span class="staff-handle">@dareque3n</span>
+                <div class="draco-details">
+                    <div class="draco-name">DAREQUEEN</div>
+                    <div class="draco-rank rank-coowner">CO-OWNER</div>
+                    <div class="draco-discord"><i class="fab fa-discord"></i> @dareque3n</div>
                 </div>
             </a>
 
-            <!-- Placeholder: Developer -->
-            <div class="staff-card locked-card">
-                <div class="staff-avatar-box">
-                    <img src="https://mc-heads.net/avatar/MHF_Steve/100" alt="Dev" class="staff-skin-head">
-                    <span class="status-dot"></span>
+            <!-- DEVELOPER -->
+            <div class="draco-card locked-member">
+                <div class="draco-head-box">
+                    <img src="https://api.mineatar.io/face/MHF_Enderman?scale=16" alt="Developer" class="draco-face">
+                    <span class="draco-status offline"></span>
                 </div>
-                <div class="staff-info">
-                    <h3 class="staff-name">Recruiting Soon</h3>
-                    <span class="staff-role role-dev">DEVELOPER</span>
-                    <span class="staff-handle">Apply on Discord</span>
+                <div class="draco-details">
+                    <div class="draco-name">Coming Soon</div>
+                    <div class="draco-rank rank-dev">DEVELOPER</div>
+                    <div class="draco-discord">Recruiting on Discord</div>
                 </div>
             </div>
 
-            <!-- Placeholder: Manager -->
-            <div class="staff-card locked-card">
-                <div class="staff-avatar-box">
-                    <img src="https://mc-heads.net/avatar/MHF_Alex/100" alt="Manager" class="staff-skin-head">
-                    <span class="status-dot"></span>
+            <!-- MANAGER -->
+            <div class="draco-card locked-member">
+                <div class="draco-head-box">
+                    <img src="https://api.mineatar.io/face/MHF_Villager?scale=16" alt="Manager" class="draco-face">
+                    <span class="draco-status offline"></span>
                 </div>
-                <div class="staff-info">
-                    <h3 class="staff-name">Recruiting Soon</h3>
-                    <span class="staff-role role-manager">MANAGER</span>
-                    <span class="staff-handle">Apply on Discord</span>
+                <div class="draco-details">
+                    <div class="draco-name">Coming Soon</div>
+                    <div class="draco-rank rank-manager">MANAGER</div>
+                    <div class="draco-discord">Recruiting on Discord</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Global Live Public Chat -->
-    <div class="floating-chat">
-        <div id="chatBox" class="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="online-indicator"></div>
-                    <strong>Public Live Chat</strong>
-                </div>
-                <button class="chat-close" onclick="toggleChat()">&times;</button>
-            </div>
-            <div class="chat-messages" id="chatMsgs">
-                <div class="chat-bubble system">Global chat connected. Anyone on the website can see messages in real time!</div>
-            </div>
-            <form class="chat-input-row" onsubmit="sendGlobalChat(event)">
-                <input type="text" id="chatUsername" placeholder="IGN" style="width: 70px; border-right: 1px solid var(--border-dim);" required>
-                <input type="text" id="chatInput" placeholder="Send a message..." required>
-                <button type="submit"><i class="fas fa-paper-plane"></i></button>
-            </form>
-        </div>
-        <button class="chat-toggle-btn" onclick="toggleChat()" title="Global Chat">
-            <i class="fas fa-comments"></i>
-        </button>
-    </div>
-
     <footer class="site-footer">
         <p>&copy; 2026 SparkleMc Network. All Rights Reserved. Not affiliated with Mojang Studios.</p>
     </footer>
 
-    <script src="script.js?v=fresh_5.0"></script>
+    <script src="script.js?v=6.0"></script>
 </body>
 </html>
