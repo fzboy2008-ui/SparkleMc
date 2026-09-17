@@ -18,10 +18,7 @@
     <link rel="shortcut icon" href="logo.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=final_1.0">
-
-    <!-- Google Identity Services -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="style.css?v=final_2.0">
 </head>
 <body>
 
@@ -31,15 +28,20 @@
                 <img src="logo.png" alt="SparkleMc" class="brand-logo" onerror="this.style.display='none'">
                 <span>Sparkle<span class="highlight">Mc</span></span>
             </a>
-            <nav class="nav-links">
+
+            <!-- 3 Lines Hamburger Menu Button for Mobile -->
+            <button class="nav-toggle-btn" onclick="toggleMobileNav()" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
                 <a href="store.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Store</a>
                 <a href="staff.html" class="nav-link"><i class="fas fa-users-cog"></i> Staff</a>
                 <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord">
                     <i class="fab fa-discord"></i> Discord
                 </a>
-                
-                <!-- Google Login Button Container -->
+
                 <div id="authContainer" class="nav-auth-wrap">
                     <button id="googleLoginBtn" class="google-auth-btn" onclick="triggerGoogleSignIn()">
                         <i class="fab fa-google"></i> Login
@@ -80,14 +82,19 @@
                 </div>
             </div>
 
+            <!-- Replaced Buttons: Login & Discord -->
             <div class="hero-cta-row">
-                <a href="store.html" class="btn-purchase cta-btn"><i class="fas fa-shopping-bag"></i> Server Store</a>
-                <a href="staff.html" class="btn-info cta-btn-secondary"><i class="fas fa-users-cog"></i> Server Council</a>
+                <button onclick="triggerGoogleSignIn()" class="google-auth-btn cta-btn">
+                    <i class="fab fa-google"></i> Login With Google
+                </button>
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord cta-btn">
+                    <i class="fab fa-discord"></i> Join Discord
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Global Live Public Chat (Only on Main Page) -->
+    <!-- Global Live Public Chat -->
     <div class="floating-chat">
         <div id="chatBox" class="chat-window">
             <div class="chat-header">
@@ -101,7 +108,6 @@
                 <div class="chat-bubble system">Live Global Chat active. Please login with Google to participate in chat!</div>
             </div>
             
-            <!-- Chat Login Prompt if not logged in -->
             <div id="chatAuthGate" class="chat-auth-gate">
                 <p>Sign in with Google to send messages</p>
                 <button class="google-auth-btn small-btn" onclick="triggerGoogleSignIn()">
@@ -119,11 +125,35 @@
         </button>
     </div>
 
+    <!-- Login Modal (Prompt Fallback) -->
+    <div id="loginModal" class="modal-backdrop">
+        <div class="pay-window auth-modal-box">
+            <button class="modal-close-btn" onclick="closeLoginModal()">&times;</button>
+            <i class="fab fa-google auth-big-icon"></i>
+            <h3 class="pay-modal-title">Sign In With Google</h3>
+            <p class="pay-modal-sub">Enter your details below to sync your profile across Chat and Store purchases.</p>
+            <form onsubmit="handleManualAuth(event)" class="order-form">
+                <div class="form-group">
+                    <label>Player Name / Minecraft IGN:</label>
+                    <input type="text" id="authNameInput" placeholder="e.g. FZBOY" required>
+                </div>
+                <div class="form-group">
+                    <label>Google Account Email Address:</label>
+                    <input type="email" id="authEmailInput" placeholder="e.g. yourname@gmail.com" required>
+                </div>
+                <button type="submit" class="btn-purchase full-width">
+                    <i class="fas fa-check-circle"></i> Complete Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <p>&copy; 2026 SparkleMc. All Rights Reserved. Not affiliated with Mojang Studios.</p>
     </footer>
 
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-    <script src="script.js?v=final_1.0"></script>
+    <script src="script.js?v=final_2.0"></script>
 </body>
-</html>
+    </html>
+    
