@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleMc — Council & Staff Team</title>
+    <title>SparkleMc — Council</title>
+
+    <meta name="description" content="SparkleMc Official Council and Staff team.">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=fresh_5.0">
+    <link rel="stylesheet" href="style.css?v=final_1.0">
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -23,6 +27,17 @@
                 <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord">
                     <i class="fab fa-discord"></i> Discord
                 </a>
+
+                <div id="authContainer" class="nav-auth-wrap">
+                    <button id="googleLoginBtn" class="google-auth-btn" onclick="triggerGoogleSignIn()">
+                        <i class="fab fa-google"></i> Login
+                    </button>
+                    <div id="userProfileChip" class="user-chip" style="display: none;">
+                        <img id="userAvatar" src="" alt="Avatar" class="user-chip-avatar">
+                        <span id="userNameText" class="user-chip-name"></span>
+                        <button class="logout-btn" onclick="logoutGoogle()" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -88,34 +103,10 @@
         </div>
     </section>
 
-    <!-- Global Live Public Chat -->
-    <div class="floating-chat">
-        <div id="chatBox" class="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="online-indicator"></div>
-                    <strong>Public Live Chat</strong>
-                </div>
-                <button class="chat-close" onclick="toggleChat()">&times;</button>
-            </div>
-            <div class="chat-messages" id="chatMsgs">
-                <div class="chat-bubble system">Global chat connected. Anyone on the website can see messages in real time!</div>
-            </div>
-            <form class="chat-input-row" onsubmit="sendGlobalChat(event)">
-                <input type="text" id="chatUsername" placeholder="IGN" style="width: 70px; border-right: 1px solid var(--border-dim);" required>
-                <input type="text" id="chatInput" placeholder="Send a message..." required>
-                <button type="submit"><i class="fas fa-paper-plane"></i></button>
-            </form>
-        </div>
-        <button class="chat-toggle-btn" onclick="toggleChat()" title="Global Chat">
-            <i class="fas fa-comments"></i>
-        </button>
-    </div>
-
     <footer class="site-footer">
-        <p>&copy; 2026 SparkleMc Network. All Rights Reserved. Not affiliated with Mojang Studios.</p>
+        <p>&copy; 2026 SparkleMc. All Rights Reserved. Not affiliated with Mojang Studios.</p>
     </footer>
 
-    <script src="script.js?v=fresh_5.0"></script>
+    <script src="script.js?v=final_1.0"></script>
 </body>
 </html>
