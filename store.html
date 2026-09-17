@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkleMc — Official Server Store</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=fresh_5.0">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="nav-wrap">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="SparkleMc" class="brand-logo" onerror="this.style.display='none'">
+                <span>Sparkle<span class="highlight">Mc</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="store.html" class="nav-link active"><i class="fas fa-shopping-cart"></i> Store</a>
+                <a href="staff.html" class="nav-link"><i class="fas fa-users-cog"></i> Staff</a>
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="store-sec">
+        <div class="section-title-wrap">
+            <h2 class="title">SERVER <span class="text-glow">STORE</span></h2>
+            <p class="subtitle">Click <strong class="gold-text">(i)</strong> to inspect perks, armor & enchantments.</p>
+        </div>
+
+        <div class="category-nav">
+            <button class="cat-btn active" onclick="switchTab('ranks')"><i class="fas fa-crown"></i> Ranks</button>
+            <button class="cat-btn" onclick="switchTab('items')"><i class="fas fa-shield-alt"></i> Unique Items</button>
+            <button class="cat-btn" onclick="switchTab('abilities')"><i class="fas fa-bolt"></i> Special Ability</button>
+            <button class="cat-btn" onclick="switchTab('coins')"><i class="fas fa-coins"></i> Coins</button>
+            <button class="cat-btn" onclick="switchTab('crates')"><i class="fas fa-box-open"></i> Kits</button>
+        </div>
+
+        <!-- Ranks Tab -->
+        <div id="tab-ranks" class="product-grid tab-content active-tab">
+            <div class="product-card">
+                <div class="badge-tag">POPULAR</div>
+                <div class="icon-sphere icon-yellow"><i class="fas fa-crown"></i></div>
+                <h3 class="product-name">VIP Rank</h3>
+                <p class="product-desc">+200 Bonus Coins Included</p>
+                <div class="product-price">₹120 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('vip')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('VIP Rank', 120)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card featured-border">
+                <div class="badge-tag tag-crimson">HOT</div>
+                <div class="icon-sphere icon-red"><i class="fas fa-skull"></i></div>
+                <h3 class="product-name">Blood Rank</h3>
+                <p class="product-desc">+400 Bonus Coins Included</p>
+                <div class="product-price">₹230 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('blood')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Blood Rank', 230)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="icon-sphere icon-purple"><i class="fas fa-ghost"></i></div>
+                <h3 class="product-name">Reaper Rank</h3>
+                <p class="product-desc">+700 Bonus Coins Included</p>
+                <div class="product-price">₹340 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('reaper')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Reaper Rank', 340)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="badge-tag">ELITE</div>
+                <div class="icon-sphere icon-darkred"><i class="fas fa-tint"></i></div>
+                <h3 class="product-name">Vampire Rank</h3>
+                <p class="product-desc">+1,000 Bonus Coins Included</p>
+                <div class="product-price">₹450 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('vampire')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Vampire Rank', 450)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card ultimate-card">
+                <div class="badge-tag tag-gold">ULTIMATE</div>
+                <div class="icon-sphere icon-gold"><i class="fas fa-fire"></i></div>
+                <h3 class="product-name">Spark+ Rank</h3>
+                <p class="product-desc">+1,500 Coins + All Rank Kits</p>
+                <div class="product-price">₹600 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('sparkplus')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Spark+ Rank', 600)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unique Items Tab -->
+        <div id="tab-items" class="product-grid tab-content" style="display: none;">
+            <div class="product-card">
+                <div class="icon-sphere icon-gold"><i class="fas fa-hammer"></i></div>
+                <h3 class="product-name">Unique Mace</h3>
+                <p class="product-desc">Density VII, Breach V, Wind Burst III</p>
+                <div class="product-price">₹120</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('item_mace')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Unique Mace', 120)">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="icon-sphere icon-purple"><i class="fas fa-feather-alt"></i></div>
+                <h3 class="product-name">Unique Elytra</h3>
+                <p class="product-desc">Unbreakable, Protection 5, Mending</p>
+                <div class="product-price">₹120</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('item_elytra')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Unique Elytra', 120)">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="icon-sphere icon-red"><i class="fas fa-khanda"></i></div>
+                <h3 class="product-name">Unique Sword</h3>
+                <p class="product-desc">Sharpness VII, Fire Aspect II, Looting III</p>
+                <div class="product-price">₹80</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('item_sword')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Unique Sword', 80)">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="icon-sphere icon-yellow"><i class="fas fa-crosshairs"></i></div>
+                <h3 class="product-name">Unique Spear</h3>
+                <p class="product-desc">Lunge V, Sharpness VII, Fire Aspect II</p>
+                <div class="product-price">₹80</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('item_spear')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Unique Spear', 80)">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="icon-sphere icon-darkred"><i class="fas fa-bullseye"></i></div>
+                <h3 class="product-name">Unique Bow</h3>
+                <p class="product-desc">Power VII, Flame, Punch II, Infinity</p>
+                <div class="product-price">₹50</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('item_bow')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Unique Bow', 50)">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="icon-sphere icon-yellow"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="product-name">Unique Shield</h3>
+                <p class="product-desc">Unbreakable, Mending</p>
+                <div class="product-price">₹50</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('item_shield')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Unique Shield', 50)">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Ability Tab -->
+        <div id="tab-abilities" class="product-grid tab-content" style="display: none;">
+            <div class="product-card">
+                <div class="icon-sphere icon-yellow"><i class="fas fa-bolt"></i></div>
+                <h3 class="product-name">Infinite Effect Lvl I</h3>
+                <p class="product-desc">Permanent server-wide Level 1 Potion Buff</p>
+                <div class="product-price">₹40</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('ability_1')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Infinite Effect Lvl I', 40)">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card featured-border">
+                <div class="icon-sphere icon-red"><i class="fas fa-bolt"></i></div>
+                <h3 class="product-name">Infinite Effect Lvl II</h3>
+                <p class="product-desc">Permanent server-wide Level 2 Potion Buff</p>
+                <div class="product-price">₹80</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('ability_2')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Infinite Effect Lvl II', 80)">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card ultimate-card">
+                <div class="icon-sphere icon-gold"><i class="fas fa-bolt"></i></div>
+                <h3 class="product-name">Infinite Effect Lvl III</h3>
+                <p class="product-desc">Permanent server-wide Level 3 Potion Buff</p>
+                <div class="product-price">₹120</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('ability_3')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Infinite Effect Lvl III', 120)">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coins Tab -->
+        <div id="tab-coins" class="product-grid tab-content" style="display: none;">
+            <div class="product-card coin-box">
+                <div class="icon-sphere icon-gold"><i class="fas fa-coins"></i></div>
+                <h3 class="product-name">Custom Coin Top-up</h3>
+                <p class="product-desc">Exchange Rate: ₹1 = 2 Spark Coins</p>
+                <div class="coin-input-wrap">
+                    <label>Enter INR Amount (₹):</label>
+                    <input type="number" id="coinAmountInput" value="100" min="20" oninput="calcCoins()">
+                </div>
+                <div class="coin-preview">You Get: <span id="coinTotal" class="text-glow">200 Coins</span></div>
+                <button class="btn-purchase full-width" onclick="orderCoins()"><i class="fas fa-shopping-bag"></i> Top-up Coins</button>
+            </div>
+        </div>
+
+        <!-- Kits Tab -->
+        <div id="tab-crates" class="product-grid tab-content" style="display: none;">
+            <div class="empty-state">
+                <i class="fas fa-box-open"></i>
+                <h3>KITS COMING SOON</h3>
+                <p>Custom crates and kit packages launching shortly!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Popup Modal -->
+    <div id="infoPopup" class="modal-backdrop">
+        <div class="info-window">
+            <button class="modal-close-btn" onclick="closeInfo()">&times;</button>
+            <h2 id="infoTitle">Item Perks</h2>
+            <div class="info-content-scroll">
+                <h4><i class="fas fa-shield-alt gold-text"></i> Armor & Gear:</h4>
+                <ul id="infoPerks" class="check-list"></ul>
+
+                <h4><i class="fas fa-terminal gold-text"></i> Commands:</h4>
+                <ul id="infoCommands" class="check-list cmd-list"></ul>
+
+                <h4><i class="fas fa-coins gold-text"></i> Bonus & Other:</h4>
+                <ul id="infoOther" class="check-list"></ul>
+            </div>
+            <div class="info-footer">
+                <span class="info-cost" id="infoCost">₹120</span>
+                <button class="btn-purchase" id="infoProceedBtn">Proceed To Buy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal (Sends Email Ticket) -->
+    <div id="paymentPopup" class="modal-backdrop">
+        <div class="pay-window">
+            <button class="modal-close-btn" onclick="closePayment()">&times;</button>
+            
+            <div id="payFormStep">
+                <h3 class="pay-modal-title">Checkout Order</h3>
+                <p class="pay-modal-sub">Package: <strong id="orderItemName" class="text-glow">VIP Rank</strong></p>
+
+                <div class="qr-container">
+                    <img src="qr.jpg" alt="UPI QR Code" class="qr-code-img" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=6006283334@ptyes&pn=SparkleMc'">
+                    <div class="upi-id-pill">UPI: <strong>6006283334@ptyes</strong></div>
+                    <div class="payable-badge">Payable: ₹<span id="orderItemAmount">120</span></div>
+                </div>
+
+                <form class="order-form" onsubmit="submitEmailTicket(event)">
+                    <div class="form-group">
+                        <label>Minecraft In-Game Username (IGN):</label>
+                        <input type="text" id="ignInput" placeholder="e.g. Steve_01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>12-Digit UPI Ref / UTR Number:</label>
+                        <input type="text" id="utrInput" placeholder="e.g. 429182390123" maxlength="16" required>
+                    </div>
+                    <button type="submit" class="btn-purchase full-width" id="submitOrderBtn">
+                        <i class="fas fa-check-circle"></i> Send Order Ticket To Owner
+                    </button>
+                </form>
+            </div>
+
+            <div id="payStatusStep" style="display: none;">
+                <div class="status-icon"><i class="fas fa-envelope-open-text text-glow"></i></div>
+                <h3>Ticket Dispatched!</h3>
+                <p class="status-msg">Your purchase ticket has been sent to <strong>fzboy2008@gmail.com</strong>. The owner will review your UTR and click approve.</p>
+                
+                <div class="order-summary-box">
+                    <div><span>IGN:</span> <strong id="summaryIGN">-</strong></div>
+                    <div><span>Package:</span> <strong id="summaryItem">-</strong></div>
+                    <div><span>UTR:</span> <strong id="summaryUTR">-</strong></div>
+                    <div><span>Status:</span> <span class="tag-pending">PENDING EMAIL APPROVAL</span></div>
+                </div>
+
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord full-width">
+                    <i class="fab fa-discord"></i> Open Discord Ticket If Urgent
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Live Chat -->
+    <div class="floating-chat">
+        <div id="chatBox" class="chat-window">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="online-indicator"></div>
+                    <strong>Public Live Chat</strong>
+                </div>
+                <button class="chat-close" onclick="toggleChat()">&times;</button>
+            </div>
+            <div class="chat-messages" id="chatMsgs">
+                <div class="chat-bubble system">Global chat connected. Anyone on the website can see messages in real time!</div>
+            </div>
+            <form class="chat-input-row" onsubmit="sendGlobalChat(event)">
+                <input type="text" id="chatUsername" placeholder="IGN" style="width: 70px; border-right: 1px solid var(--border-dim);" required>
+                <input type="text" id="chatInput" placeholder="Send a message..." required>
+                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+        <button class="chat-toggle-btn" onclick="toggleChat()" title="Global Chat">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 SparkleMc Network. All Rights Reserved. Not affiliated with Mojang Studios.</p>
+    </footer>
+
+    <script src="script.js?v=fresh_5.0"></script>
+</body>
+              </html>
+              
