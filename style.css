@@ -19,10 +19,11 @@
 }
 
 body {
-    background: linear-gradient(rgba(12, 9, 10, 0.85), rgba(12, 9, 10, 0.95)), url('bg.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-color: var(--bg-main);
+    background-image: none !important;
     color: var(--text-light);
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* --- Navbar --- */
