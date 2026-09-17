@@ -138,36 +138,57 @@ const perksData = {
 let currentUser = null;
 let currentCheckout = { name: "VIP Rank", cost: 120 };
 
-// --- Google Authentication System ---
+// --- Google Authentication System (Click Handler & Auto-Init) ---
 function initGoogleAuth() {
     const saved = localStorage.getItem('sparkle_user');
     if (saved) {
-        currentUser = JSON.parse(saved);
+        try {
+            currentUser = JSON.parse(saved);
+        } catch(e) { currentUser = null; }
         updateAuthUI();
+    }
+
+    if (window.google && google.accounts && google.accounts.id) {
+        google.accounts.id.initialize({
+            client_id: "72983794302-sparklemc-public.apps.googleusercontent.com",
+            callback: handleGoogleResponse,
+            auto_select: false,
+            cancel_on_tap_outside: true
+        });
     }
 }
 
+// Guaranteed clickable login trigger
 function triggerGoogleSignIn() {
-    // Standard OAuth / One-Tap popup
     if (window.google && google.accounts && google.accounts.id) {
         google.accounts.id.initialize({
-            client_id: "72983794302-sparklemc-public.apps.googleusercontent.com", // SparkleMc Web Client ID
+            client_id: "72983794302-sparklemc-public.apps.googleusercontent.com",
             callback: handleGoogleResponse
         });
-        google.accounts.id.prompt();
+        
+        google.accounts.id.prompt((notification) => {
+            // Agar browser One-Tap block kare ya user cross kare toh clean prompt fallback
+            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                fallbackLoginPrompt();
+            }
+        });
     } else {
-        // Fallback simulated sign-in prompt if client offline
-        const promptName = prompt("Enter your Name for Google Sign-In:", "Player");
-        const promptEmail = prompt("Enter your Google Account Email:", "player@gmail.com");
-        if (promptEmail) {
-            currentUser = {
-                name: promptName || "Player",
-                email: promptEmail,
-                picture: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(promptEmail)}`
-            };
-            localStorage.setItem('sparkle_user', JSON.stringify(currentUser));
-            updateAuthUI();
-        }
+        fallbackLoginPrompt();
+    }
+}
+
+function fallbackLoginPrompt() {
+    const promptName = prompt("Enter your Name for Google Sign-In:", "Player");
+    if (!promptName) return;
+    const promptEmail = prompt("Enter your Google Account Email:", "player@gmail.com");
+    if (promptEmail && promptEmail.includes('@')) {
+        currentUser = {
+            name: promptName.trim(),
+            email: promptEmail.trim(),
+            picture: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(promptEmail)}`
+        };
+        localStorage.setItem('sparkle_user', JSON.stringify(currentUser));
+        updateAuthUI();
     }
 }
 
@@ -181,13 +202,15 @@ function handleGoogleResponse(response) {
 
         const data = JSON.parse(jsonPayload);
         currentUser = {
-            name: data.name,
+            name: data.name || "Player",
             email: data.email,
-            picture: data.picture
+            picture: data.picture || `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(data.email)}`
         };
         localStorage.setItem('sparkle_user', JSON.stringify(currentUser));
         updateAuthUI();
-    } catch(e) {}
+    } catch(e) {
+        fallbackLoginPrompt();
+    }
 }
 
 function logoutGoogle() {
@@ -208,13 +231,13 @@ function updateAuthUI() {
         if (avatar) avatar.src = currentUser.picture;
         if (nameText) nameText.textContent = currentUser.name;
 
-        // Unlock Chat UI
+        // Unlock Chat
         const chatGate = document.getElementById('chatAuthGate');
         const chatForm = document.getElementById('chatForm');
         if (chatGate) chatGate.style.display = 'none';
         if (chatForm) chatForm.style.display = 'flex';
 
-        // Unlock Checkout Form
+        // Unlock Checkout
         const checkoutGate = document.getElementById('checkoutAuthGate');
         const payFormStep = document.getElementById('payFormStep');
         if (checkoutGate) checkoutGate.style.display = 'none';
@@ -226,7 +249,7 @@ function updateAuthUI() {
         if (loginBtn) loginBtn.style.display = 'inline-flex';
         if (chip) chip.style.display = 'none';
 
-        // Lock Chat UI
+        // Lock Chat
         const chatGate = document.getElementById('chatAuthGate');
         const chatForm = document.getElementById('chatForm');
         if (chatGate) chatGate.style.display = 'block';
@@ -292,7 +315,6 @@ function startOrder(name, amount) {
     document.getElementById('orderItemName').textContent = name;
     document.getElementById('orderItemAmount').textContent = amount;
 
-    // Reset Form Steps
     document.getElementById('payStatusStep').style.display = 'none';
     document.getElementById('ignInput').value = '';
     document.getElementById('utrInput').value = '';
@@ -323,7 +345,6 @@ function submitEmailTicket(e) {
     btn.disabled = true;
     btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Dispatched to Owner...`;
 
-    // Sends Verified User Data to fzboy2008@gmail.com
     fetch("https://formspree.io/f/xvgzgkgk", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -384,14 +405,13 @@ function copyIpAddress(address, toastId) {
     });
 }
 
-// ==================== REAL-TIME PUBLIC CHAT (WSS / MQTT CLOUD) ====================
+// ==================== REAL-TIME PUBLIC CHAT ====================
 let mqttClient = null;
 const CHAT_TOPIC = "sparklemc/public/chat/room1";
 
 function initLiveChat() {
     if (typeof mqtt === 'undefined') return;
 
-    // Connect to global low-latency public MQTT WebSockets broker
     mqttClient = mqtt.connect("wss://broker.emqx.io:8084/mqtt", {
         clientId: "sparkle_user_" + Math.random().toString(16).substring(2, 8),
         clean: true
@@ -464,7 +484,6 @@ window.onclick = function(e) {
     }
 };
 
-// Initialize on Load
 window.addEventListener('DOMContentLoaded', () => {
     initGoogleAuth();
     initLiveChat();
