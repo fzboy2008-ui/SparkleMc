@@ -309,7 +309,7 @@ function closePayment() {
     if (el) el.style.display = 'none';
 }
 
-// Send Order Ticket to Owner Email (fzboy2008@gmail.com)
+// Send Order Ticket via Direct FormSubmit API + Mailto Fallback
 function submitEmailTicket(e) {
     e.preventDefault();
     if (!currentUser) {
@@ -324,41 +324,56 @@ function submitEmailTicket(e) {
     if (!ign || !utr) return;
 
     btn.disabled = true;
-    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending Ticket to Owner...`;
+    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing Ticket...`;
 
-    fetch("https://formspree.io/f/xvgzgkgk", {
+    // 1. Silent Free Mail Dispatch directly to fzboy2008@gmail.com
+    fetch("https://formsubmit.co/ajax/fzboy2008@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
         body: JSON.stringify({
-            Owner_Target_Email: "fzboy2008@gmail.com",
-            Customer_Google_Email: currentUser.email,
+            _subject: `[SparkleMc Order] ${currentCheckout.name} - ${ign}`,
+            Customer_Email: currentUser.email,
             Customer_Name: currentUser.name,
-            Minecraft_IGN: ign,
+            Player_IGN: ign,
             Package_Purchased: currentCheckout.name,
             Amount_Paid: "₹" + currentCheckout.cost,
             UTR_Ref_Number: utr,
-            Approval_Action: `Reply APPROVE to deliver rank in console for ${ign}`
+            _template: "table"
         })
-    }).then(res => {
+    }).finally(() => {
         btn.disabled = false;
         btn.innerHTML = `<i class="fas fa-paper-plane"></i> Send Ticket to Owner`;
 
+        // Update Summary Details
         document.getElementById('summaryEmail').textContent = currentUser.email;
         document.getElementById('summaryIGN').textContent = ign;
         document.getElementById('summaryItem').textContent = currentCheckout.name;
+        document.getElementById('summaryAmount').textContent = "₹" + currentCheckout.cost;
         document.getElementById('summaryUTR').textContent = utr;
 
-        document.getElementById('payFormStep').style.display = 'none';
-        document.getElementById('payStatusStep').style.display = 'block';
-    }).catch(err => {
-        btn.disabled = false;
-        btn.innerHTML = `<i class="fas fa-paper-plane"></i> Send Ticket to Owner`;
+        // Generate Mailto Link with prefilled invoice body
+        const mailSubject = encodeURIComponent(`SparkleMc Order Invoice - ${currentCheckout.name} (${ign})`);
+        const mailBody = encodeURIComponent(
+`SPARKLEMC PURCHASE INVOICE
+-----------------------------------------
+Customer Name : ${currentUser.name}
+Customer Email: ${currentUser.email}
+Player IGN    : ${ign}
+Item/Rank     : ${currentCheckout.name}
+Amount Paid   : ₹${currentCheckout.cost}
+UTR / Ref No  : ${utr}
+-----------------------------------------
+Please verify the transaction and approve the order.`
+        );
 
-        document.getElementById('summaryEmail').textContent = currentUser.email;
-        document.getElementById('summaryIGN').textContent = ign;
-        document.getElementById('summaryItem').textContent = currentCheckout.name;
-        document.getElementById('summaryUTR').textContent = utr;
+        const directMailLink = `mailto:fzboy2008@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+        const mailBtn = document.getElementById('directMailBtn');
+        if (mailBtn) mailBtn.href = directMailLink;
 
+        // Switch View
         document.getElementById('payFormStep').style.display = 'none';
         document.getElementById('payStatusStep').style.display = 'block';
     });
