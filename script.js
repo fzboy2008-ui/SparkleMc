@@ -309,7 +309,7 @@ function closePayment() {
     if (el) el.style.display = 'none';
 }
 
-// Send Order Ticket via Direct FormSubmit API + Mailto Fallback
+// Send Order Ticket - Direct Mail App Opener + Background FormSubmit
 function submitEmailTicket(e) {
     e.preventDefault();
     if (!currentUser) {
@@ -326,7 +326,7 @@ function submitEmailTicket(e) {
     btn.disabled = true;
     btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing Ticket...`;
 
-    // 1. Silent Free Mail Dispatch directly to fzboy2008@gmail.com
+    // 1. Background submission to FormSubmit
     fetch("https://formsubmit.co/ajax/fzboy2008@gmail.com", {
         method: "POST",
         headers: { 
@@ -340,43 +340,45 @@ function submitEmailTicket(e) {
             Player_IGN: ign,
             Package_Purchased: currentCheckout.name,
             Amount_Paid: "₹" + currentCheckout.cost,
-            UTR_Ref_Number: utr,
-            _template: "table"
+            UTR_Ref_Number: utr
         })
-    }).finally(() => {
-        btn.disabled = false;
-        btn.innerHTML = `<i class="fas fa-paper-plane"></i> Send Ticket to Owner`;
+    }).catch(() => {});
 
-        // Update Summary Details
-        document.getElementById('summaryEmail').textContent = currentUser.email;
-        document.getElementById('summaryIGN').textContent = ign;
-        document.getElementById('summaryItem').textContent = currentCheckout.name;
-        document.getElementById('summaryAmount').textContent = "₹" + currentCheckout.cost;
-        document.getElementById('summaryUTR').textContent = utr;
-
-        // Generate Mailto Link with prefilled invoice body
-        const mailSubject = encodeURIComponent(`SparkleMc Order Invoice - ${currentCheckout.name} (${ign})`);
-        const mailBody = encodeURIComponent(
+    // 2. Prepare pre-filled mail for Gmail / Email app
+    const mailSubject = encodeURIComponent(`[SparkleMc Order] ${currentCheckout.name} - ${ign}`);
+    const mailBody = encodeURIComponent(
 `SPARKLEMC PURCHASE INVOICE
------------------------------------------
+=================================
 Customer Name : ${currentUser.name}
 Customer Email: ${currentUser.email}
 Player IGN    : ${ign}
-Item/Rank     : ${currentCheckout.name}
+Item / Rank   : ${currentCheckout.name}
 Amount Paid   : ₹${currentCheckout.cost}
 UTR / Ref No  : ${utr}
------------------------------------------
-Please verify the transaction and approve the order.`
-        );
+=================================
+Please verify the transaction and approve the order in console.`
+    );
 
-        const directMailLink = `mailto:fzboy2008@gmail.com?subject=${mailSubject}&body=${mailBody}`;
-        const mailBtn = document.getElementById('directMailBtn');
-        if (mailBtn) mailBtn.href = directMailLink;
+    const directMailUrl = `mailto:fzboy2008@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
-        // Switch View
-        document.getElementById('payFormStep').style.display = 'none';
-        document.getElementById('payStatusStep').style.display = 'block';
-    });
+    btn.disabled = false;
+    btn.innerHTML = `<i class="fas fa-paper-plane"></i> Send Ticket to Owner`;
+
+    // Update Confirmation Screen
+    document.getElementById('summaryEmail').textContent = currentUser.email;
+    document.getElementById('summaryIGN').textContent = ign;
+    document.getElementById('summaryItem').textContent = currentCheckout.name;
+    document.getElementById('summaryAmount').textContent = "₹" + currentCheckout.cost;
+    document.getElementById('summaryUTR').textContent = utr;
+
+    const mailBtn = document.getElementById('directMailBtn');
+    if (mailBtn) mailBtn.href = directMailUrl;
+
+    document.getElementById('payFormStep').style.display = 'none';
+    document.getElementById('payStatusStep').style.display = 'block';
+
+    // Auto trigger mail app draft
+    window.location.href = directMailUrl;
 }
 
 // --- Coin Calculator ---
