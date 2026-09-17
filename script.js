@@ -170,7 +170,9 @@ function switchCategory(cat) {
 
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(b => b.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+    if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+    }
 }
 
 // --- Info Modal System ---
@@ -228,16 +230,17 @@ function buyCoins() {
 function copyIp(text, toastId) {
     navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById(toastId);
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
+        if (toast) {
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
     });
 }
 
-// Window Click Listener for closing modals
+// Close Modals on Outside Click
 window.onclick = function(e) {
     if (e.target.classList.contains('modal-overlay')) {
         closeInfoModal();
         closePaymentModal();
     }
 };
-        
