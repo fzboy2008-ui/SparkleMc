@@ -35,6 +35,23 @@
                 <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
                 <a href="store.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Store</a>
                 <a href="staff.html" class="nav-link"><i class="fas fa-users-cog"></i> Staff</a>
+                
+                <!-- Discord Button (Sirf Main Page Par) -->
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                
+                <!-- Google Login Button (Sirf Main Page Par) -->
+                <div id="authContainer" class="nav-auth-wrap">
+                    <button id="googleLoginBtn" type="button" class="google-auth-btn" onclick="triggerGoogleSignIn()">
+                        <i class="fab fa-google"></i> Login
+                    </button>
+                    <div id="userProfileChip" class="user-chip" style="display: none;">
+                        <img id="userAvatar" src="" alt="Avatar" class="user-chip-avatar">
+                        <span id="userNameText" class="user-chip-name"></span>
+                        <button type="button" class="logout-btn" onclick="logoutGoogle()" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -45,6 +62,7 @@
             <h1 class="hero-heading">WELCOME TO <span class="text-glow">SPARKLEMC</span></h1>
             <p class="hero-subtext">Build your empire, compete with skilled warriors, and forge lasting alliances. Join thousands of active players on Java & Bedrock.</p>
 
+            <!-- Dual IP Boxes -->
             <div class="ip-row">
                 <div class="ip-card" onclick="copyIpAddress('play.sparklemc.fun', 'toastJava')">
                     <div class="ip-text">
@@ -64,31 +82,7 @@
                     <div id="toastBedrock" class="copy-alert">Copied!</div>
                 </div>
             </div>
-
-            <!-- Front Action Grid: Store, Staff, Discord & Google Login -->
-            <div class="hero-cta-row">
-                <a href="store.html" class="btn-purchase cta-btn">
-                    <i class="fas fa-shopping-bag"></i> Server Store
-                </a>
-                <a href="staff.html" class="cta-btn-secondary">
-                    <i class="fas fa-users-cog"></i> Server Council
-                </a>
-                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="cta-btn-discord">
-                    <i class="fab fa-discord"></i> Join Discord
-                </a>
-
-                <!-- Google Login Button (Front Hero Area) -->
-                <div id="authContainer" class="hero-auth-wrap">
-                    <button id="googleLoginBtn" class="google-auth-btn cta-btn-login" onclick="triggerGoogleSignIn()">
-                        <i class="fab fa-google"></i> Login with Google
-                    </button>
-                    <div id="userProfileChip" class="user-chip" style="display: none;">
-                        <img id="userAvatar" src="" alt="Avatar" class="user-chip-avatar">
-                        <span id="userNameText" class="user-chip-name"></span>
-                        <button class="logout-btn" onclick="logoutGoogle()" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
-                    </div>
-                </div>
-            </div>
+            <!-- Front buttons store & staff yahan se remove kar diye gaye hain -->
         </div>
     </section>
 
@@ -107,8 +101,8 @@
             </div>
             
             <div id="chatAuthGate" class="chat-auth-gate">
-                <p>Sign in with Google on the main page to send messages</p>
-                <button class="google-auth-btn small-btn" onclick="triggerGoogleSignIn()">
+                <p>Sign in with Google to send messages</p>
+                <button type="button" class="google-auth-btn small-btn" onclick="triggerGoogleSignIn()">
                     <i class="fab fa-google"></i> Sign In With Google
                 </button>
             </div>
@@ -122,6 +116,9 @@
             <i class="fas fa-comments"></i>
         </button>
     </div>
+
+    <!-- Hidden standard Google render div for reliable popup callback -->
+    <div id="g_id_onload" style="display:none"></div>
 
     <footer class="site-footer">
         <p>&copy; 2026 SparkleMc. All Rights Reserved. Not affiliated with Mojang Studios.</p>
