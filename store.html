@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkleMc — Official Server Store</title>
+    <title>SparkleMc — Store</title>
+
+    <meta name="description" content="SparkleMc Official Store. Purchase ranks, unique equipment, and coin packages.">
+    <meta property="og:title" content="SparkleMc — Store">
+    <meta property="og:image" content="https://www.sparklemc.fun/logo.png">
+    <meta name="theme-color" content="#ff2a4b">
+
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=fresh_5.0">
+    <link rel="stylesheet" href="style.css?v=final_1.0">
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -23,6 +31,18 @@
                 <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord">
                     <i class="fab fa-discord"></i> Discord
                 </a>
+
+                <!-- Google Login Button Container -->
+                <div id="authContainer" class="nav-auth-wrap">
+                    <button id="googleLoginBtn" class="google-auth-btn" onclick="triggerGoogleSignIn()">
+                        <i class="fab fa-google"></i> Login
+                    </button>
+                    <div id="userProfileChip" class="user-chip" style="display: none;">
+                        <img id="userAvatar" src="" alt="Avatar" class="user-chip-avatar">
+                        <span id="userNameText" class="user-chip-name"></span>
+                        <button class="logout-btn" onclick="logoutGoogle()" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -30,7 +50,7 @@
     <section class="store-sec">
         <div class="section-title-wrap">
             <h2 class="title">SERVER <span class="text-glow">STORE</span></h2>
-            <p class="subtitle">Click <strong class="gold-text">(i)</strong> to inspect perks, armor & enchantments.</p>
+            <p class="subtitle">Click <strong class="gold-text">(i)</strong> to view perks, armor & enchantments.</p>
         </div>
 
         <div class="category-nav">
@@ -255,14 +275,25 @@
         </div>
     </div>
 
-    <!-- Payment Modal (Sends Email Ticket) -->
+    <!-- Payment Modal (Google Login Required) -->
     <div id="paymentPopup" class="modal-backdrop">
         <div class="pay-window">
             <button class="modal-close-btn" onclick="closePayment()">&times;</button>
             
+            <!-- Auth Check Block for Checkout -->
+            <div id="checkoutAuthGate" class="checkout-auth-gate" style="display: none;">
+                <i class="fas fa-shield-alt auth-icon"></i>
+                <h3>Google Sign-In Required</h3>
+                <p>Please sign in with Google to create an order ticket and connect your verified contact email.</p>
+                <button class="google-auth-btn full-width" onclick="triggerGoogleSignIn()">
+                    <i class="fab fa-google"></i> Login With Google
+                </button>
+            </div>
+
             <div id="payFormStep">
                 <h3 class="pay-modal-title">Checkout Order</h3>
                 <p class="pay-modal-sub">Package: <strong id="orderItemName" class="text-glow">VIP Rank</strong></p>
+                <div class="verified-user-badge">Logged in as: <strong id="orderUserEmail">-</strong></div>
 
                 <div class="qr-container">
                     <img src="qr.jpg" alt="UPI QR Code" class="qr-code-img" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=6006283334@ptyes&pn=SparkleMc'">
@@ -288,9 +319,10 @@
             <div id="payStatusStep" style="display: none;">
                 <div class="status-icon"><i class="fas fa-envelope-open-text text-glow"></i></div>
                 <h3>Ticket Dispatched!</h3>
-                <p class="status-msg">Your purchase ticket has been sent to <strong>fzboy2008@gmail.com</strong>. The owner will review your UTR and click approve.</p>
+                <p class="status-msg">Your purchase ticket along with your verified Google email has been sent to <strong>fzboy2008@gmail.com</strong>.</p>
                 
                 <div class="order-summary-box">
+                    <div><span>Buyer Email:</span> <strong id="summaryEmail">-</strong></div>
                     <div><span>IGN:</span> <strong id="summaryIGN">-</strong></div>
                     <div><span>Package:</span> <strong id="summaryItem">-</strong></div>
                     <div><span>UTR:</span> <strong id="summaryUTR">-</strong></div>
@@ -304,35 +336,11 @@
         </div>
     </div>
 
-    <!-- Floating Live Chat -->
-    <div class="floating-chat">
-        <div id="chatBox" class="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="online-indicator"></div>
-                    <strong>Public Live Chat</strong>
-                </div>
-                <button class="chat-close" onclick="toggleChat()">&times;</button>
-            </div>
-            <div class="chat-messages" id="chatMsgs">
-                <div class="chat-bubble system">Global chat connected. Anyone on the website can see messages in real time!</div>
-            </div>
-            <form class="chat-input-row" onsubmit="sendGlobalChat(event)">
-                <input type="text" id="chatUsername" placeholder="IGN" style="width: 70px; border-right: 1px solid var(--border-dim);" required>
-                <input type="text" id="chatInput" placeholder="Send a message..." required>
-                <button type="submit"><i class="fas fa-paper-plane"></i></button>
-            </form>
-        </div>
-        <button class="chat-toggle-btn" onclick="toggleChat()" title="Global Chat">
-            <i class="fas fa-comments"></i>
-        </button>
-    </div>
-
     <footer class="site-footer">
-        <p>&copy; 2026 SparkleMc Network. All Rights Reserved. Not affiliated with Mojang Studios.</p>
+        <p>&copy; 2026 SparkleMc. All Rights Reserved. Not affiliated with Mojang Studios.</p>
     </footer>
 
-    <script src="script.js?v=fresh_5.0"></script>
+    <script src="script.js?v=final_1.0"></script>
 </body>
-              </html>
-              
+                </html>
+    
