@@ -1,154 +1,208 @@
-// --- Perk Database (BlockFun Style info icons) ---
+// --- Exact Store Catalog Database ---
 const perksData = {
+    // --- RANKS ---
     vip: {
-        name: "VIP Rank (+200 Coins)",
-        price: "₹120",
+        name: "VIP Rank",
+        price: "₹120/MONTHLY",
         cost: 120,
         perks: [
-            "Create up to 5 Set Homes",
-            "Create up to 5 Auction Listings",
-            "Priority Server Join Queue",
-            "Keep Inventory in Spawn Realm"
+            "🛡️ ARMOUR: Maxed Armour with Protection 5",
+            "⚔️ SWORD: Sharpness 5",
+            "🪄 MACE: Without Enchants"
         ],
         commands: [
-            "/workbench (Portable crafting)",
-            "/feed (Restore hunger with cooldown)",
-            "/hat (Wear block as hat)",
-            "/near (Detect nearby players)"
+            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
         ],
         other: [
-            "[VIP] Chat Prefix & Tab Glow",
-            "Monthly VIP Kit (/kit vip)",
-            "200 Bonus Coins"
+            "💰 BONUS: +200 Spark Coins",
+            "💫 VIP Chat Tag & Priority Queue"
         ]
     },
     blood: {
-        name: "Blood Rank (+500 Coins)",
-        price: "₹250",
-        cost: 250,
+        name: "Blood Rank",
+        price: "₹230/MONTHLY",
+        cost: 230,
         perks: [
-            "Create up to 10 Set Homes",
-            "Create up to 10 Auction Listings",
-            "Reduced Death Ban Timer",
-            "Mine Spawners with Silk Touch",
-            "Includes all VIP Rank Perks"
+            "🛡️ ARMOUR: Maxed Armour with Protection 6",
+            "⚔️ SWORD: Sharpness 5",
+            "🪄 MACE: Without Enchants"
         ],
         commands: [
-            "/anvil (Portable anvil)",
-            "/smithingtable (Portable smithing)",
-            "/repair (Repair held tool)",
-            "/enderchest (Portable enderchest)"
+            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
         ],
         other: [
-            "[BLOOD] Dark Red Prefix",
-            "Custom Execution Kill Sound",
-            "Blood Kit (/kit blood)",
-            "500 Bonus Coins"
+            "💰 BONUS: +400 Spark Coins",
+            "💫 BLOOD Dark Red Chat Prefix"
         ]
     },
     reaper: {
-        name: "Reaper Rank (+1,000 Coins)",
-        price: "₹450",
-        cost: 450,
+        name: "Reaper Rank",
+        price: "₹340/MONTHLY",
+        cost: 340,
         perks: [
-            "Create up to 15 Set Homes",
-            "Create up to 15 Auction Listings",
-            "50% Lower Death Ban Duration",
-            "Includes all Blood Rank Perks"
+            "🛡️ ARMOUR: Maxed Armour with Protection 7",
+            "⚔️ SWORD: Sharpness 5",
+            "🪄 MACE: Without Enchants"
         ],
         commands: [
-            "/heal (Instant health restore with CD)",
-            "/fly (Claim Flight Enabled)",
-            "/condense (Auto turn ingots to blocks)"
+            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
         ],
         other: [
-            "[REAPER] Purple Glow Prefix",
-            "Reaper Scythe Kit (/kit reaper)",
-            "1,000 Bonus Coins"
+            "💰 BONUS: +700 Spark Coins",
+            "💫 REAPER Purple Glow Chat Prefix"
         ]
     },
     vampire: {
-        name: "Vampire Rank (+2,000 Coins)",
-        price: "₹750",
-        cost: 750,
+        name: "Vampire Rank",
+        price: "₹450/MONTHLY",
+        cost: 450,
         perks: [
-            "Create up to 25 Set Homes",
-            "Create up to 25 Auction Listings",
-            "75% Lower Death Ban Duration",
-            "Includes all Reaper Perks"
+            "🛡️ ARMOUR: Maxed Armour with Protection 8",
+            "⚔️ SWORD: Sharpness 5",
+            "🪄 MACE: Without Enchants"
         ],
         commands: [
-            "/extinguish (Instant extinguish fire)",
-            "/craft (Fast portable workbench)",
-            "/trash (Open portable trash disposal)"
+            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
         ],
         other: [
-            "[VAMPIRE] Crimson Prefix",
-            "Permanent Night Vision Effect",
-            "Vampire Kit (/kit vampire)",
-            "2,000 Bonus Coins"
+            "💰 BONUS: +1,000 Spark Coins",
+            "💫 VAMPIRE Crimson Prefix"
         ]
     },
     sparkplus: {
         name: "Spark+ Rank (Ultimate)",
-        price: "₹1,200",
-        cost: 1200,
+        price: "₹600/MONTHLY",
+        cost: 600,
         perks: [
-            "Unlimited /sethome",
-            "Zero Death Ban Timer (Instant Revive)",
-            "Priority VIP Support Access",
-            "Includes Perks of ALL Ranks Combined"
+            "🛡️ ARMOUR: Maxed Armour with Protection 10",
+            "⚔️ SWORD: Sharpness 5",
+            "🪄 MACE: Without Enchants",
+            "🎁 ALL KITS: Complete access to ALL rank kits!"
         ],
         commands: [
-            "/fly (Enabled everywhere in claimed regions)",
-            "/repair all (Repair entire inventory)",
-            "/glow (Cosmetic glowing colors)"
+            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
         ],
         other: [
-            "[SPARK+] Legendary Gold Prefix",
-            "Full Spark+ Netherite Set",
-            "5,000 Spark Coins"
+            "💰 BONUS: +1,500 Spark Coins",
+            "💫 SPARK+ Legendary Gold Prefix"
         ]
     },
-    mace: {
-        name: "Custom Mace",
-        price: "₹299",
-        cost: 299,
-        perks: ["Smash Attack AOE shockwave", "Unbreakable tier"],
-        commands: ["Delivered to in-game /mailbox"],
-        other: ["Season 1 Exclusive Weapon"]
+
+    // --- UNIQUE ITEMS ---
+    item_mace: {
+        name: "Unique Mace",
+        price: "₹120",
+        cost: 120,
+        perks: [
+            "🔥 Unbreakable",
+            "🔥 Mending",
+            "🔥 Density VII",
+            "🔥 Breach V",
+            "🔥 Wind Burst III"
+        ],
+        commands: ["Delivered via in-game delivery (/mailbox)"],
+        other: ["Season 1 Legendary God Tier Weapon"]
     },
-    elytra: {
-        name: "Infinity Elytra",
-        price: "₹349",
-        cost: 349,
-        perks: ["Infinite Durability (Never breaks)", "Custom Particle Trail"],
-        commands: ["Claim with /claimitems"],
-        other: ["Flame Wings visual"]
+    item_elytra: {
+        name: "Unique Elytra",
+        price: "₹120",
+        cost: 120,
+        perks: [
+            "✨ Unbreakable",
+            "✨ Protection 5",
+            "✨ Mending"
+        ],
+        commands: ["Claim with in-game /claimitems"],
+        other: ["Permanent durability wings"]
     },
-    katana: {
-        name: "Blood Katana",
-        price: "₹249",
-        cost: 249,
-        perks: ["Sharpness VII Enchantment", "10% Lifesteal per hit"],
-        commands: ["Delivered to /mailbox"],
-        other: ["Blood Slash visuals"]
+    item_sword: {
+        name: "Unique Sword",
+        price: "₹80",
+        cost: 80,
+        perks: [
+            "🔥 Sharpness VII",
+            "🔥 Unbreaking III",
+            "🔥 Mending",
+            "🔥 Fire Aspect II",
+            "🔥 Looting III",
+            "🔥 Sweeping Edge III"
+        ],
+        commands: ["Delivered directly into your inventory"],
+        other: ["Maxed Sharpness VII weapon"]
     },
-    speed: {
-        name: "Speed II Permanent",
-        price: "₹149",
-        cost: 149,
-        perks: ["Permanent Speed II Buff on your character across all realms"],
-        commands: ["Applied immediately upon order approval"],
+    item_spear: {
+        name: "Unique Spear",
+        price: "₹80",
+        cost: 80,
+        perks: [
+            "🔥 Lunge V",
+            "🔥 Unbreaking III",
+            "🔥 Mending",
+            "🔥 Sharpness VII",
+            "🔥 Fire Aspect II"
+        ],
+        commands: ["Delivered directly into your inventory"],
+        other: ["God-tier reach weapon"]
+    },
+    item_bow: {
+        name: "Unique Bow",
+        price: "₹50",
+        cost: 50,
+        perks: [
+            "🔥 Power VII",
+            "🔥 Unbreaking III",
+            "🔥 Mending",
+            "🔥 Flame",
+            "🔥 Punch II",
+            "🔥 Infinity"
+        ],
+        commands: ["Delivered directly into your inventory"],
+        other: ["Infinite ammunition enabled"]
+    },
+    item_shield: {
+        name: "Unique Shield",
+        price: "₹50",
+        cost: 50,
+        perks: [
+            "🔥 Unbreakable",
+            "🔥 Mending"
+        ],
+        commands: ["Delivered directly into your inventory"],
+        other: ["Unbreakable defense gear"]
+    },
+
+    // --- SPECIAL ABILITIES ---
+    ability_1: {
+        name: "Infinite Effect Lvl I",
+        price: "₹40",
+        cost: 40,
+        perks: ["Permanent Tier I potion buff applied to your character across all realms"],
+        commands: ["Activated directly on player sync"],
+        other: ["Permanent buff"]
+    },
+    ability_2: {
+        name: "Infinite Effect Lvl II",
+        price: "₹80",
+        cost: 80,
+        perks: ["Permanent Tier II potion buff applied to your character across all realms"],
+        commands: ["Activated directly on player sync"],
+        other: ["Permanent buff"]
+    },
+    ability_3: {
+        name: "Infinite Effect Lvl III",
+        price: "₹120",
+        cost: 120,
+        perks: ["Permanent Tier III max potion buff applied to your character across all realms"],
+        commands: ["Activated directly on player sync"],
         other: ["Permanent buff"]
     }
 };
 
 let currentCheckout = { name: "VIP Rank", cost: 120 };
 
-// --- Store Category Switcher ---
+// --- Store Category Tabs ---
 function switchTab(catId) {
-    const tabs = ['ranks', 'items', 'coins', 'abilities', 'crates'];
+    const tabs = ['ranks', 'items', 'abilities', 'coins', 'crates'];
     tabs.forEach(t => {
         const el = document.getElementById(`tab-${t}`);
         if (el) el.style.display = (t === catId) ? (t === 'coins' ? 'flex' : 'grid') : 'none';
@@ -197,7 +251,6 @@ function startOrder(name, amount) {
     document.getElementById('orderItemName').textContent = name;
     document.getElementById('orderItemAmount').textContent = amount;
 
-    // Reset Steps
     document.getElementById('payFormStep').style.display = 'block';
     document.getElementById('payStatusStep').style.display = 'none';
     document.getElementById('ignInput').value = '';
@@ -217,12 +270,10 @@ function submitOrder(e) {
 
     if (!ign || !utr) return;
 
-    // Update Summary Screen
     document.getElementById('summaryIGN').textContent = ign;
     document.getElementById('summaryItem').textContent = currentCheckout.name;
     document.getElementById('summaryUTR').textContent = utr;
 
-    // Switch to Pending Approval Step
     document.getElementById('payFormStep').style.display = 'none';
     document.getElementById('payStatusStep').style.display = 'block';
 }
@@ -238,7 +289,7 @@ function orderCoins() {
     startOrder(`${val * 2} Spark Coins`, val);
 }
 
-// --- IP Copy Toast ---
+// --- IP Copy Function ---
 function copyIpAddress(address, toastId) {
     navigator.clipboard.writeText(address).then(() => {
         const toast = document.getElementById(toastId);
@@ -249,7 +300,7 @@ function copyIpAddress(address, toastId) {
     });
 }
 
-// --- Floating Live Support Chat ---
+// --- Live Support Chat ---
 function toggleChat() {
     const box = document.getElementById('chatBox');
     box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
@@ -263,14 +314,12 @@ function sendChatMessage(e) {
 
     const msgsContainer = document.getElementById('chatMsgs');
 
-    // Add user bubble
     const userBubble = document.createElement('div');
     userBubble.className = 'chat-bubble user';
     userBubble.textContent = msg;
     msgsContainer.appendChild(userBubble);
     input.value = '';
 
-    // Auto bot response
     setTimeout(() => {
         const botBubble = document.createElement('div');
         botBubble.className = 'chat-bubble bot';
@@ -282,7 +331,7 @@ function sendChatMessage(e) {
     msgsContainer.scrollTop = msgsContainer.scrollHeight;
 }
 
-// Close popup when clicking backdrop
+// Close Modals on Outside Click
 window.onclick = function(e) {
     if (e.target.classList.contains('modal-backdrop')) {
         closeInfo();
