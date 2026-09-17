@@ -134,12 +134,18 @@ function initAuth() {
 
 function openAuthModal() {
     const modal = document.getElementById('authModal');
-    if (modal) modal.style.display = 'flex';
+    if (modal) {
+        modal.style.setProperty('display', 'flex', 'important');
+    } else {
+        alert("Auth modal not found in HTML!");
+    }
 }
 
 function closeAuthModal() {
     const modal = document.getElementById('authModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) {
+        modal.style.setProperty('display', 'none', 'important');
+    }
 }
 
 function switchAuthMode(mode) {
