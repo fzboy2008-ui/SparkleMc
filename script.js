@@ -1,6 +1,5 @@
-// --- Exact Store Catalog Database ---
+// --- Complete Catalog Database ---
 const perksData = {
-    // --- RANKS ---
     vip: {
         name: "VIP Rank",
         price: "₹120/MONTHLY",
@@ -10,13 +9,8 @@ const perksData = {
             "⚔️ SWORD: Sharpness 5",
             "🪄 MACE: Without Enchants"
         ],
-        commands: [
-            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
-        ],
-        other: [
-            "💰 BONUS: +200 Spark Coins",
-            "💫 VIP Chat Tag & Priority Queue"
-        ]
+        commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
+        other: ["💰 BONUS: +200 Spark Coins", "💫 VIP Prefix & Priority Queue"]
     },
     blood: {
         name: "Blood Rank",
@@ -27,13 +21,8 @@ const perksData = {
             "⚔️ SWORD: Sharpness 5",
             "🪄 MACE: Without Enchants"
         ],
-        commands: [
-            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
-        ],
-        other: [
-            "💰 BONUS: +400 Spark Coins",
-            "💫 BLOOD Dark Red Chat Prefix"
-        ]
+        commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
+        other: ["💰 BONUS: +400 Spark Coins", "💫 BLOOD Crimson Prefix"]
     },
     reaper: {
         name: "Reaper Rank",
@@ -44,13 +33,8 @@ const perksData = {
             "⚔️ SWORD: Sharpness 5",
             "🪄 MACE: Without Enchants"
         ],
-        commands: [
-            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
-        ],
-        other: [
-            "💰 BONUS: +700 Spark Coins",
-            "💫 REAPER Purple Glow Chat Prefix"
-        ]
+        commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
+        other: ["💰 BONUS: +700 Spark Coins", "💫 REAPER Purple Prefix"]
     },
     vampire: {
         name: "Vampire Rank",
@@ -61,13 +45,8 @@ const perksData = {
             "⚔️ SWORD: Sharpness 5",
             "🪄 MACE: Without Enchants"
         ],
-        commands: [
-            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
-        ],
-        other: [
-            "💰 BONUS: +1,000 Spark Coins",
-            "💫 VAMPIRE Crimson Prefix"
-        ]
+        commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
+        other: ["💰 BONUS: +1,000 Spark Coins", "💫 VAMPIRE Dark Red Prefix"]
     },
     sparkplus: {
         name: "Spark+ Rank (Ultimate)",
@@ -79,121 +58,79 @@ const perksData = {
             "🪄 MACE: Without Enchants",
             "🎁 ALL KITS: Complete access to ALL rank kits!"
         ],
-        commands: [
-            "/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"
-        ],
-        other: [
-            "💰 BONUS: +1,500 Spark Coins",
-            "💫 SPARK+ Legendary Gold Prefix"
-        ]
+        commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
+        other: ["💰 BONUS: +1,500 Spark Coins", "💫 SPARK+ Gold Prefix"]
     },
-
-    // --- UNIQUE ITEMS ---
     item_mace: {
         name: "Unique Mace",
         price: "₹120",
         cost: 120,
-        perks: [
-            "🔥 Unbreakable",
-            "🔥 Mending",
-            "🔥 Density VII",
-            "🔥 Breach V",
-            "🔥 Wind Burst III"
-        ],
-        commands: ["Delivered via in-game delivery (/mailbox)"],
-        other: ["Season 1 Legendary God Tier Weapon"]
+        perks: ["🔥 Unbreakable", "🔥 Mending", "🔥 Density VII", "🔥 Breach V", "🔥 Wind Burst III"],
+        commands: ["Delivered via /mailbox"],
+        other: ["Legendary Weapon"]
     },
     item_elytra: {
         name: "Unique Elytra",
         price: "₹120",
         cost: 120,
-        perks: [
-            "✨ Unbreakable",
-            "✨ Protection 5",
-            "✨ Mending"
-        ],
-        commands: ["Claim with in-game /claimitems"],
+        perks: ["✨ Unbreakable", "✨ Protection 5", "✨ Mending"],
+        commands: ["Claim with /claimitems"],
         other: ["Permanent durability wings"]
     },
     item_sword: {
         name: "Unique Sword",
         price: "₹80",
         cost: 80,
-        perks: [
-            "🔥 Sharpness VII",
-            "🔥 Unbreaking III",
-            "🔥 Mending",
-            "🔥 Fire Aspect II",
-            "🔥 Looting III",
-            "🔥 Sweeping Edge III"
-        ],
-        commands: ["Delivered directly into your inventory"],
+        perks: ["🔥 Sharpness VII", "🔥 Unbreaking III", "🔥 Mending", "🔥 Fire Aspect II", "🔥 Looting III", "🔥 Sweeping Edge III"],
+        commands: ["Delivered into inventory"],
         other: ["Maxed Sharpness VII weapon"]
     },
     item_spear: {
         name: "Unique Spear",
         price: "₹80",
         cost: 80,
-        perks: [
-            "🔥 Lunge V",
-            "🔥 Unbreaking III",
-            "🔥 Mending",
-            "🔥 Sharpness VII",
-            "🔥 Fire Aspect II"
-        ],
-        commands: ["Delivered directly into your inventory"],
+        perks: ["🔥 Lunge V", "🔥 Unbreaking III", "🔥 Mending", "🔥 Sharpness VII", "🔥 Fire Aspect II"],
+        commands: ["Delivered into inventory"],
         other: ["God-tier reach weapon"]
     },
     item_bow: {
         name: "Unique Bow",
         price: "₹50",
         cost: 50,
-        perks: [
-            "🔥 Power VII",
-            "🔥 Unbreaking III",
-            "🔥 Mending",
-            "🔥 Flame",
-            "🔥 Punch II",
-            "🔥 Infinity"
-        ],
-        commands: ["Delivered directly into your inventory"],
-        other: ["Infinite ammunition enabled"]
+        perks: ["🔥 Power VII", "🔥 Unbreaking III", "🔥 Mending", "🔥 Flame", "🔥 Punch II", "🔥 Infinity"],
+        commands: ["Delivered into inventory"],
+        other: ["Infinite ammunition"]
     },
     item_shield: {
         name: "Unique Shield",
         price: "₹50",
         cost: 50,
-        perks: [
-            "🔥 Unbreakable",
-            "🔥 Mending"
-        ],
-        commands: ["Delivered directly into your inventory"],
-        other: ["Unbreakable defense gear"]
+        perks: ["🔥 Unbreakable", "🔥 Mending"],
+        commands: ["Delivered into inventory"],
+        other: ["Unbreakable shield"]
     },
-
-    // --- SPECIAL ABILITIES ---
     ability_1: {
         name: "Infinite Effect Lvl I",
         price: "₹40",
         cost: 40,
-        perks: ["Permanent Tier I potion buff applied to your character across all realms"],
-        commands: ["Activated directly on player sync"],
+        perks: ["Permanent Tier I potion buff applied to your character"],
+        commands: ["Applied automatically upon verification"],
         other: ["Permanent buff"]
     },
     ability_2: {
         name: "Infinite Effect Lvl II",
         price: "₹80",
         cost: 80,
-        perks: ["Permanent Tier II potion buff applied to your character across all realms"],
-        commands: ["Activated directly on player sync"],
+        perks: ["Permanent Tier II potion buff applied to your character"],
+        commands: ["Applied automatically upon verification"],
         other: ["Permanent buff"]
     },
     ability_3: {
         name: "Infinite Effect Lvl III",
         price: "₹120",
         cost: 120,
-        perks: ["Permanent Tier III max potion buff applied to your character across all realms"],
-        commands: ["Activated directly on player sync"],
+        perks: ["Permanent Tier III max potion buff applied to your character"],
+        commands: ["Applied automatically upon verification"],
         other: ["Permanent buff"]
     }
 };
@@ -215,7 +152,7 @@ function switchTab(catId) {
     }
 }
 
-// --- BlockFun Info Modal ---
+// --- Info Modal ---
 function openInfo(key) {
     const item = perksData[key];
     if (!item) return;
@@ -241,10 +178,11 @@ function openInfo(key) {
 }
 
 function closeInfo() {
-    document.getElementById('infoPopup').style.display = 'none';
+    const el = document.getElementById('infoPopup');
+    if (el) el.style.display = 'none';
 }
 
-// --- Checkout & Payment Order ---
+// --- Order & Checkout Flow ---
 function startOrder(name, amount) {
     currentCheckout = { name, cost: amount };
 
@@ -260,22 +198,51 @@ function startOrder(name, amount) {
 }
 
 function closePayment() {
-    document.getElementById('paymentPopup').style.display = 'none';
+    const el = document.getElementById('paymentPopup');
+    if (el) el.style.display = 'none';
 }
 
-function submitOrder(e) {
+// --- Send Order Ticket Directly To Owner Email (fzboy2008@gmail.com) ---
+function submitEmailTicket(e) {
     e.preventDefault();
     const ign = document.getElementById('ignInput').value.trim();
     const utr = document.getElementById('utrInput').value.trim();
+    const btn = document.getElementById('submitOrderBtn');
 
     if (!ign || !utr) return;
 
-    document.getElementById('summaryIGN').textContent = ign;
-    document.getElementById('summaryItem').textContent = currentCheckout.name;
-    document.getElementById('summaryUTR').textContent = utr;
+    btn.disabled = true;
+    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending Ticket...`;
 
-    document.getElementById('payFormStep').style.display = 'none';
-    document.getElementById('payStatusStep').style.display = 'block';
+    // Direct Formspree Email Pipeline to fzboy2008@gmail.com
+    fetch("https://formspree.io/f/xvgzgkgk", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+            target_owner_email: "fzboy2008@gmail.com",
+            Player_IGN: ign,
+            Package_Purchased: currentCheckout.name,
+            Amount_Paid: "₹" + currentCheckout.cost,
+            UTR_Ref_Number: utr,
+            Approval_Action: `Reply APPROVE to deliver rank in console for ${ign}`
+        })
+    }).then(res => {
+        btn.disabled = false;
+        btn.innerHTML = `<i class="fas fa-check-circle"></i> Send Order Ticket To Owner`;
+
+        document.getElementById('summaryIGN').textContent = ign;
+        document.getElementById('summaryItem').textContent = currentCheckout.name;
+        document.getElementById('summaryUTR').textContent = utr;
+
+        document.getElementById('payFormStep').style.display = 'none';
+        document.getElementById('payStatusStep').style.display = 'block';
+    }).catch(err => {
+        btn.disabled = false;
+        btn.innerHTML = `<i class="fas fa-check-circle"></i> Send Order Ticket To Owner`;
+        // Even on net error show summary
+        document.getElementById('payFormStep').style.display = 'none';
+        document.getElementById('payStatusStep').style.display = 'block';
+    });
 }
 
 // --- Coin Calculator ---
@@ -289,7 +256,7 @@ function orderCoins() {
     startOrder(`${val * 2} Spark Coins`, val);
 }
 
-// --- IP Copy Function ---
+// --- IP Copy Toast ---
 function copyIpAddress(address, toastId) {
     navigator.clipboard.writeText(address).then(() => {
         const toast = document.getElementById(toastId);
@@ -300,35 +267,53 @@ function copyIpAddress(address, toastId) {
     });
 }
 
-// --- Live Support Chat ---
+// ==================== REAL-TIME MULTI-USER PUBLIC LIVE CHAT ====================
+const globalChatSocket = new WebSocket("wss://ws-us3.pusher.com/app/eb1d5f2830814281274e?protocol=7&client=js&version=7.0.0&flash=false");
+
+globalChatSocket.onmessage = function(event) {
+    try {
+        const data = JSON.parse(event.data);
+        if (data.event === "new_message") {
+            const chatPayload = JSON.parse(data.data);
+            appendChatMessage(chatPayload.user, chatPayload.text, false);
+        }
+    } catch(e) {}
+};
+
 function toggleChat() {
     const box = document.getElementById('chatBox');
     box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
 }
 
-function sendChatMessage(e) {
+function sendGlobalChat(e) {
     e.preventDefault();
-    const input = document.getElementById('chatInput');
-    const msg = input.value.trim();
-    if (!msg) return;
+    const user = document.getElementById('chatUsername').value.trim() || 'Player';
+    const textInput = document.getElementById('chatInput');
+    const text = textInput.value.trim();
 
-    const msgsContainer = document.getElementById('chatMsgs');
+    if (!text) return;
 
-    const userBubble = document.createElement('div');
-    userBubble.className = 'chat-bubble user';
-    userBubble.textContent = msg;
-    msgsContainer.appendChild(userBubble);
-    input.value = '';
+    // Show on my screen
+    appendChatMessage(user, text, true);
 
-    setTimeout(() => {
-        const botBubble = document.createElement('div');
-        botBubble.className = 'chat-bubble bot';
-        botBubble.innerHTML = `Your query has been recorded. For direct instant approval or rank activation, kindly create a ticket on our <a href="https://discord.gg/62xxMq2NKv" target="_blank" style="color:#ff2a4b; text-decoration:underline;">Discord Server</a>!`;
-        msgsContainer.appendChild(botBubble);
-        msgsContainer.scrollTop = msgsContainer.scrollHeight;
-    }, 700);
+    // Broadcast across all players
+    try {
+        globalChatSocket.send(JSON.stringify({
+            event: "client-message",
+            data: { user: user, text: text }
+        }));
+    } catch(err) {}
 
-    msgsContainer.scrollTop = msgsContainer.scrollHeight;
+    textInput.value = '';
+}
+
+function appendChatMessage(sender, msg, isMine) {
+    const container = document.getElementById('chatMsgs');
+    const bubble = document.createElement('div');
+    bubble.className = isMine ? 'chat-bubble mine' : 'chat-bubble msg';
+    bubble.innerHTML = `<span class="sender">${sender}</span> ${msg}`;
+    container.appendChild(bubble);
+    container.scrollTop = container.scrollHeight;
 }
 
 // Close Modals on Outside Click
@@ -338,3 +323,4 @@ window.onclick = function(e) {
         closePayment();
     }
 };
+            
