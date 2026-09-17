@@ -303,27 +303,32 @@
                 </form>
             </div>
 
-            <!-- Confirmation Step -->
+                        <!-- Confirmation Step with Direct Mail Dispatch & Invoice Button -->
             <div id="payStatusStep" style="display: none;">
-                <div class="status-icon"><i class="fas fa-envelope-open-text text-glow"></i></div>
-                <h3>Ticket Dispatched!</h3>
-                <p class="status-msg">Your purchase ticket has been emailed to <strong>fzboy2008@gmail.com</strong> directly from your verified Google account.</p>
+                <div class="status-icon"><i class="fas fa-file-invoice-dollar text-glow"></i></div>
+                <h3>Invoice Ready to Send!</h3>
+                <p class="status-msg">Click the button below to submit this invoice directly to <strong>fzboy2008@gmail.com</strong>.</p>
                 
                 <div class="order-summary-box">
                     <div><span>Buyer Email:</span> <strong id="summaryEmail">-</strong></div>
                     <div><span>IGN:</span> <strong id="summaryIGN">-</strong></div>
                     <div><span>Package:</span> <strong id="summaryItem">-</strong></div>
+                    <div><span>Amount:</span> <strong id="summaryAmount">-</strong></div>
                     <div><span>UTR:</span> <strong id="summaryUTR">-</strong></div>
-                    <div><span>Status:</span> <span class="tag-pending">PENDING EMAIL APPROVAL</span></div>
+                    <div><span>Status:</span> <span class="tag-pending">PENDING SUBMISSION</span></div>
                 </div>
 
-                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="hero-discord-btn full-width" style="text-align: center;">
-                    <i class="fab fa-discord"></i> Open Discord Ticket If Urgent
+                <!-- 1. Send via Mail App Button (100% Reliable Delivery) -->
+                <a id="directMailBtn" href="#" class="btn-purchase full-width" style="text-decoration:none; margin-bottom:10px;">
+                    <i class="fas fa-paper-plane"></i> Send Invoice via Gmail / Mail App
+                </a>
+
+                <!-- 2. Discord Fallback Button -->
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="hero-discord-btn full-width" style="text-align: center; text-decoration:none;">
+                    <i class="fab fa-discord"></i> Send UTR on Discord
                 </a>
             </div>
-        </div>
-    </div>
-
+            
     <!-- Login Modal (Callable from Checkout) -->
     <div id="authModal" class="modal-backdrop">
         <div class="auth-dialog">
