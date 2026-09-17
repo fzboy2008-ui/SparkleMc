@@ -1,14 +1,10 @@
-// --- Complete Catalog Database ---
+// --- Catalog Database ---
 const perksData = {
     vip: {
         name: "VIP Rank",
         price: "₹120/MONTHLY",
         cost: 120,
-        perks: [
-            "🛡️ ARMOUR: Maxed Armour with Protection 5",
-            "⚔️ SWORD: Sharpness 5",
-            "🪄 MACE: Without Enchants"
-        ],
+        perks: ["🛡️ ARMOUR: Maxed Armour with Protection 5", "⚔️ SWORD: Sharpness 5", "🪄 MACE: Without Enchants"],
         commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
         other: ["💰 BONUS: +200 Spark Coins", "💫 VIP Prefix & Priority Queue"]
     },
@@ -16,11 +12,7 @@ const perksData = {
         name: "Blood Rank",
         price: "₹230/MONTHLY",
         cost: 230,
-        perks: [
-            "🛡️ ARMOUR: Maxed Armour with Protection 6",
-            "⚔️ SWORD: Sharpness 5",
-            "🪄 MACE: Without Enchants"
-        ],
+        perks: ["🛡️ ARMOUR: Maxed Armour with Protection 6", "⚔️ SWORD: Sharpness 5", "🪄 MACE: Without Enchants"],
         commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
         other: ["💰 BONUS: +400 Spark Coins", "💫 BLOOD Crimson Prefix"]
     },
@@ -28,11 +20,7 @@ const perksData = {
         name: "Reaper Rank",
         price: "₹340/MONTHLY",
         cost: 340,
-        perks: [
-            "🛡️ ARMOUR: Maxed Armour with Protection 7",
-            "⚔️ SWORD: Sharpness 5",
-            "🪄 MACE: Without Enchants"
-        ],
+        perks: ["🛡️ ARMOUR: Maxed Armour with Protection 7", "⚔️ SWORD: Sharpness 5", "🪄 MACE: Without Enchants"],
         commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
         other: ["💰 BONUS: +700 Spark Coins", "💫 REAPER Purple Prefix"]
     },
@@ -40,11 +28,7 @@ const perksData = {
         name: "Vampire Rank",
         price: "₹450/MONTHLY",
         cost: 450,
-        perks: [
-            "🛡️ ARMOUR: Maxed Armour with Protection 8",
-            "⚔️ SWORD: Sharpness 5",
-            "🪄 MACE: Without Enchants"
-        ],
+        perks: ["🛡️ ARMOUR: Maxed Armour with Protection 8", "⚔️ SWORD: Sharpness 5", "🪄 MACE: Without Enchants"],
         commands: ["/feed", "/echest", "/repair", "/anvil", "/hat", "/craft", "/back", "/heal"],
         other: ["💰 BONUS: +1,000 Spark Coins", "💫 VAMPIRE Dark Red Prefix"]
     },
@@ -66,8 +50,8 @@ const perksData = {
         price: "₹120",
         cost: 120,
         perks: ["🔥 Unbreakable", "🔥 Mending", "🔥 Density VII", "🔥 Breach V", "🔥 Wind Burst III"],
-        commands: ["Delivered via in-game /mailbox"],
-        other: ["Season 1 Legendary God Tier Weapon"]
+        commands: ["Delivered via /mailbox"],
+        other: ["Season 1 Legendary God Weapon"]
     },
     item_elytra: {
         name: "Unique Elytra",
@@ -82,7 +66,7 @@ const perksData = {
         price: "₹80",
         cost: 80,
         perks: ["🔥 Sharpness VII", "🔥 Unbreaking III", "🔥 Mending", "🔥 Fire Aspect II", "🔥 Looting III", "🔥 Sweeping Edge III"],
-        commands: ["Delivered directly into inventory"],
+        commands: ["Delivered into inventory"],
         other: ["Maxed Sharpness VII weapon"]
     },
     item_spear: {
@@ -90,7 +74,7 @@ const perksData = {
         price: "₹80",
         cost: 80,
         perks: ["🔥 Lunge V", "🔥 Unbreaking III", "🔥 Mending", "🔥 Sharpness VII", "🔥 Fire Aspect II"],
-        commands: ["Delivered directly into inventory"],
+        commands: ["Delivered into inventory"],
         other: ["God-tier reach weapon"]
     },
     item_bow: {
@@ -98,7 +82,7 @@ const perksData = {
         price: "₹50",
         cost: 50,
         perks: ["🔥 Power VII", "🔥 Unbreaking III", "🔥 Mending", "🔥 Flame", "🔥 Punch II", "🔥 Infinity"],
-        commands: ["Delivered directly into inventory"],
+        commands: ["Delivered into inventory"],
         other: ["Infinite ammunition"]
     },
     item_shield: {
@@ -106,7 +90,7 @@ const perksData = {
         price: "₹50",
         cost: 50,
         perks: ["🔥 Unbreakable", "🔥 Mending"],
-        commands: ["Delivered directly into inventory"],
+        commands: ["Delivered into inventory"],
         other: ["Unbreakable defense gear"]
     },
     ability_1: {
@@ -137,80 +121,68 @@ const perksData = {
 
 let currentUser = null;
 let currentCheckout = { name: "VIP Rank", cost: 120 };
+let currentAuthMode = 'login';
 
-// --- Google Authentication System (Click Handler & Auto-Init) ---
-function initGoogleAuth() {
+// --- Authentication Engine ---
+function initAuth() {
     const saved = localStorage.getItem('sparkle_user');
     if (saved) {
-        try {
-            currentUser = JSON.parse(saved);
-        } catch(e) { currentUser = null; }
-        updateAuthUI();
+        currentUser = JSON.parse(saved);
     }
-
-    if (window.google && google.accounts && google.accounts.id) {
-        google.accounts.id.initialize({
-            client_id: "72983794302-sparklemc-public.apps.googleusercontent.com",
-            callback: handleGoogleResponse,
-            auto_select: false,
-            cancel_on_tap_outside: true
-        });
-    }
+    updateAuthUI();
 }
 
-// Guaranteed clickable login trigger
-function triggerGoogleSignIn() {
-    if (window.google && google.accounts && google.accounts.id) {
-        google.accounts.id.initialize({
-            client_id: "72983794302-sparklemc-public.apps.googleusercontent.com",
-            callback: handleGoogleResponse
-        });
-        
-        google.accounts.id.prompt((notification) => {
-            // Agar browser One-Tap block kare ya user cross kare toh clean prompt fallback
-            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                fallbackLoginPrompt();
-            }
-        });
+function openAuthModal() {
+    const modal = document.getElementById('authModal');
+    if (modal) modal.style.display = 'flex';
+}
+
+function closeAuthModal() {
+    const modal = document.getElementById('authModal');
+    if (modal) modal.style.display = 'none';
+}
+
+function switchAuthMode(mode) {
+    currentAuthMode = mode;
+    const tabLogin = document.getElementById('tabLogin');
+    const tabReg = document.getElementById('tabRegister');
+    const nameGroup = document.getElementById('nameGroup');
+    const submitText = document.getElementById('authSubmitText');
+
+    if (mode === 'register') {
+        if (tabLogin) tabLogin.classList.remove('active');
+        if (tabReg) tabReg.classList.add('active');
+        if (nameGroup) nameGroup.style.display = 'block';
+        if (submitText) submitText.textContent = 'Register with Google';
     } else {
-        fallbackLoginPrompt();
+        if (tabReg) tabReg.classList.remove('active');
+        if (tabLogin) tabLogin.classList.add('active');
+        if (nameGroup) nameGroup.style.display = 'none';
+        if (submitText) submitText.textContent = 'Sign In with Google';
     }
 }
 
-function fallbackLoginPrompt() {
-    const promptName = prompt("Enter your Name for Google Sign-In:", "Player");
-    if (!promptName) return;
-    const promptEmail = prompt("Enter your Google Account Email:", "player@gmail.com");
-    if (promptEmail && promptEmail.includes('@')) {
-        currentUser = {
-            name: promptName.trim(),
-            email: promptEmail.trim(),
-            picture: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(promptEmail)}`
-        };
-        localStorage.setItem('sparkle_user', JSON.stringify(currentUser));
-        updateAuthUI();
-    }
-}
+function handleGoogleAuthSubmit(e) {
+    e.preventDefault();
+    const emailInput = document.getElementById('authEmailInput');
+    const nameInput = document.getElementById('authNameInput');
+    const email = emailInput ? emailInput.value.trim() : '';
+    let name = nameInput ? nameInput.value.trim() : '';
 
-function handleGoogleResponse(response) {
-    try {
-        const base64Url = response.credential.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-
-        const data = JSON.parse(jsonPayload);
-        currentUser = {
-            name: data.name || "Player",
-            email: data.email,
-            picture: data.picture || `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(data.email)}`
-        };
-        localStorage.setItem('sparkle_user', JSON.stringify(currentUser));
-        updateAuthUI();
-    } catch(e) {
-        fallbackLoginPrompt();
+    if (!email) return;
+    if (!name) {
+        name = email.split('@')[0];
     }
+
+    currentUser = {
+        name: name,
+        email: email,
+        picture: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(email)}`
+    };
+
+    localStorage.setItem('sparkle_user', JSON.stringify(currentUser));
+    closeAuthModal();
+    updateAuthUI();
 }
 
 function logoutGoogle() {
@@ -220,24 +192,27 @@ function logoutGoogle() {
 }
 
 function updateAuthUI() {
-    const loginBtn = document.getElementById('googleLoginBtn');
-    const chip = document.getElementById('userProfileChip');
-    const avatar = document.getElementById('userAvatar');
-    const nameText = document.getElementById('userNameText');
+    // 1. Home Page Hero State
+    const loggedOutState = document.getElementById('loggedOutState');
+    const loggedInState = document.getElementById('loggedInState');
+    const userAvatarHero = document.getElementById('userAvatarHero');
+    const userNameHero = document.getElementById('userNameHero');
+    const userEmailHero = document.getElementById('userEmailHero');
 
     if (currentUser) {
-        if (loginBtn) loginBtn.style.display = 'none';
-        if (chip) chip.style.display = 'flex';
-        if (avatar) avatar.src = currentUser.picture;
-        if (nameText) nameText.textContent = currentUser.name;
+        if (loggedOutState) loggedOutState.style.display = 'none';
+        if (loggedInState) loggedInState.style.display = 'block';
+        if (userAvatarHero) userAvatarHero.src = currentUser.picture;
+        if (userNameHero) userNameHero.textContent = currentUser.name;
+        if (userEmailHero) userEmailHero.textContent = currentUser.email;
 
-        // Unlock Chat
+        // Unlock Chat UI
         const chatGate = document.getElementById('chatAuthGate');
         const chatForm = document.getElementById('chatForm');
         if (chatGate) chatGate.style.display = 'none';
         if (chatForm) chatForm.style.display = 'flex';
 
-        // Unlock Checkout
+        // Unlock Store Checkout
         const checkoutGate = document.getElementById('checkoutAuthGate');
         const payFormStep = document.getElementById('payFormStep');
         if (checkoutGate) checkoutGate.style.display = 'none';
@@ -246,16 +221,16 @@ function updateAuthUI() {
         const orderEmail = document.getElementById('orderUserEmail');
         if (orderEmail) orderEmail.textContent = currentUser.email;
     } else {
-        if (loginBtn) loginBtn.style.display = 'inline-flex';
-        if (chip) chip.style.display = 'none';
+        if (loggedOutState) loggedOutState.style.display = 'block';
+        if (loggedInState) loggedInState.style.display = 'none';
 
-        // Lock Chat
+        // Lock Chat UI
         const chatGate = document.getElementById('chatAuthGate');
         const chatForm = document.getElementById('chatForm');
         if (chatGate) chatGate.style.display = 'block';
         if (chatForm) chatForm.style.display = 'none';
 
-        // Lock Checkout
+        // Lock Store Checkout
         const checkoutGate = document.getElementById('checkoutAuthGate');
         const payFormStep = document.getElementById('payFormStep');
         if (checkoutGate) checkoutGate.style.display = 'block';
@@ -263,7 +238,7 @@ function updateAuthUI() {
     }
 }
 
-// --- Store Category Switcher ---
+// --- Store Category Tabs ---
 function switchTab(catId) {
     const tabs = ['ranks', 'items', 'abilities', 'coins', 'crates'];
     tabs.forEach(t => {
@@ -328,11 +303,11 @@ function closePayment() {
     if (el) el.style.display = 'none';
 }
 
+// Send Order Ticket to Owner Email (fzboy2008@gmail.com)
 function submitEmailTicket(e) {
     e.preventDefault();
     if (!currentUser) {
-        alert("Please sign in with Google first to complete purchase!");
-        triggerGoogleSignIn();
+        openAuthModal();
         return;
     }
 
@@ -343,16 +318,16 @@ function submitEmailTicket(e) {
     if (!ign || !utr) return;
 
     btn.disabled = true;
-    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Dispatched to Owner...`;
+    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending Ticket to Owner...`;
 
     fetch("https://formspree.io/f/xvgzgkgk", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({
-            Owner_Notification_To: "fzboy2008@gmail.com",
+            Owner_Target_Email: "fzboy2008@gmail.com",
             Customer_Google_Email: currentUser.email,
             Customer_Name: currentUser.name,
-            Player_IGN: ign,
+            Minecraft_IGN: ign,
             Package_Purchased: currentCheckout.name,
             Amount_Paid: "₹" + currentCheckout.cost,
             UTR_Ref_Number: utr,
@@ -360,7 +335,7 @@ function submitEmailTicket(e) {
         })
     }).then(res => {
         btn.disabled = false;
-        btn.innerHTML = `<i class="fas fa-check-circle"></i> Send Order Ticket To Owner`;
+        btn.innerHTML = `<i class="fas fa-paper-plane"></i> Send Ticket to Owner`;
 
         document.getElementById('summaryEmail').textContent = currentUser.email;
         document.getElementById('summaryIGN').textContent = ign;
@@ -371,7 +346,7 @@ function submitEmailTicket(e) {
         document.getElementById('payStatusStep').style.display = 'block';
     }).catch(err => {
         btn.disabled = false;
-        btn.innerHTML = `<i class="fas fa-check-circle"></i> Send Order Ticket To Owner`;
+        btn.innerHTML = `<i class="fas fa-paper-plane"></i> Send Ticket to Owner`;
 
         document.getElementById('summaryEmail').textContent = currentUser.email;
         document.getElementById('summaryIGN').textContent = ign;
@@ -440,8 +415,7 @@ function toggleChat() {
 function sendGlobalChat(e) {
     e.preventDefault();
     if (!currentUser) {
-        alert("Please login with Google to send messages in live chat!");
-        triggerGoogleSignIn();
+        openAuthModal();
         return;
     }
 
@@ -481,11 +455,11 @@ window.onclick = function(e) {
     if (e.target.classList.contains('modal-backdrop')) {
         closeInfo();
         closePayment();
+        closeAuthModal();
     }
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-    initGoogleAuth();
+    initAuth();
     initLiveChat();
 });
-                
