@@ -1,108 +1,108 @@
-// --- Rank & Items Perk Database (BlockFun Style) ---
-const infoDatabase = {
+// --- Perk Database (BlockFun Style info icons) ---
+const perksData = {
     vip: {
         name: "VIP Rank (+200 Coins)",
         price: "₹120",
-        amount: 120,
+        cost: 120,
         perks: [
             "Create up to 5 Set Homes",
             "Create up to 5 Auction Listings",
-            "Priority Queue in Server Join",
+            "Priority Server Join Queue",
             "Keep Inventory in Spawn Realm"
         ],
         commands: [
             "/workbench (Portable crafting)",
             "/feed (Restore hunger with cooldown)",
-            "/hat (Wear block as cosmetic)",
-            "/near (View nearby players)"
+            "/hat (Wear block as hat)",
+            "/near (Detect nearby players)"
         ],
         other: [
             "[VIP] Chat Prefix & Tab Glow",
-            "VIP Kit (/kit vip)",
-            "200 Spark Coins"
+            "Monthly VIP Kit (/kit vip)",
+            "200 Bonus Coins"
         ]
     },
     blood: {
         name: "Blood Rank (+500 Coins)",
         price: "₹250",
-        amount: 250,
+        cost: 250,
         perks: [
             "Create up to 10 Set Homes",
             "Create up to 10 Auction Listings",
             "Reduced Death Ban Timer",
             "Mine Spawners with Silk Touch",
-            "All VIP Perks Included"
+            "Includes all VIP Rank Perks"
         ],
         commands: [
-            "/anvil (Portable anvil access)",
+            "/anvil (Portable anvil)",
             "/smithingtable (Portable smithing)",
-            "/repair (Repair held items)",
+            "/repair (Repair held tool)",
             "/enderchest (Portable enderchest)"
         ],
         other: [
             "[BLOOD] Dark Red Prefix",
-            "Blood Execution Kill Sound",
+            "Custom Execution Kill Sound",
             "Blood Kit (/kit blood)",
-            "500 Spark Coins"
+            "500 Bonus Coins"
         ]
     },
     reaper: {
         name: "Reaper Rank (+1,000 Coins)",
         price: "₹450",
-        amount: 450,
+        cost: 450,
         perks: [
             "Create up to 15 Set Homes",
             "Create up to 15 Auction Listings",
             "50% Lower Death Ban Duration",
-            "All Blood Perks Included"
+            "Includes all Blood Rank Perks"
         ],
         commands: [
             "/heal (Instant health restore with CD)",
-            "/fly (Access inside Claim Base)",
+            "/fly (Claim Flight Enabled)",
             "/condense (Auto turn ingots to blocks)"
         ],
         other: [
             "[REAPER] Purple Glow Prefix",
             "Reaper Scythe Kit (/kit reaper)",
-            "1,000 Spark Coins"
+            "1,000 Bonus Coins"
         ]
     },
     vampire: {
         name: "Vampire Rank (+2,000 Coins)",
         price: "₹750",
-        amount: 750,
+        cost: 750,
         perks: [
             "Create up to 25 Set Homes",
             "Create up to 25 Auction Listings",
             "75% Lower Death Ban Duration",
-            "All Reaper Perks Included"
+            "Includes all Reaper Perks"
         ],
         commands: [
             "/extinguish (Instant extinguish fire)",
             "/craft (Fast portable workbench)",
-            "/trash (Open portable disposal)"
+            "/trash (Open portable trash disposal)"
         ],
         other: [
             "[VAMPIRE] Crimson Prefix",
-            "Permanent Night Vision",
+            "Permanent Night Vision Effect",
             "Vampire Kit (/kit vampire)",
-            "2,000 Spark Coins"
+            "2,000 Bonus Coins"
         ]
     },
     sparkplus: {
         name: "Spark+ Rank (Ultimate)",
         price: "₹1,200",
-        amount: 1200,
+        cost: 1200,
         perks: [
             "Unlimited /sethome",
             "Zero Death Ban Timer (Instant Revive)",
-            "Priority Support & In-game Tags",
-            "All Ranks Perks Bundled Together"
+            "Priority VIP Support Access",
+            "Includes Perks of ALL Ranks Combined"
         ],
         commands: [
-            "/fly (Claim flight enabled)",
+            "/fly (Enabled everywhere in claimed regions)",
             "/repair all (Repair entire inventory)",
-            "/glow (Cosmetic glowing color picker)"
+            "/glow (Cosmetic glowing colors)"
         ],
         other: [
             "[SPARK+] Legendary Gold Prefix",
@@ -113,122 +113,134 @@ const infoDatabase = {
     mace: {
         name: "Custom Mace",
         price: "₹299",
-        amount: 299,
-        perks: ["Unique Smash Attack Damage", "Knockback AOE shockwave"],
-        commands: ["Delivered in-game via delivery mailbox"],
-        other: ["Unbreakable Tier Item"]
+        cost: 299,
+        perks: ["Smash Attack AOE shockwave", "Unbreakable tier"],
+        commands: ["Delivered to in-game /mailbox"],
+        other: ["Season 1 Exclusive Weapon"]
     },
     elytra: {
         name: "Infinity Elytra",
         price: "₹349",
-        amount: 349,
-        perks: ["Infinite Durability (Does not break)", "Custom Particle Flight Trail"],
-        commands: ["Access via /claimitems"],
-        other: ["Cosmetic Flame Flight Effect"]
+        cost: 349,
+        perks: ["Infinite Durability (Never breaks)", "Custom Particle Trail"],
+        commands: ["Claim with /claimitems"],
+        other: ["Flame Wings visual"]
     },
-    sword: {
+    katana: {
         name: "Blood Katana",
         price: "₹249",
-        amount: 249,
-        perks: ["Sharpness VII Enchantment", "10% Lifesteal Chance per Hit"],
-        commands: ["Delivered via /mailbox"],
-        other: ["Blood Slash visual particles"]
-    },
-    bow: {
-        name: "Vortex Bow",
-        price: "₹199",
-        amount: 199,
-        perks: ["Explosive Arrow Impact", "Flame & Punch Max Tier"],
-        commands: ["Access via /claimitems"],
-        other: ["Trail particle effect"]
+        cost: 249,
+        perks: ["Sharpness VII Enchantment", "10% Lifesteal per hit"],
+        commands: ["Delivered to /mailbox"],
+        other: ["Blood Slash visuals"]
     },
     speed: {
-        name: "Infinite Speed II",
+        name: "Speed II Permanent",
         price: "₹149",
-        amount: 149,
-        perks: ["Permanent Speed II Potion Effect across all survival realms"],
-        commands: ["Active immediately upon account sync"],
+        cost: 149,
+        perks: ["Permanent Speed II Buff on your character across all realms"],
+        commands: ["Applied immediately upon order approval"],
         other: ["Permanent buff"]
-    },
-    strength: {
-        name: "Permanent Strength",
-        price: "₹199",
-        amount: 199,
-        perks: ["Permanent Strength I Boost during combat"],
-        commands: ["Active immediately upon delivery"],
-        other: ["PvP ready amplifier"]
     }
 };
 
-// --- Category Tabs Switching ---
-function switchCategory(cat) {
-    const categories = ['ranks', 'items', 'coins', 'abilities', 'kits'];
-    categories.forEach(c => {
-        const el = document.getElementById(`cat-${c}`);
-        if (el) el.style.display = (c === cat) ? (c === 'coins' ? 'flex' : 'grid') : 'none';
+let currentCheckout = { name: "VIP Rank", cost: 120 };
+
+// --- Store Category Switcher ---
+function switchTab(catId) {
+    const tabs = ['ranks', 'items', 'coins', 'abilities', 'crates'];
+    tabs.forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        if (el) el.style.display = (t === catId) ? (t === 'coins' ? 'flex' : 'grid') : 'none';
     });
 
-    const buttons = document.querySelectorAll('.tab-btn');
+    const buttons = document.querySelectorAll('.cat-btn');
     buttons.forEach(b => b.classList.remove('active'));
     if (window.event && window.event.currentTarget) {
         window.event.currentTarget.classList.add('active');
     }
 }
 
-// --- Info Modal System ---
-function openInfoModal(key) {
-    const data = infoDatabase[key];
-    if (!data) return;
+// --- BlockFun Info Modal ---
+function openInfo(key) {
+    const item = perksData[key];
+    if (!item) return;
 
-    document.getElementById('modalRankTitle').textContent = data.name;
-    document.getElementById('modalPriceText').textContent = data.price;
+    document.getElementById('infoTitle').textContent = item.name;
+    document.getElementById('infoCost').textContent = item.price;
 
-    const pList = document.getElementById('modalPerksList');
-    pList.innerHTML = data.perks.map(p => `<li>${p}</li>`).join('');
+    const pList = document.getElementById('infoPerks');
+    pList.innerHTML = item.perks.map(p => `<li>${p}</li>`).join('');
 
-    const cList = document.getElementById('modalCommandsList');
-    cList.innerHTML = data.commands.map(c => `<li>${c}</li>`).join('');
+    const cList = document.getElementById('infoCommands');
+    cList.innerHTML = item.commands.map(c => `<li>${c}</li>`).join('');
 
-    const oList = document.getElementById('modalOtherList');
-    oList.innerHTML = data.other.map(o => `<li>${o}</li>`).join('');
+    const oList = document.getElementById('infoOther');
+    oList.innerHTML = item.other.map(o => `<li>${o}</li>`).join('');
 
-    document.getElementById('modalBuyBtn').onclick = function() {
-        closeInfoModal();
-        openPaymentModal(data.name, data.amount);
+    document.getElementById('infoProceedBtn').onclick = function() {
+        closeInfo();
+        startOrder(item.name, item.cost);
     };
 
-    document.getElementById('infoModal').style.display = 'flex';
+    document.getElementById('infoPopup').style.display = 'flex';
 }
 
-function closeInfoModal() {
-    document.getElementById('infoModal').style.display = 'none';
+function closeInfo() {
+    document.getElementById('infoPopup').style.display = 'none';
 }
 
-// --- UPI Payment Modal ---
-function openPaymentModal(name, amount) {
-    document.getElementById('payItemName').textContent = name;
-    document.getElementById('payItemAmount').textContent = amount;
-    document.getElementById('paymentModal').style.display = 'flex';
+// --- Checkout & Payment Order ---
+function startOrder(name, amount) {
+    currentCheckout = { name, cost: amount };
+
+    document.getElementById('orderItemName').textContent = name;
+    document.getElementById('orderItemAmount').textContent = amount;
+
+    // Reset Steps
+    document.getElementById('payFormStep').style.display = 'block';
+    document.getElementById('payStatusStep').style.display = 'none';
+    document.getElementById('ignInput').value = '';
+    document.getElementById('utrInput').value = '';
+
+    document.getElementById('paymentPopup').style.display = 'flex';
 }
 
-function closePaymentModal() {
-    document.getElementById('paymentModal').style.display = 'none';
+function closePayment() {
+    document.getElementById('paymentPopup').style.display = 'none';
+}
+
+function submitOrder(e) {
+    e.preventDefault();
+    const ign = document.getElementById('ignInput').value.trim();
+    const utr = document.getElementById('utrInput').value.trim();
+
+    if (!ign || !utr) return;
+
+    // Update Summary Screen
+    document.getElementById('summaryIGN').textContent = ign;
+    document.getElementById('summaryItem').textContent = currentCheckout.name;
+    document.getElementById('summaryUTR').textContent = utr;
+
+    // Switch to Pending Approval Step
+    document.getElementById('payFormStep').style.display = 'none';
+    document.getElementById('payStatusStep').style.display = 'block';
 }
 
 // --- Coin Calculator ---
-function updateCoins() {
-    const inr = parseInt(document.getElementById('coinInput').value) || 0;
-    document.getElementById('coinOutput').textContent = (inr * 2) + " Coins";
+function calcCoins() {
+    const val = parseInt(document.getElementById('coinAmountInput').value) || 0;
+    document.getElementById('coinTotal').textContent = (val * 2) + " Coins";
 }
 
-function buyCoins() {
-    const inr = parseInt(document.getElementById('coinInput').value) || 10;
-    openPaymentModal(`${inr * 2} Spark Coins`, inr);
+function orderCoins() {
+    const val = parseInt(document.getElementById('coinAmountInput').value) || 20;
+    startOrder(`${val * 2} Spark Coins`, val);
 }
 
-// --- Server IP Copy Function ---
-function copyIp(text, toastId) {
-    navigator.clipboard.writeText(text).then(() => {
+// --- IP Copy Toast ---
+function copyIpAddress(address, toastId) {
+    navigator.clipboard.writeText(address).then(() => {
         const toast = document.getElementById(toastId);
         if (toast) {
             toast.classList.add('show');
@@ -237,10 +249,43 @@ function copyIp(text, toastId) {
     });
 }
 
-// Close Modals on Outside Click
+// --- Floating Live Support Chat ---
+function toggleChat() {
+    const box = document.getElementById('chatBox');
+    box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function sendChatMessage(e) {
+    e.preventDefault();
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const msgsContainer = document.getElementById('chatMsgs');
+
+    // Add user bubble
+    const userBubble = document.createElement('div');
+    userBubble.className = 'chat-bubble user';
+    userBubble.textContent = msg;
+    msgsContainer.appendChild(userBubble);
+    input.value = '';
+
+    // Auto bot response
+    setTimeout(() => {
+        const botBubble = document.createElement('div');
+        botBubble.className = 'chat-bubble bot';
+        botBubble.innerHTML = `Your query has been recorded. For direct instant approval or rank activation, kindly create a ticket on our <a href="https://discord.gg/62xxMq2NKv" target="_blank" style="color:#ff2a4b; text-decoration:underline;">Discord Server</a>!`;
+        msgsContainer.appendChild(botBubble);
+        msgsContainer.scrollTop = msgsContainer.scrollHeight;
+    }, 700);
+
+    msgsContainer.scrollTop = msgsContainer.scrollHeight;
+}
+
+// Close popup when clicking backdrop
 window.onclick = function(e) {
-    if (e.target.classList.contains('modal-overlay')) {
-        closeInfoModal();
-        closePaymentModal();
+    if (e.target.classList.contains('modal-backdrop')) {
+        closeInfo();
+        closePayment();
     }
 };
