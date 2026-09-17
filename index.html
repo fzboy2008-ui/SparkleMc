@@ -4,329 +4,387 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SparkleMc — Official Minecraft Network</title>
-    
-    <!-- Google SEO Description -->
-    <meta name="description" content="SparkleMc is India's premier Minecraft Survival & Lifesteal Network. Join for intense PvP battles, custom gear, unique ranks, and a thriving community! Connect via play.sparklemc.fun (Bedrock: 19133).">
-    
-    <!-- Favicon / Website Icon -->
-    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Meta / SEO -->
+    <meta name="description" content="SparkleMc is India's leading Minecraft Survival & Lifesteal Network. Join for intense PvP, custom weapons, legendary ranks, and active community! IP: play.sparklemc.fun">
+    <meta name="keywords" content="SparkleMc, Minecraft Server India, Lifesteal, Minecraft Bedrock, Minecraft Java">
+    <meta name="author" content="SparkleMc">
+
+    <!-- Open Graph (Discord Embeds / Social Media jaise SoftHost) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sparklemc.fun/">
+    <meta property="og:title" content="SparkleMc — Official Minecraft Server & Store">
+    <meta property="og:description" content="India's leading Minecraft Survival & Lifesteal Network. Connect now via play.sparklemc.fun (Bedrock Port: 19133).">
+    <meta property="og:image" content="https://www.sparklemc.fun/logo.png">
+    <meta property="og:site_name" content="SparkleMc">
+    <meta name="theme-color" content="#ff2a4b">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SparkleMc — Official Minecraft Network">
+    <meta name="twitter:description" content="Dominate the realm on SparkleMc! Ranks, Custom Items & Intense PvP.">
+    <meta name="twitter:image" content="https://www.sparklemc.fun/logo.png">
+
+    <!-- Google Search Favicon & App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
 
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=fresh_3.0">
 </head>
 <body>
 
-    <!-- Navigation Header -->
-    <header class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-brand">
-                <img src="logo.png" alt="SparkleMc Logo" class="nav-logo-img">
-                <span class="brand-text">Sparkle<span class="brand-accent">Mc</span></span>
+    <!-- Header / Navbar -->
+    <header class="site-header">
+        <div class="nav-wrap">
+            <a href="#" class="brand">
+                <img src="logo.png" alt="SparkleMc" class="brand-logo" onerror="this.style.display='none'">
+                <span class="brand-name">Sparkle<span class="highlight">Mc</span></span>
             </a>
             <nav class="nav-links">
-                <a href="#home" class="nav-item active"><i class="fas fa-home"></i> Home</a>
-                <a href="#store" class="nav-item"><i class="fas fa-shopping-cart"></i> Store</a>
-                <a href="#about" class="nav-item"><i class="fas fa-server"></i> Server Info</a>
-                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn discord-btn">
-                    <i class="fab fa-discord"></i> Discord
+                <a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                <a href="#store" class="nav-link"><i class="fas fa-shopping-cart"></i> Store</a>
+                <a href="#support" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord">
+                    <i class="fab fa-discord"></i> Join Discord
                 </a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <div class="hero-badge">OFFICIAL STORE & SERVER</div>
-            <h1 class="hero-title">WELCOME TO <span class="glow-text">SPARKLEMC</span></h1>
-            <p class="hero-desc">The ultimate Lifesteal & Survival experience in India. Dominate the realm, unlock legendary perks, and forge your legacy today.</p>
+    <section id="home" class="hero-sec">
+        <div class="hero-container">
+            <div class="pill-badge"><i class="fas fa-fire"></i> INDIA'S NEXT-GEN LIFESTEAL</div>
+            <h1 class="hero-heading">WELCOME TO <span class="text-glow">SPARKLEMC</span></h1>
+            <p class="hero-subtext">Forge alliances, dominate the leaderboards, and battle for survival. Connect directly using Java or Bedrock Edition.</p>
 
-            <!-- Dual Server IP Boxes -->
-            <div class="server-ip-container">
-                <div class="ip-box" onclick="copyIp('play.sparklemc.fun', 'javaToast')">
-                    <div class="ip-details">
-                        <span class="platform-tag"><i class="fas fa-desktop"></i> JAVA EDITION</span>
-                        <span class="ip-address">play.sparklemc.fun</span>
+            <!-- Dual IP Copy Buttons -->
+            <div class="ip-row">
+                <div class="ip-card" onclick="copyIpAddress('play.sparklemc.fun', 'toastJava')">
+                    <div class="ip-text">
+                        <span class="platform-label"><i class="fas fa-desktop"></i> JAVA SERVER IP</span>
+                        <span class="address">play.sparklemc.fun</span>
                     </div>
-                    <button class="copy-btn"><i class="far fa-copy"></i></button>
-                    <span id="javaToast" class="copy-toast">Copied!</span>
+                    <span class="copy-icon"><i class="far fa-copy"></i></span>
+                    <div id="toastJava" class="copy-alert">Copied!</div>
                 </div>
 
-                <div class="ip-box" onclick="copyIp('play.sparklemc.fun:19133', 'bedrockToast')">
-                    <div class="ip-details">
-                        <span class="platform-tag"><i class="fas fa-mobile-alt"></i> BEDROCK / PE</span>
-                        <span class="ip-address">Port: 19133</span>
+                <div class="ip-card" onclick="copyIpAddress('play.sparklemc.fun:19133', 'toastBedrock')">
+                    <div class="ip-text">
+                        <span class="platform-label"><i class="fas fa-mobile-alt"></i> BEDROCK (PORT: 19133)</span>
+                        <span class="address">play.sparklemc.fun</span>
                     </div>
-                    <button class="copy-btn"><i class="far fa-copy"></i></button>
-                    <span id="bedrockToast" class="copy-toast">Copied!</span>
+                    <span class="copy-icon"><i class="far fa-copy"></i></span>
+                    <div id="toastBedrock" class="copy-alert">Copied!</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Store Section -->
-    <section id="store" class="store-section">
-        <div class="section-header">
-            <h2 class="section-title">SERVER <span class="glow-text">STORE</span></h2>
-            <p class="section-subtitle">Select your package, inspect details with the info icon, and checkout using direct UPI.</p>
+    <section id="store" class="store-sec">
+        <div class="section-title-wrap">
+            <h2 class="title">SERVER <span class="text-glow">STORE</span></h2>
+            <p class="subtitle">Click the <strong class="gold-text"><i class="fas fa-info-circle"></i></strong> icon to view rank perks & commands before buying.</p>
         </div>
 
-        <!-- Store Category Tabs -->
-        <div class="category-tabs">
-            <button class="tab-btn active" onclick="switchCategory('ranks')"><i class="fas fa-crown"></i> Ranks</button>
-            <button class="tab-btn" onclick="switchCategory('items')"><i class="fas fa-shield-alt"></i> Unique Items</button>
-            <button class="tab-btn" onclick="switchCategory('coins')"><i class="fas fa-coins"></i> Coins</button>
-            <button class="tab-btn" onclick="switchCategory('abilities')"><i class="fas fa-bolt"></i> Abilities</button>
-            <button class="tab-btn" onclick="switchCategory('kits')"><i class="fas fa-box-open"></i> Kits</button>
+        <!-- Store Category Navigation -->
+        <div class="category-nav">
+            <button class="cat-btn active" onclick="switchTab('ranks')"><i class="fas fa-crown"></i> Ranks</button>
+            <button class="cat-btn" onclick="switchTab('items')"><i class="fas fa-shield-alt"></i> Unique Items</button>
+            <button class="cat-btn" onclick="switchTab('coins')"><i class="fas fa-coins"></i> Coins</button>
+            <button class="cat-btn" onclick="switchTab('abilities')"><i class="fas fa-bolt"></i> Abilities</button>
+            <button class="cat-btn" onclick="switchTab('crates')"><i class="fas fa-box-open"></i> Crates & Kits</button>
         </div>
 
-        <!-- Category: Ranks -->
-        <div id="cat-ranks" class="store-grid active-grid">
+        <!-- Store Grid: Ranks -->
+        <div id="tab-ranks" class="product-grid tab-content active-tab">
             <!-- VIP -->
-            <div class="store-card">
-                <div class="card-badge">POPULAR</div>
-                <div class="card-icon-wrapper glow-yellow">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <h3>VIP Rank</h3>
-                <p class="card-subtext">+200 Bonus Coins</p>
-                <div class="card-price">₹120 <span class="period">/ month</span></div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('vip')" title="View Perks & Commands"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('VIP Rank', 120)"><i class="fas fa-shopping-cart"></i> Buy</button>
-                </div>
-            </div>
-
-            <!-- Blood -->
-            <div class="store-card">
-                <div class="card-badge glow-red-badge">HOT</div>
-                <div class="card-icon-wrapper glow-red">
-                    <i class="fas fa-skull"></i>
-                </div>
-                <h3>Blood Rank</h3>
-                <p class="card-subtext">+500 Bonus Coins</p>
-                <div class="card-price">₹250 <span class="period">/ month</span></div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('blood')" title="View Perks & Commands"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Blood Rank', 250)"><i class="fas fa-shopping-cart"></i> Buy</button>
+            <div class="product-card">
+                <div class="badge-tag">POPULAR</div>
+                <div class="icon-sphere icon-yellow"><i class="fas fa-crown"></i></div>
+                <h3 class="product-name">VIP Rank</h3>
+                <p class="product-desc">+200 Bonus Coins Included</p>
+                <div class="product-price">₹120 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('vip')" title="View Perks & Commands">
+                        <i class="fas fa-info"></i>
+                    </button>
+                    <button class="btn-purchase" onclick="startOrder('VIP Rank', 120)">
+                        <i class="fas fa-shopping-bag"></i> Buy Now
+                    </button>
                 </div>
             </div>
 
-            <!-- Reaper -->
-            <div class="store-card">
-                <div class="card-icon-wrapper glow-purple">
-                    <i class="fas fa-ghost"></i>
-                </div>
-                <h3>Reaper Rank</h3>
-                <p class="card-subtext">+1,000 Bonus Coins</p>
-                <div class="card-price">₹450 <span class="period">/ month</span></div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('reaper')" title="View Perks & Commands"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Reaper Rank', 450)"><i class="fas fa-shopping-cart"></i> Buy</button>
-                </div>
-            </div>
-
-            <!-- Vampire -->
-            <div class="store-card">
-                <div class="card-badge">ELITE</div>
-                <div class="card-icon-wrapper glow-darkred">
-                    <i class="fas fa-tint"></i>
-                </div>
-                <h3>Vampire Rank</h3>
-                <p class="card-subtext">+2,000 Bonus Coins</p>
-                <div class="card-price">₹750 <span class="period">/ month</span></div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('vampire')" title="View Perks & Commands"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Vampire Rank', 750)"><i class="fas fa-shopping-cart"></i> Buy</button>
+            <!-- BLOOD -->
+            <div class="product-card featured-border">
+                <div class="badge-tag tag-crimson">HOT</div>
+                <div class="icon-sphere icon-red"><i class="fas fa-skull"></i></div>
+                <h3 class="product-name">Blood Rank</h3>
+                <p class="product-desc">+500 Bonus Coins Included</p>
+                <div class="product-price">₹250 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('blood')" title="View Perks & Commands">
+                        <i class="fas fa-info"></i>
+                    </button>
+                    <button class="btn-purchase" onclick="startOrder('Blood Rank', 250)">
+                        <i class="fas fa-shopping-bag"></i> Buy Now
+                    </button>
                 </div>
             </div>
 
-            <!-- Spark+ -->
-            <div class="store-card premium-card">
-                <div class="card-badge spark-badge">ULTIMATE</div>
-                <div class="card-icon-wrapper glow-gold">
-                    <i class="fas fa-fire"></i>
+            <!-- REAPER -->
+            <div class="product-card">
+                <div class="icon-sphere icon-purple"><i class="fas fa-ghost"></i></div>
+                <h3 class="product-name">Reaper Rank</h3>
+                <p class="product-desc">+1,000 Bonus Coins Included</p>
+                <div class="product-price">₹450 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('reaper')" title="View Perks & Commands">
+                        <i class="fas fa-info"></i>
+                    </button>
+                    <button class="btn-purchase" onclick="startOrder('Reaper Rank', 450)">
+                        <i class="fas fa-shopping-bag"></i> Buy Now
+                    </button>
                 </div>
-                <h3>Spark+ Rank</h3>
-                <p class="card-subtext">+5,000 Coins + All Perks</p>
-                <div class="card-price">₹1,200 <span class="period">/ month</span></div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('sparkplus')" title="View Perks & Commands"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Spark+ Rank', 1200)"><i class="fas fa-shopping-cart"></i> Buy</button>
+            </div>
+
+            <!-- VAMPIRE -->
+            <div class="product-card">
+                <div class="badge-tag">ELITE</div>
+                <div class="icon-sphere icon-darkred"><i class="fas fa-tint"></i></div>
+                <h3 class="product-name">Vampire Rank</h3>
+                <p class="product-desc">+2,000 Bonus Coins Included</p>
+                <div class="product-price">₹750 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('vampire')" title="View Perks & Commands">
+                        <i class="fas fa-info"></i>
+                    </button>
+                    <button class="btn-purchase" onclick="startOrder('Vampire Rank', 750)">
+                        <i class="fas fa-shopping-bag"></i> Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- SPARK+ -->
+            <div class="product-card ultimate-card">
+                <div class="badge-tag tag-gold">ULTIMATE</div>
+                <div class="icon-sphere icon-gold"><i class="fas fa-fire"></i></div>
+                <h3 class="product-name">Spark+ Rank</h3>
+                <p class="product-desc">+5,000 Coins + All Server Perks</p>
+                <div class="product-price">₹1,200 <span class="unit">/ month</span></div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('sparkplus')" title="View Perks & Commands">
+                        <i class="fas fa-info"></i>
+                    </button>
+                    <button class="btn-purchase" onclick="startOrder('Spark+ Rank', 1200)">
+                        <i class="fas fa-shopping-bag"></i> Buy Now
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Category: Unique Items -->
-        <div id="cat-items" class="store-grid" style="display: none;">
-            <div class="store-card">
-                <div class="card-icon-wrapper"><i class="fas fa-hammer"></i></div>
-                <h3>Custom Mace</h3>
-                <p class="card-subtext">Devastating smash damage</p>
-                <div class="card-price">₹299</div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('mace')"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Custom Mace', 299)"><i class="fas fa-shopping-cart"></i> Buy</button>
+        <!-- Store Grid: Unique Items -->
+        <div id="tab-items" class="product-grid tab-content" style="display: none;">
+            <div class="product-card">
+                <div class="icon-sphere"><i class="fas fa-hammer"></i></div>
+                <h3 class="product-name">Custom Mace</h3>
+                <p class="product-desc">Smash AoE damage amplifier</p>
+                <div class="product-price">₹299</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('mace')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Custom Mace', 299)">Buy Now</button>
                 </div>
             </div>
-            <div class="store-card">
-                <div class="card-icon-wrapper"><i class="fas fa-feather-alt"></i></div>
-                <h3>Infinity Elytra</h3>
-                <p class="card-subtext">Unbreakable custom wings</p>
-                <div class="card-price">₹349</div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('elytra')"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Infinity Elytra', 349)"><i class="fas fa-shopping-cart"></i> Buy</button>
+
+            <div class="product-card">
+                <div class="icon-sphere"><i class="fas fa-feather-alt"></i></div>
+                <h3 class="product-name">Infinity Elytra</h3>
+                <p class="product-desc">Unbreakable flight with particle trails</p>
+                <div class="product-price">₹349</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('elytra')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Infinity Elytra', 349)">Buy Now</button>
                 </div>
             </div>
-            <div class="store-card">
-                <div class="card-icon-wrapper"><i class="fas fa-khanda"></i></div>
-                <h3>Blood Katana</h3>
-                <p class="card-subtext">Sharpness VII + Lifesteal edge</p>
-                <div class="card-price">₹249</div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('sword')"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Blood Katana', 249)"><i class="fas fa-shopping-cart"></i> Buy</button>
-                </div>
-            </div>
-            <div class="store-card">
-                <div class="card-icon-wrapper"><i class="fas fa-crosshairs"></i></div>
-                <h3>Vortex Bow</h3>
-                <p class="card-subtext">Flame & high velocity arrows</p>
-                <div class="card-price">₹199</div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('bow')"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Vortex Bow', 199)"><i class="fas fa-shopping-cart"></i> Buy</button>
+
+            <div class="product-card">
+                <div class="icon-sphere"><i class="fas fa-khanda"></i></div>
+                <h3 class="product-name">Blood Katana</h3>
+                <p class="product-desc">Sharpness VII with 10% Lifesteal</p>
+                <div class="product-price">₹249</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('katana')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Blood Katana', 249)">Buy Now</button>
                 </div>
             </div>
         </div>
 
-        <!-- Category: Coins -->
-        <div id="cat-coins" class="store-grid" style="display: none;">
-            <div class="store-card coin-calc-card">
-                <div class="card-icon-wrapper glow-gold"><i class="fas fa-coins"></i></div>
-                <h3>Custom Coin Calculator</h3>
-                <p class="card-subtext">Rate: ₹1 = 2 Spark Coins</p>
-                <div class="calc-input-box">
-                    <label>Enter Amount (₹ INR):</label>
-                    <input type="number" id="coinInput" value="50" min="10" oninput="updateCoins()">
+        <!-- Store Grid: Coins -->
+        <div id="tab-coins" class="product-grid tab-content" style="display: none;">
+            <div class="product-card coin-box">
+                <div class="icon-sphere icon-gold"><i class="fas fa-coins"></i></div>
+                <h3 class="product-name">Custom Coin Topup</h3>
+                <p class="product-desc">Rate: ₹1 = 2 Spark Coins</p>
+                <div class="coin-input-wrap">
+                    <label>Enter INR Amount (₹):</label>
+                    <input type="number" id="coinAmountInput" value="100" min="20" oninput="calcCoins()">
                 </div>
-                <div class="calc-result">
-                    You Receive: <span id="coinOutput" class="glow-text">100 Coins</span>
-                </div>
-                <div class="card-actions">
-                    <button class="btn-buy full-btn" onclick="buyCoins()"><i class="fas fa-shopping-cart"></i> Buy Coins</button>
+                <div class="coin-preview">You Get: <span id="coinTotal" class="text-glow">200 Coins</span></div>
+                <button class="btn-purchase full-width" onclick="orderCoins()"><i class="fas fa-shopping-bag"></i> Top-up Coins</button>
+            </div>
+        </div>
+
+        <!-- Store Grid: Abilities -->
+        <div id="tab-abilities" class="product-grid tab-content" style="display: none;">
+            <div class="product-card">
+                <div class="icon-sphere"><i class="fas fa-running"></i></div>
+                <h3 class="product-name">Speed II Permanent</h3>
+                <p class="product-desc">Permanent speed boost across all survival realms</p>
+                <div class="product-price">₹149</div>
+                <div class="action-btn-row">
+                    <button class="btn-info" onclick="openInfo('speed')"><i class="fas fa-info"></i></button>
+                    <button class="btn-purchase" onclick="startOrder('Speed II Permanent', 149)">Buy Now</button>
                 </div>
             </div>
         </div>
 
-        <!-- Category: Abilities -->
-        <div id="cat-abilities" class="store-grid" style="display: none;">
-            <div class="store-card">
-                <div class="card-icon-wrapper"><i class="fas fa-running"></i></div>
-                <h3>Infinite Speed II</h3>
-                <p class="card-subtext">Permanent speed boost</p>
-                <div class="card-price">₹149</div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('speed')"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Infinite Speed II', 149)"><i class="fas fa-shopping-cart"></i> Buy</button>
-                </div>
-            </div>
-            <div class="store-card">
-                <div class="card-icon-wrapper"><i class="fas fa-fist-raised"></i></div>
-                <h3>Permanent Strength</h3>
-                <p class="card-subtext">Damage amplifier</p>
-                <div class="card-price">₹199</div>
-                <div class="card-actions">
-                    <button class="btn-info" onclick="openInfoModal('strength')"><i class="fas fa-info"></i></button>
-                    <button class="btn-buy" onclick="openPaymentModal('Permanent Strength', 199)"><i class="fas fa-shopping-cart"></i> Buy</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category: Kits -->
-        <div id="cat-kits" class="store-grid" style="display: none;">
-            <div class="coming-soon-box">
-                <i class="fas fa-clock"></i>
-                <h3>Kits Coming Soon</h3>
-                <p>New custom kit crates will be introduced next season!</p>
+        <!-- Store Grid: Crates -->
+        <div id="tab-crates" class="product-grid tab-content" style="display: none;">
+            <div class="empty-state">
+                <i class="fas fa-box-open"></i>
+                <h3>Seasonal Crates Opening Soon</h3>
+                <p>New custom crate keys will be released in the upcoming update.</p>
             </div>
         </div>
     </section>
 
     <!-- Support Section -->
-    <section id="about" class="support-section">
-        <div class="support-box">
-            <div class="support-icon"><i class="fas fa-headset"></i></div>
-            <div class="support-text">
-                <h3>Need Assistance With Orders?</h3>
-                <p>Create a ticket on Discord or email <strong>fzboy2008@gmail.com</strong> with your payment reference.</p>
+    <section id="support" class="support-sec">
+        <div class="support-card">
+            <div class="support-left">
+                <i class="fas fa-headset support-icon"></i>
+                <div>
+                    <h3>Need Immediate Support?</h3>
+                    <p>Contact our team directly on Discord or write to <strong>fzboy2008@gmail.com</strong>.</p>
+                </div>
             </div>
-            <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn discord-btn">
+            <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord">
                 <i class="fab fa-discord"></i> Open Ticket
             </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2026 SparkleMc Network. All rights reserved. Not affiliated with Mojang Studios.</p>
+    <footer class="site-footer">
+        <p>&copy; 2026 SparkleMc Network. All Rights Reserved. Not affiliated with Mojang Studios.</p>
     </footer>
 
-    <!-- Info Popup Modal -->
-    <div id="infoModal" class="modal-overlay">
-        <div class="info-modal-card">
-            <button class="modal-close" onclick="closeInfoModal()">&times;</button>
-            <h2 id="modalRankTitle">Rank Details</h2>
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- 1. BlockFun Style Info Modal -->
+    <div id="infoPopup" class="modal-backdrop">
+        <div class="info-window">
+            <button class="modal-close-btn" onclick="closeInfo()">&times;</button>
+            <h2 id="infoTitle">Item Perks</h2>
+            <div class="info-content-scroll">
+                <h4><i class="fas fa-star gold-text"></i> Perks:</h4>
+                <ul id="infoPerks" class="check-list"></ul>
+
+                <h4><i class="fas fa-terminal gold-text"></i> Commands:</h4>
+                <ul id="infoCommands" class="check-list cmd-list"></ul>
+
+                <h4><i class="fas fa-gift gold-text"></i> Other Benefits:</h4>
+                <ul id="infoOther" class="check-list"></ul>
+            </div>
+            <div class="info-footer">
+                <span class="info-cost" id="infoCost">₹120</span>
+                <button class="btn-purchase" id="infoProceedBtn">Proceed To Buy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Payment & Ticket Modal -->
+    <div id="paymentPopup" class="modal-backdrop">
+        <div class="pay-window">
+            <button class="modal-close-btn" onclick="closePayment()">&times;</button>
             
-            <div class="modal-body-content">
-                <h4><i class="fas fa-star text-gold"></i> Perks:</h4>
-                <ul id="modalPerksList" class="info-list"></ul>
+            <!-- Step 1: Payment Details & Input Form -->
+            <div id="payFormStep">
+                <h3 class="pay-modal-title">Checkout Order</h3>
+                <p class="pay-modal-sub">Package: <strong id="orderItemName" class="text-glow">VIP Rank</strong></p>
 
-                <h4><i class="fas fa-terminal text-gold"></i> Commands:</h4>
-                <ul id="modalCommandsList" class="info-list code-style"></ul>
+                <div class="qr-container">
+                    <img src="qr.jpg" alt="UPI QR Code" class="qr-code-img" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=6006283334@ptyes&pn=SparkleMc'">
+                    <div class="upi-id-pill">UPI: <strong>6006283334@ptyes</strong></div>
+                    <div class="payable-badge">Payable: ₹<span id="orderItemAmount">120</span></div>
+                </div>
 
-                <h4><i class="fas fa-gem text-gold"></i> Other Rewards:</h4>
-                <ul id="modalOtherList" class="info-list"></ul>
+                <form class="order-form" onsubmit="submitOrder(event)">
+                    <div class="form-group">
+                        <label>Minecraft In-Game Username (IGN):</label>
+                        <input type="text" id="ignInput" placeholder="e.g. Steve_01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>12-Digit UPI Ref / UTR Number:</label>
+                        <input type="text" id="utrInput" placeholder="e.g. 429182390123" maxlength="16" required>
+                    </div>
+                    <button type="submit" class="btn-purchase full-width">
+                        <i class="fas fa-check-circle"></i> Submit Payment Ticket
+                    </button>
+                </form>
             </div>
 
-            <div class="modal-footer-action">
-                <span class="modal-price" id="modalPriceText">₹120</span>
-                <button class="btn-buy modal-buy-btn" id="modalBuyBtn">Proceed to Checkout</button>
+            <!-- Step 2: Under Review Screen (Pending Mail Approval) -->
+            <div id="payStatusStep" style="display: none;">
+                <div class="status-icon"><i class="fas fa-clock text-glow"></i></div>
+                <h3>Payment Under Review</h3>
+                <p class="status-msg">Your transaction reference has been logged. Our administrative team will verify the payment via <strong>fzboy2008@gmail.com</strong>.</p>
+                
+                <div class="order-summary-box">
+                    <div><span>IGN:</span> <strong id="summaryIGN">-</strong></div>
+                    <div><span>Package:</span> <strong id="summaryItem">-</strong></div>
+                    <div><span>UTR:</span> <strong id="summaryUTR">-</strong></div>
+                    <div><span>Status:</span> <span class="tag-pending">PENDING APPROVAL</span></div>
+                </div>
+
+                <p class="status-note">Please join our Discord server or open a ticket if you require instant rank activation!</p>
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="nav-btn-discord full-width">
+                    <i class="fab fa-discord"></i> Go to Discord Support
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- UPI Payment Modal -->
-    <div id="paymentModal" class="modal-overlay">
-        <div class="payment-modal-card">
-            <button class="modal-close" onclick="closePaymentModal()">&times;</button>
-            <div class="pay-header">
-                <h3>Complete Payment</h3>
-                <p>Item: <span id="payItemName" class="glow-text">VIP Rank</span></p>
+    <!-- 3. Live Floating Support Chat Widget -->
+    <div class="floating-chat">
+        <div id="chatBox" class="chat-window">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="online-indicator"></div>
+                    <strong>SparkleMc Live Support</strong>
+                </div>
+                <button class="chat-close" onclick="toggleChat()">&times;</button>
             </div>
-
-            <div class="qr-wrapper">
-                <img src="qr.jpg" alt="UPI QR Code" class="qr-img" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=6006283334@ptyes&pn=SparkleMc'">
-                <p class="upi-id-text">UPI ID: <strong>6006283334@ptyes</strong></p>
-                <div class="amount-badge">Total Amount: ₹<span id="payItemAmount">120</span></div>
+            <div class="chat-messages" id="chatMsgs">
+                <div class="chat-bubble bot">
+                    👋 Welcome to SparkleMc! Have a question about ranks, payments, or server status? Ask below or open a ticket on Discord.
+                </div>
             </div>
-
-            <div class="pay-instruction">
-                <p>1. Scan the QR code with Paytm, GPay, or PhonePe.</p>
-                <p>2. Send the exact amount shown above.</p>
-                <p>3. Note the 12-digit UPI Ref / UTR number.</p>
-            </div>
-
-            <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="confirm-ticket-btn">
-                <i class="fab fa-discord"></i> Send UTR on Discord
-            </a>
+            <form class="chat-input-row" onsubmit="sendChatMessage(event)">
+                <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off" required>
+                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
         </div>
+        <button class="chat-toggle-btn" onclick="toggleChat()" title="Chat with support">
+            <i class="fas fa-comments"></i>
+        </button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=fresh_3.0"></script>
 </body>
-                    </html>
-    
+</html>
