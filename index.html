@@ -8,16 +8,17 @@
     <meta name="description" content="India's leading Minecraft Survival & Lifesteal Network. IP: play.sparklemc.fun (Port: 19133)">
     <meta property="og:type" content="website">
     <meta property="og:title" content="SparkleMc — Official Minecraft Network">
-    <meta property="og:description" content="Dominate the Lifesteal realm! Custom Weapons, Ranks & Active Indian Community.">
+    <meta property="og:description" content="Dominate the Lifesteal realm! Custom Weapons, Ranks & Active Community.">
     <meta property="og:image" content="https://www.sparklemc.fun/logo.png">
     <meta name="theme-color" content="#ff2a4b">
 
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=fresh_5.0">
+    <link rel="stylesheet" href="style.css?v=6.0">
 </head>
 <body>
 
+    <!-- Responsive Navbar -->
     <header class="site-header">
         <div class="nav-wrap">
             <a href="index.html" class="brand">
@@ -35,6 +36,7 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero-sec">
         <div class="hero-container">
             <div class="pill-badge"><i class="fas fa-fire"></i> INDIA'S #1 LIFESTEAL REALM</div>
@@ -63,39 +65,44 @@
 
             <div class="hero-cta-row">
                 <a href="store.html" class="btn-purchase cta-btn"><i class="fas fa-shopping-bag"></i> Browse Store</a>
-                <a href="staff.html" class="btn-info cta-btn-secondary"><i class="fas fa-users-cog"></i> View Staff Team</a>
+                <a href="staff.html" class="cta-btn-secondary"><i class="fas fa-users-cog"></i> Staff Members</a>
             </div>
         </div>
     </section>
 
-    <!-- Global Live Public Chat -->
-    <div class="floating-chat">
-        <div id="chatBox" class="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="online-indicator"></div>
-                    <strong>Public Live Chat</strong>
+    <!-- Main Page Embedded Real-Time Community Chat -->
+    <section class="chat-section">
+        <div class="chat-wrapper">
+            <div class="chat-box-header">
+                <div class="chat-header-title">
+                    <span class="pulse-green"></span>
+                    <h3>SparkleMc Community Chat</h3>
                 </div>
-                <button class="chat-close" onclick="toggleChat()">&times;</button>
+                <span class="online-tag">Online Network</span>
             </div>
-            <div class="chat-messages" id="chatMsgs">
-                <div class="chat-bubble system">Global chat connected. Anyone on the website can see messages in real time!</div>
+
+            <div class="chat-box-body" id="chatFeed">
+                <div class="chat-row bot-row">
+                    <div class="chat-avatar bot-av"><i class="fas fa-robot"></i></div>
+                    <div class="chat-content">
+                        <span class="chat-author bot-author">SparkleBot</span>
+                        <p class="chat-text">Welcome to SparkleMc global lobby chat! Send a message to chat with players online.</p>
+                    </div>
+                </div>
             </div>
-            <form class="chat-input-row" onsubmit="sendGlobalChat(event)">
-                <input type="text" id="chatUsername" placeholder="IGN" style="width: 70px; border-right: 1px solid var(--border-dim);" required>
-                <input type="text" id="chatInput" placeholder="Send a message..." required>
+
+            <form class="chat-box-input" onsubmit="postChatMessage(event)">
+                <input type="text" id="chatNick" placeholder="Your Name" required>
+                <input type="text" id="chatMessage" placeholder="Type a message to the server community..." required>
                 <button type="submit"><i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
-        <button class="chat-toggle-btn" onclick="toggleChat()" title="Global Chat">
-            <i class="fas fa-comments"></i>
-        </button>
-    </div>
+    </section>
 
     <footer class="site-footer">
         <p>&copy; 2026 SparkleMc Network. All Rights Reserved. Not affiliated with Mojang Studios.</p>
     </footer>
 
-    <script src="script.js?v=fresh_5.0"></script>
+    <script src="script.js?v=6.0"></script>
 </body>
 </html>
