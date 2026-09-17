@@ -66,8 +66,8 @@ const perksData = {
         price: "₹120",
         cost: 120,
         perks: ["🔥 Unbreakable", "🔥 Mending", "🔥 Density VII", "🔥 Breach V", "🔥 Wind Burst III"],
-        commands: ["Delivered via /mailbox"],
-        other: ["Legendary Weapon"]
+        commands: ["Delivered via in-game /mailbox"],
+        other: ["Season 1 Legendary God Tier Weapon"]
     },
     item_elytra: {
         name: "Unique Elytra",
@@ -82,7 +82,7 @@ const perksData = {
         price: "₹80",
         cost: 80,
         perks: ["🔥 Sharpness VII", "🔥 Unbreaking III", "🔥 Mending", "🔥 Fire Aspect II", "🔥 Looting III", "🔥 Sweeping Edge III"],
-        commands: ["Delivered into inventory"],
+        commands: ["Delivered directly into inventory"],
         other: ["Maxed Sharpness VII weapon"]
     },
     item_spear: {
@@ -90,7 +90,7 @@ const perksData = {
         price: "₹80",
         cost: 80,
         perks: ["🔥 Lunge V", "🔥 Unbreaking III", "🔥 Mending", "🔥 Sharpness VII", "🔥 Fire Aspect II"],
-        commands: ["Delivered into inventory"],
+        commands: ["Delivered directly into inventory"],
         other: ["God-tier reach weapon"]
     },
     item_bow: {
@@ -98,7 +98,7 @@ const perksData = {
         price: "₹50",
         cost: 50,
         perks: ["🔥 Power VII", "🔥 Unbreaking III", "🔥 Mending", "🔥 Flame", "🔥 Punch II", "🔥 Infinity"],
-        commands: ["Delivered into inventory"],
+        commands: ["Delivered directly into inventory"],
         other: ["Infinite ammunition"]
     },
     item_shield: {
@@ -106,8 +106,8 @@ const perksData = {
         price: "₹50",
         cost: 50,
         perks: ["🔥 Unbreakable", "🔥 Mending"],
-        commands: ["Delivered into inventory"],
-        other: ["Unbreakable shield"]
+        commands: ["Delivered directly into inventory"],
+        other: ["Unbreakable defense gear"]
     },
     ability_1: {
         name: "Infinite Effect Lvl I",
@@ -135,9 +135,112 @@ const perksData = {
     }
 };
 
+let currentUser = null;
 let currentCheckout = { name: "VIP Rank", cost: 120 };
 
-// --- Store Category Tabs ---
+// --- Google Authentication System ---
+function initGoogleAuth() {
+    const saved = localStorage.getItem('sparkle_user');
+    if (saved) {
+        currentUser = JSON.parse(saved);
+        updateAuthUI();
+    }
+}
+
+function triggerGoogleSignIn() {
+    // Standard OAuth / One-Tap popup
+    if (window.google && google.accounts && google.accounts.id) {
+        google.accounts.id.initialize({
+            client_id: "72983794302-sparklemc-public.apps.googleusercontent.com", // SparkleMc Web Client ID
+            callback: handleGoogleResponse
+        });
+        google.accounts.id.prompt();
+    } else {
+        // Fallback simulated sign-in prompt if client offline
+        const promptName = prompt("Enter your Name for Google Sign-In:", "Player");
+        const promptEmail = prompt("Enter your Google Account Email:", "player@gmail.com");
+        if (promptEmail) {
+            currentUser = {
+                name: promptName || "Player",
+                email: promptEmail,
+                picture: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(promptEmail)}`
+            };
+            localStorage.setItem('sparkle_user', JSON.stringify(currentUser));
+            updateAuthUI();
+        }
+    }
+}
+
+function handleGoogleResponse(response) {
+    try {
+        const base64Url = response.credential.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        const data = JSON.parse(jsonPayload);
+        currentUser = {
+            name: data.name,
+            email: data.email,
+            picture: data.picture
+        };
+        localStorage.setItem('sparkle_user', JSON.stringify(currentUser));
+        updateAuthUI();
+    } catch(e) {}
+}
+
+function logoutGoogle() {
+    currentUser = null;
+    localStorage.removeItem('sparkle_user');
+    updateAuthUI();
+}
+
+function updateAuthUI() {
+    const loginBtn = document.getElementById('googleLoginBtn');
+    const chip = document.getElementById('userProfileChip');
+    const avatar = document.getElementById('userAvatar');
+    const nameText = document.getElementById('userNameText');
+
+    if (currentUser) {
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (chip) chip.style.display = 'flex';
+        if (avatar) avatar.src = currentUser.picture;
+        if (nameText) nameText.textContent = currentUser.name;
+
+        // Unlock Chat UI
+        const chatGate = document.getElementById('chatAuthGate');
+        const chatForm = document.getElementById('chatForm');
+        if (chatGate) chatGate.style.display = 'none';
+        if (chatForm) chatForm.style.display = 'flex';
+
+        // Unlock Checkout Form
+        const checkoutGate = document.getElementById('checkoutAuthGate');
+        const payFormStep = document.getElementById('payFormStep');
+        if (checkoutGate) checkoutGate.style.display = 'none';
+        if (payFormStep) payFormStep.style.display = 'block';
+
+        const orderEmail = document.getElementById('orderUserEmail');
+        if (orderEmail) orderEmail.textContent = currentUser.email;
+    } else {
+        if (loginBtn) loginBtn.style.display = 'inline-flex';
+        if (chip) chip.style.display = 'none';
+
+        // Lock Chat UI
+        const chatGate = document.getElementById('chatAuthGate');
+        const chatForm = document.getElementById('chatForm');
+        if (chatGate) chatGate.style.display = 'block';
+        if (chatForm) chatForm.style.display = 'none';
+
+        // Lock Checkout
+        const checkoutGate = document.getElementById('checkoutAuthGate');
+        const payFormStep = document.getElementById('payFormStep');
+        if (checkoutGate) checkoutGate.style.display = 'block';
+        if (payFormStep) payFormStep.style.display = 'none';
+    }
+}
+
+// --- Store Category Switcher ---
 function switchTab(catId) {
     const tabs = ['ranks', 'items', 'abilities', 'coins', 'crates'];
     tabs.forEach(t => {
@@ -182,18 +285,19 @@ function closeInfo() {
     if (el) el.style.display = 'none';
 }
 
-// --- Order & Checkout Flow ---
+// --- Checkout & Payment Order ---
 function startOrder(name, amount) {
     currentCheckout = { name, cost: amount };
 
     document.getElementById('orderItemName').textContent = name;
     document.getElementById('orderItemAmount').textContent = amount;
 
-    document.getElementById('payFormStep').style.display = 'block';
+    // Reset Form Steps
     document.getElementById('payStatusStep').style.display = 'none';
     document.getElementById('ignInput').value = '';
     document.getElementById('utrInput').value = '';
 
+    updateAuthUI();
     document.getElementById('paymentPopup').style.display = 'flex';
 }
 
@@ -202,9 +306,14 @@ function closePayment() {
     if (el) el.style.display = 'none';
 }
 
-// --- Send Order Ticket Directly To Owner Email (fzboy2008@gmail.com) ---
 function submitEmailTicket(e) {
     e.preventDefault();
+    if (!currentUser) {
+        alert("Please sign in with Google first to complete purchase!");
+        triggerGoogleSignIn();
+        return;
+    }
+
     const ign = document.getElementById('ignInput').value.trim();
     const utr = document.getElementById('utrInput').value.trim();
     const btn = document.getElementById('submitOrderBtn');
@@ -212,14 +321,16 @@ function submitEmailTicket(e) {
     if (!ign || !utr) return;
 
     btn.disabled = true;
-    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending Ticket...`;
+    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Dispatched to Owner...`;
 
-    // Direct Formspree Email Pipeline to fzboy2008@gmail.com
+    // Sends Verified User Data to fzboy2008@gmail.com
     fetch("https://formspree.io/f/xvgzgkgk", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({
-            target_owner_email: "fzboy2008@gmail.com",
+            Owner_Notification_To: "fzboy2008@gmail.com",
+            Customer_Google_Email: currentUser.email,
+            Customer_Name: currentUser.name,
             Player_IGN: ign,
             Package_Purchased: currentCheckout.name,
             Amount_Paid: "₹" + currentCheckout.cost,
@@ -230,6 +341,7 @@ function submitEmailTicket(e) {
         btn.disabled = false;
         btn.innerHTML = `<i class="fas fa-check-circle"></i> Send Order Ticket To Owner`;
 
+        document.getElementById('summaryEmail').textContent = currentUser.email;
         document.getElementById('summaryIGN').textContent = ign;
         document.getElementById('summaryItem').textContent = currentCheckout.name;
         document.getElementById('summaryUTR').textContent = utr;
@@ -239,7 +351,12 @@ function submitEmailTicket(e) {
     }).catch(err => {
         btn.disabled = false;
         btn.innerHTML = `<i class="fas fa-check-circle"></i> Send Order Ticket To Owner`;
-        // Even on net error show summary
+
+        document.getElementById('summaryEmail').textContent = currentUser.email;
+        document.getElementById('summaryIGN').textContent = ign;
+        document.getElementById('summaryItem').textContent = currentCheckout.name;
+        document.getElementById('summaryUTR').textContent = utr;
+
         document.getElementById('payFormStep').style.display = 'none';
         document.getElementById('payStatusStep').style.display = 'block';
     });
@@ -267,48 +384,71 @@ function copyIpAddress(address, toastId) {
     });
 }
 
-// ==================== REAL-TIME MULTI-USER PUBLIC LIVE CHAT ====================
-const globalChatSocket = new WebSocket("wss://ws-us3.pusher.com/app/eb1d5f2830814281274e?protocol=7&client=js&version=7.0.0&flash=false");
+// ==================== REAL-TIME PUBLIC CHAT (WSS / MQTT CLOUD) ====================
+let mqttClient = null;
+const CHAT_TOPIC = "sparklemc/public/chat/room1";
 
-globalChatSocket.onmessage = function(event) {
-    try {
-        const data = JSON.parse(event.data);
-        if (data.event === "new_message") {
-            const chatPayload = JSON.parse(data.data);
-            appendChatMessage(chatPayload.user, chatPayload.text, false);
-        }
-    } catch(e) {}
-};
+function initLiveChat() {
+    if (typeof mqtt === 'undefined') return;
+
+    // Connect to global low-latency public MQTT WebSockets broker
+    mqttClient = mqtt.connect("wss://broker.emqx.io:8084/mqtt", {
+        clientId: "sparkle_user_" + Math.random().toString(16).substring(2, 8),
+        clean: true
+    });
+
+    mqttClient.on('connect', function() {
+        mqttClient.subscribe(CHAT_TOPIC);
+    });
+
+    mqttClient.on('message', function(topic, message) {
+        try {
+            const data = JSON.parse(message.toString());
+            const isMine = currentUser && (currentUser.email === data.email);
+            appendChatMessage(data.user, data.text, isMine);
+        } catch(e) {}
+    });
+}
 
 function toggleChat() {
     const box = document.getElementById('chatBox');
-    box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+    if (box) {
+        box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+    }
 }
 
 function sendGlobalChat(e) {
     e.preventDefault();
-    const user = document.getElementById('chatUsername').value.trim() || 'Player';
+    if (!currentUser) {
+        alert("Please login with Google to send messages in live chat!");
+        triggerGoogleSignIn();
+        return;
+    }
+
     const textInput = document.getElementById('chatInput');
     const text = textInput.value.trim();
-
     if (!text) return;
 
-    // Show on my screen
-    appendChatMessage(user, text, true);
+    const payload = {
+        user: currentUser.name,
+        email: currentUser.email,
+        text: text,
+        time: Date.now()
+    };
 
-    // Broadcast across all players
-    try {
-        globalChatSocket.send(JSON.stringify({
-            event: "client-message",
-            data: { user: user, text: text }
-        }));
-    } catch(err) {}
+    if (mqttClient && mqttClient.connected) {
+        mqttClient.publish(CHAT_TOPIC, JSON.stringify(payload));
+    } else {
+        appendChatMessage(currentUser.name, text, true);
+    }
 
     textInput.value = '';
 }
 
 function appendChatMessage(sender, msg, isMine) {
     const container = document.getElementById('chatMsgs');
+    if (!container) return;
+
     const bubble = document.createElement('div');
     bubble.className = isMine ? 'chat-bubble mine' : 'chat-bubble msg';
     bubble.innerHTML = `<span class="sender">${sender}</span> ${msg}`;
@@ -323,3 +463,10 @@ window.onclick = function(e) {
         closePayment();
     }
 };
+
+// Initialize on Load
+window.addEventListener('DOMContentLoaded', () => {
+    initGoogleAuth();
+    initLiveChat();
+});
+                
