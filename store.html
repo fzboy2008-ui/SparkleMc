@@ -4,366 +4,316 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SparkleMc — Store</title>
-
-    <meta name="description" content="SparkleMc Official Store. Purchase ranks, unique equipment, and coin packages.">
-    <meta property="og:title" content="SparkleMc — Store">
-    <meta property="og:image" content="https://www.sparklemc.fun/logo.png">
-    <meta name="theme-color" content="#ff2a4b">
-
+    <meta name="description" content="SparkleMc Official Web Store. Purchase Ranks, Unique Items, and Special Effects.">
+    
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=fresh_6.0">
+    <link rel="stylesheet" href="style.css?v=v0_1">
 </head>
 <body>
 
-    <!-- Top Header: ONLY Home, Store, Staff -->
-    <header class="site-header">
-        <div class="nav-wrap">
+    <header class="navbar">
+        <div class="nav-container">
             <a href="index.html" class="brand">
-                <img src="logo.png" alt="SparkleMc" class="brand-logo" onerror="this.style.display='none'">
+                <img src="logo.png" alt="SparkleMc Logo" class="brand-logo" onerror="this.style.display='none'">
                 <span>Sparkle<span class="highlight">Mc</span></span>
             </a>
             <nav class="nav-links">
-                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
-                <a href="store.html" class="nav-link active"><i class="fas fa-shopping-cart"></i> Store</a>
-                <a href="staff.html" class="nav-link"><i class="fas fa-users-cog"></i> Staff</a>
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="store.html" class="nav-item active"><i class="fas fa-shopping-cart"></i> Store</a>
+                <a href="showcase.html" class="nav-item"><i class="fas fa-layer-group"></i> Showcase</a>
             </nav>
         </div>
     </header>
 
-    <section class="store-sec">
-        <div class="section-title-wrap">
-            <h2 class="title">SERVER <span class="text-glow">STORE</span></h2>
-            <p class="subtitle">Click <strong class="gold-text">(i)</strong> to inspect perks, armor & enchantments.</p>
+    <section class="store-section">
+        <div class="section-heading">
+            <h2>SERVER <span class="glow-text">STORE</span></h2>
+            <p>Select your tier, configure perks, and checkout directly via Paytm Gateway.</p>
         </div>
 
-        <div class="category-nav">
-            <button class="cat-btn active" onclick="switchTab('ranks')"><i class="fas fa-crown"></i> Ranks</button>
-            <button class="cat-btn" onclick="switchTab('items')"><i class="fas fa-shield-alt"></i> Unique Items</button>
-            <button class="cat-btn" onclick="switchTab('abilities')"><i class="fas fa-bolt"></i> Special Ability</button>
-            <button class="cat-btn" onclick="switchTab('coins')"><i class="fas fa-coins"></i> Coins</button>
-            <button class="cat-btn" onclick="switchTab('crates')"><i class="fas fa-box-open"></i> Kits</button>
+        <div class="tabs-row">
+            <button class="tab-btn active" onclick="switchCategory('ranks')"><i class="fas fa-crown"></i> Ranks</button>
+            <button class="tab-btn" onclick="switchCategory('items')"><i class="fas fa-shield-alt"></i> Unique Items</button>
+            <button class="tab-btn" onclick="switchCategory('effects')"><i class="fas fa-bolt"></i> Special Effects</button>
+            <button class="tab-btn" onclick="switchCategory('coins')"><i class="fas fa-coins"></i> Coins</button>
         </div>
 
-        <!-- Ranks Tab -->
-        <div id="tab-ranks" class="product-grid tab-content active-tab">
-            <div class="product-card">
-                <div class="badge-tag">POPULAR</div>
-                <div class="icon-sphere icon-yellow"><i class="fas fa-crown"></i></div>
-                <h3 class="product-name">VIP Rank</h3>
-                <p class="product-desc">+200 Bonus Coins Included</p>
-                <div class="product-price">₹120 <span class="unit">/ month</span></div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('vip')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('VIP Rank', 120)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+        <!-- 1. RANKS -->
+        <div id="cat-ranks" class="product-grid">
+            <div class="store-card ultimate-border">
+                <div class="badge-tag gold">ULTIMATE</div>
+                <div class="card-icon-box glow-gold"><i class="fas fa-fire"></i></div>
+                <h3>Spark+ Rank</h3>
+                <p class="card-sub">Top Tier Privileges & All Kits</p>
+                <div class="price">₹600</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('sparkplus')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Spark+ Rank', 600)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card featured-border">
-                <div class="badge-tag tag-crimson">HOT</div>
-                <div class="icon-sphere icon-red"><i class="fas fa-skull"></i></div>
-                <h3 class="product-name">Blood Rank</h3>
-                <p class="product-desc">+400 Bonus Coins Included</p>
-                <div class="product-price">₹230 <span class="unit">/ month</span></div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('blood')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Blood Rank', 230)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+            <div class="store-card">
+                <div class="card-icon-box glow-darkred"><i class="fas fa-dragon"></i></div>
+                <h3>Dragon Rank</h3>
+                <p class="card-sub">Draconic Strength & Elite Perks</p>
+                <div class="price">₹450</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('dragon')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Dragon Rank', 450)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="icon-sphere icon-purple"><i class="fas fa-ghost"></i></div>
-                <h3 class="product-name">Reaper Rank</h3>
-                <p class="product-desc">+700 Bonus Coins Included</p>
-                <div class="product-price">₹340 <span class="unit">/ month</span></div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('reaper')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Reaper Rank', 340)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+            <div class="store-card">
+                <div class="card-icon-box glow-purple"><i class="fas fa-moon"></i></div>
+                <h3>Eclipse Rank</h3>
+                <p class="card-sub">High Velocity Commands & Armor</p>
+                <div class="price">₹340</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('eclipse')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Eclipse Rank', 340)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="badge-tag">ELITE</div>
-                <div class="icon-sphere icon-darkred"><i class="fas fa-tint"></i></div>
-                <h3 class="product-name">Vampire Rank</h3>
-                <p class="product-desc">+1,000 Bonus Coins Included</p>
-                <div class="product-price">₹450 <span class="unit">/ month</span></div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('vampire')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Vampire Rank', 450)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+            <div class="store-card featured-border">
+                <div class="badge-tag crimson">HOT</div>
+                <div class="card-icon-box glow-red"><i class="fas fa-skull"></i></div>
+                <h3>Blood Rank</h3>
+                <p class="card-sub">Combat Oriented Perks & Speed</p>
+                <div class="price">₹230</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('blood')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Blood Rank', 230)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card ultimate-card">
-                <div class="badge-tag tag-gold">ULTIMATE</div>
-                <div class="icon-sphere icon-gold"><i class="fas fa-fire"></i></div>
-                <h3 class="product-name">Spark+ Rank</h3>
-                <p class="product-desc">+1,500 Coins + All Rank Kits</p>
-                <div class="product-price">₹600 <span class="unit">/ month</span></div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('sparkplus')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Spark+ Rank', 600)"><i class="fas fa-shopping-bag"></i> Buy Now</button>
+            <div class="store-card">
+                <div class="card-icon-box glow-yellow"><i class="fas fa-crown"></i></div>
+                <h3>Elite Rank</h3>
+                <p class="card-sub">Essential Commands & Protection</p>
+                <div class="price">₹120</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('elite')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Elite Rank', 120)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
         </div>
 
-        <!-- Unique Items Tab -->
-        <div id="tab-items" class="product-grid tab-content" style="display: none;">
-            <div class="product-card">
-                <div class="icon-sphere icon-gold"><i class="fas fa-hammer"></i></div>
-                <h3 class="product-name">Unique Mace</h3>
-                <p class="product-desc">Density VII, Breach V, Wind Burst III</p>
-                <div class="product-price">₹120</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('item_mace')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Unique Mace', 120)">Buy Now</button>
+        <!-- 2. UNIQUE ITEMS -->
+        <div id="cat-items" class="product-grid" style="display: none;">
+            <div class="store-card">
+                <div class="card-icon-box glow-gold"><i class="fas fa-hammer"></i></div>
+                <h3>Unique Mace</h3>
+                <p class="card-sub">Unbreakable Density VII & Breach V</p>
+                <div class="price">₹150</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('item_mace')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Unique Mace', 150)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="icon-sphere icon-purple"><i class="fas fa-feather-alt"></i></div>
-                <h3 class="product-name">Unique Elytra</h3>
-                <p class="product-desc">Unbreakable, Protection 5, Mending</p>
-                <div class="product-price">₹120</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('item_elytra')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Unique Elytra', 120)">Buy Now</button>
+            <div class="store-card">
+                <div class="card-icon-box glow-purple"><i class="fas fa-feather-alt"></i></div>
+                <h3>Unique Elytra</h3>
+                <p class="card-sub">Infinite Durability & Protection 5</p>
+                <div class="price">₹150</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('item_elytra')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Unique Elytra', 150)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="icon-sphere icon-red"><i class="fas fa-khanda"></i></div>
-                <h3 class="product-name">Unique Sword</h3>
-                <p class="product-desc">Sharpness VII, Fire Aspect II, Looting III</p>
-                <div class="product-price">₹80</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('item_sword')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Unique Sword', 80)">Buy Now</button>
+            <div class="store-card">
+                <div class="card-icon-box glow-red"><i class="fas fa-khanda"></i></div>
+                <h3>Unique Sword</h3>
+                <p class="card-sub">Sharpness VII & Fire Aspect II</p>
+                <div class="price">₹100</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('item_sword')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Unique Sword', 100)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="icon-sphere icon-yellow"><i class="fas fa-crosshairs"></i></div>
-                <h3 class="product-name">Unique Spear</h3>
-                <p class="product-desc">Lunge V, Sharpness VII, Fire Aspect II</p>
-                <div class="product-price">₹80</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('item_spear')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Unique Spear', 80)">Buy Now</button>
+            <div class="store-card">
+                <div class="card-icon-box glow-yellow"><i class="fas fa-crosshairs"></i></div>
+                <h3>Unique Spear</h3>
+                <p class="card-sub">Lunge V & Sharpness VII</p>
+                <div class="price">₹100</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('item_spear')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Unique Spear', 100)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="icon-sphere icon-darkred"><i class="fas fa-bullseye"></i></div>
-                <h3 class="product-name">Unique Bow</h3>
-                <p class="product-desc">Power VII, Flame, Punch II, Infinity</p>
-                <div class="product-price">₹50</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('item_bow')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Unique Bow', 50)">Buy Now</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="icon-sphere icon-yellow"><i class="fas fa-shield-alt"></i></div>
-                <h3 class="product-name">Unique Shield</h3>
-                <p class="product-desc">Unbreakable, Mending</p>
-                <div class="product-price">₹50</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('item_shield')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Unique Shield', 50)">Buy Now</button>
+            <div class="store-card">
+                <div class="card-icon-box glow-darkred"><i class="fas fa-bullseye"></i></div>
+                <h3>Unique Bow</h3>
+                <p class="card-sub">Power VII, Flame & Infinity</p>
+                <div class="price">₹80</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('item_bow')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Unique Bow', 80)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
         </div>
 
-        <!-- Special Ability Tab -->
-        <div id="tab-abilities" class="product-grid tab-content" style="display: none;">
-            <div class="product-card">
-                <div class="icon-sphere icon-yellow"><i class="fas fa-bolt"></i></div>
-                <h3 class="product-name">Infinite Effect Lvl I</h3>
-                <p class="product-desc">Permanent server-wide Level 1 Potion Buff</p>
-                <div class="product-price">₹40</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('ability_1')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Infinite Effect Lvl I', 40)">Buy Now</button>
+        <!-- 3. SPECIAL EFFECTS -->
+        <div id="cat-effects" class="product-grid" style="display: none;">
+            <div class="store-card">
+                <div class="card-icon-box glow-yellow"><i class="fas fa-flask"></i></div>
+                <h3>Special Effect Lvl I</h3>
+                <p class="card-sub">Permanent Infinite Buff</p>
+                <div class="price">₹50</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('eff_1')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Special Effect Lvl I', 50)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card featured-border">
-                <div class="icon-sphere icon-red"><i class="fas fa-bolt"></i></div>
-                <h3 class="product-name">Infinite Effect Lvl II</h3>
-                <p class="product-desc">Permanent server-wide Level 2 Potion Buff</p>
-                <div class="product-price">₹80</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('ability_2')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Infinite Effect Lvl II', 80)">Buy Now</button>
+            <div class="store-card featured-border">
+                <div class="card-icon-box glow-red"><i class="fas fa-flask"></i></div>
+                <h3>Special Effect Lvl II</h3>
+                <p class="card-sub">Permanent Infinite Buff</p>
+                <div class="price">₹100</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('eff_2')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Special Effect Lvl II', 100)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
 
-            <div class="product-card ultimate-card">
-                <div class="icon-sphere icon-gold"><i class="fas fa-bolt"></i></div>
-                <h3 class="product-name">Infinite Effect Lvl III</h3>
-                <p class="product-desc">Permanent server-wide Level 3 Potion Buff</p>
-                <div class="product-price">₹120</div>
-                <div class="action-btn-row">
-                    <button class="btn-info" onclick="openInfo('ability_3')"><i class="fas fa-info"></i></button>
-                    <button class="btn-purchase" onclick="startOrder('Infinite Effect Lvl III', 120)">Buy Now</button>
+            <div class="store-card ultimate-border">
+                <div class="card-icon-box glow-gold"><i class="fas fa-flask"></i></div>
+                <h3>Special Effect Lvl III</h3>
+                <p class="card-sub">Permanent Infinite Buff</p>
+                <div class="price">₹150</div>
+                <div class="card-actions">
+                    <button class="btn-info" onclick="openDetails('eff_3')"><i class="fas fa-info"></i></button>
+                    <button class="btn-order" onclick="openGateway('Special Effect Lvl III', 150)"><i class="fas fa-bolt"></i> Order Now</button>
                 </div>
             </div>
         </div>
 
-        <!-- Coins Tab -->
-        <div id="tab-coins" class="product-grid tab-content" style="display: none;">
-            <div class="product-card coin-box">
-                <div class="icon-sphere icon-gold"><i class="fas fa-coins"></i></div>
-                <h3 class="product-name">Custom Coin Top-up</h3>
-                <p class="product-desc">Exchange Rate: ₹1 = 2 Spark Coins</p>
-                <div class="coin-input-wrap">
+        <!-- 4. COINS -->
+        <div id="cat-coins" class="product-grid" style="display: none;">
+            <div class="store-card coin-calc-container">
+                <div class="card-icon-box glow-gold"><i class="fas fa-coins"></i></div>
+                <h3>Auto Coin Calculator</h3>
+                <p class="card-sub">Exchange Rate: 2 Coins per 1 INR</p>
+                
+                <div class="calc-box">
                     <label>Enter INR Amount (₹):</label>
-                    <input type="number" id="coinAmountInput" value="100" min="20" oninput="calcCoins()">
+                    <input type="number" id="calcInrInput" value="100" min="20" oninput="calculateCoins()">
                 </div>
-                <div class="coin-preview">You Get: <span id="coinTotal" class="text-glow">200 Coins</span></div>
-                <button class="btn-purchase full-width" onclick="orderCoins()"><i class="fas fa-shopping-bag"></i> Top-up Coins</button>
-            </div>
-        </div>
 
-        <!-- Kits Tab -->
-        <div id="tab-crates" class="product-grid tab-content" style="display: none;">
-            <div class="empty-state">
-                <i class="fas fa-box-open"></i>
-                <h3>KITS COMING SOON</h3>
-                <p>Custom crates and kit packages launching shortly!</p>
+                <div class="calc-output">
+                    You Receive: <span id="calcOutputCoins" class="glow-text">200 Coins</span>
+                </div>
+
+                <button class="btn-order full-width" onclick="orderCalculatedCoins()"><i class="fas fa-bolt"></i> Order Now</button>
             </div>
         </div>
     </section>
 
-    <!-- Info Popup Modal -->
-    <div id="infoPopup" class="modal-backdrop">
-        <div class="info-window">
-            <button class="modal-close-btn" onclick="closeInfo()">&times;</button>
-            <h2 id="infoTitle">Item Perks</h2>
-            <div class="info-content-scroll">
-                <h4><i class="fas fa-shield-alt gold-text"></i> Armor & Gear:</h4>
-                <ul id="infoPerks" class="check-list"></ul>
-
-                <h4><i class="fas fa-terminal gold-text"></i> Commands:</h4>
-                <ul id="infoCommands" class="check-list cmd-list"></ul>
-
-                <h4><i class="fas fa-coins gold-text"></i> Bonus & Other:</h4>
-                <ul id="infoOther" class="check-list"></ul>
+    <!-- Info Details Modal -->
+    <div id="infoModal" class="modal-backdrop">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeDetails()">&times;</button>
+            <h2 id="modalItemTitle">Item Details</h2>
+            <div class="modal-scroll-content">
+                <h4><i class="fas fa-star gold-text"></i> Specifications:</h4>
+                <ul id="modalSpecList" class="detail-list"></ul>
+                <h4><i class="fas fa-terminal gold-text"></i> Commands / Delivery:</h4>
+                <ul id="modalCmdList" class="detail-list code"></ul>
             </div>
-            <div class="info-footer">
-                <span class="info-cost" id="infoCost">₹120</span>
-                <button class="btn-purchase" id="infoProceedBtn">Proceed To Buy</button>
+            <div class="modal-footer-row">
+                <span id="modalItemPrice" class="modal-price">₹0</span>
+                <button id="modalOrderNowBtn" class="btn-order">Proceed to Order</button>
             </div>
         </div>
     </div>
 
-    <!-- Payment Modal (Google Login Check & Dispatch to fzboy2008@gmail.com) -->
-    <div id="paymentPopup" class="modal-backdrop">
-        <div class="pay-window">
-            <button class="modal-close-btn" onclick="closePayment()">&times;</button>
+    <!-- Paytm Gateway & Invoice Modal -->
+    <div id="gatewayModal" class="modal-backdrop">
+        <div class="modal-box paytm-box">
+            <button class="modal-close" onclick="closeGateway()">&times;</button>
             
-            <!-- When NOT logged in with Google -->
-            <div id="checkoutAuthGate" class="checkout-auth-gate" style="display: none;">
-                <i class="fab fa-google auth-icon"></i>
-                <h3>Google Sign-In Required</h3>
-                <p>Please log in with your Google account so your order delivery ticket connects directly to your verified email.</p>
-                <button class="hero-login-btn full-width" onclick="openAuthModal()">
-                    <i class="fab fa-google"></i> Login with Google Now
-                </button>
-            </div>
+            <div id="gatewayFormStep">
+                <div class="paytm-badge"><i class="fab fa-amazon-pay"></i> PAYTM INSTANT GATEWAY</div>
+                <h3 id="gwItemName">Package Name</h3>
+                <div class="gw-amount">Amount Payable: <span class="glow-text">₹<span id="gwAmount">0</span></span></div>
 
-            <!-- When LOGGED IN with Google -->
-            <div id="payFormStep">
-                <h3 class="pay-modal-title">Checkout Order</h3>
-                <p class="pay-modal-sub">Package: <strong id="orderItemName" class="text-glow">VIP Rank</strong></p>
-                <div class="verified-user-badge">
-                    <i class="fas fa-user-check" style="color:#2ecc71;"></i> Verified: <strong id="orderUserEmail">-</strong>
+                <div class="gateway-action-wrapper">
+                    <!-- Direct Paytm App Intent Trigger -->
+                    <a id="paytmDirectBtn" href="#" class="btn-paytm-direct">
+                        <i class="fas fa-external-link-alt"></i> Pay Via Paytm App Direct
+                    </a>
+                    <span class="or-separator">OR SCAN QR WITH ANY UPI APP</span>
                 </div>
 
-                <div class="qr-container">
-                    <img src="qr.jpg" alt="UPI QR Code" class="qr-code-img" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=6006283334@ptyes&pn=SparkleMc'">
-                    <div class="upi-id-pill">UPI: <strong>6006283334@ptyes</strong></div>
-                    <div class="payable-badge">Payable: ₹<span id="orderItemAmount">120</span></div>
+                <div class="qr-hold">
+                    <img id="gwQrImg" src="qr.jpg" alt="UPI QR" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=6006283334@ptyes&pn=SparkleMc'">
+                    <span class="upi-text">UPI ID: <strong>6006283334@ptyes</strong></span>
                 </div>
 
-                <form class="order-form" onsubmit="submitEmailTicket(event)">
+                <form class="gw-form" onsubmit="processOrderTicket(event)">
                     <div class="form-group">
-                        <label>Minecraft In-Game Username (IGN):</label>
-                        <input type="text" id="ignInput" placeholder="e.g. Steve_01" required>
+                        <label>Your Contact Email (For Invoice & Approval Notifications):</label>
+                        <input type="email" id="gwEmailInput" placeholder="yourname@gmail.com" required>
                     </div>
                     <div class="form-group">
-                        <label>12-Digit UPI Ref / UTR Number:</label>
-                        <input type="text" id="utrInput" placeholder="e.g. 429182390123" maxlength="16" required>
+                        <label>Minecraft Username (IGN):</label>
+                        <input type="text" id="gwIgnInput" placeholder="Steve" required>
                     </div>
-                    <button type="submit" class="btn-purchase full-width" id="submitOrderBtn">
-                        <i class="fas fa-paper-plane"></i> Send Ticket to Owner
+                    <div class="form-group" id="effectSelectionGroup" style="display:none;">
+                        <label>Select Effect Type:</label>
+                        <select id="gwEffectType">
+                            <option value="Speed">Speed</option>
+                            <option value="Strength">Strength</option>
+                            <option value="Regeneration">Regeneration</option>
+                            <option value="Fire Resistance">Fire Resistance</option>
+                            <option value="Invisibility">Invisibility</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>12-Digit Paytm / UPI Ref (UTR) Number:</label>
+                        <input type="text" id="gwUtrInput" placeholder="e.g. 429182390123" maxlength="16" required>
+                    </div>
+                    <button type="submit" class="btn-order full-width" id="btnSubmitTicket">
+                        <i class="fas fa-check-circle"></i> Submit Payment Ticket
                     </button>
                 </form>
             </div>
 
-                        <!-- Confirmation Step with Direct Mail Dispatch & Invoice Button -->
-            <div id="payStatusStep" style="display: none;">
-                <div class="status-icon"><i class="fas fa-file-invoice-dollar text-glow"></i></div>
-                <h3>Invoice Ready to Send!</h3>
-                <p class="status-msg">Click the button below to submit this invoice directly to <strong>fzboy2008@gmail.com</strong>.</p>
-                
-                <div class="order-summary-box">
-                    <div><span>Buyer Email:</span> <strong id="summaryEmail">-</strong></div>
-                    <div><span>IGN:</span> <strong id="summaryIGN">-</strong></div>
-                    <div><span>Package:</span> <strong id="summaryItem">-</strong></div>
-                    <div><span>Amount:</span> <strong id="summaryAmount">-</strong></div>
-                    <div><span>UTR:</span> <strong id="summaryUTR">-</strong></div>
-                    <div><span>Status:</span> <span class="tag-pending">PENDING SUBMISSION</span></div>
+            <!-- Confirmation & Invoice Screen -->
+            <div id="gatewaySuccessStep" style="display: none;">
+                <div class="invoice-icon"><i class="fas fa-receipt glow-text"></i></div>
+                <h3>Invoice & Ticket Created!</h3>
+                <p class="invoice-msg">Ticket dispatched to owner. Verification is logged to Discord and Email.</p>
+
+                <div class="invoice-card">
+                    <div><span>Invoice ID:</span> <strong id="invId">-</strong></div>
+                    <div><span>Buyer Email:</span> <strong id="invEmail">-</strong></div>
+                    <div><span>IGN:</span> <strong id="invIgn">-</strong></div>
+                    <div><span>Item:</span> <strong id="invItem">-</strong></div>
+                    <div><span>Amount:</span> <strong id="invAmount">-</strong></div>
+                    <div><span>UTR No:</span> <strong id="invUtr">-</strong></div>
+                    <div><span>Status:</span> <span class="tag-pending">PENDING OWNER APPROVAL</span></div>
                 </div>
 
-                <!-- 1. Send via Mail App Button (100% Reliable Delivery) -->
-                <a id="directMailBtn" href="#" class="btn-purchase full-width" style="text-decoration:none; margin-bottom:10px;">
-                    <i class="fas fa-paper-plane"></i> Send Invoice via Gmail / Mail App
+                <a id="btnMailDispatch" href="#" class="btn-order full-width" style="text-decoration:none; margin-bottom:10px;">
+                    <i class="fas fa-envelope"></i> Send Pre-filled Invoice to Owner Mail
                 </a>
-
-                <!-- 2. Discord Fallback Button -->
-                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="hero-discord-btn full-width" style="text-align: center; text-decoration:none;">
-                    <i class="fab fa-discord"></i> Send UTR on Discord
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="btn-discord-join full-width" style="text-decoration:none;">
+                    <i class="fab fa-discord"></i> Check Ticket on Discord
                 </a>
-            </div>
-            
-    <!-- Login Modal (Callable from Checkout) -->
-    <div id="authModal" class="modal-backdrop">
-        <div class="auth-dialog">
-            <button class="modal-close-btn" onclick="closeAuthModal()">&times;</button>
-            <div class="auth-dialog-header">
-                <div class="auth-logo-badge"><i class="fab fa-google"></i></div>
-                <h3>Sign In with Google</h3>
-                <p>Connect your account for order tracking & chat privileges</p>
-            </div>
-            <div class="auth-form-body">
-                <div class="auth-tabs">
-                    <button class="auth-tab active" id="tabLogin" onclick="switchAuthMode('login')">Sign In</button>
-                    <button class="auth-tab" id="tabRegister" onclick="switchAuthMode('register')">Register</button>
-                </div>
-                <form onsubmit="handleGoogleAuthSubmit(event)">
-                    <div class="form-group" id="nameGroup" style="display: none;">
-                        <label>Your Name / Minecraft IGN:</label>
-                        <input type="text" id="authNameInput" placeholder="e.g. Steve_01">
-                    </div>
-                    <div class="form-group">
-                        <label>Google Account Email:</label>
-                        <input type="email" id="authEmailInput" placeholder="yourname@gmail.com" required>
-                    </div>
-                    <button type="submit" class="btn-purchase full-width" style="margin-top: 15px;">
-                        <i class="fab fa-google"></i> <span id="authSubmitText">Continue with Google</span>
-                    </button>
-                </form>
             </div>
         </div>
     </div>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 SparkleMc. All Rights Reserved. Not affiliated with Mojang Studios.</p>
+    <footer class="footer">
+        <p>&copy; 2026 SparkleMc Network. All Rights Reserved. Not affiliated with Mojang Studios.</p>
     </footer>
 
-    <script src="script.js?v=fresh_6.0"></script>
+    <script src="script.js?v=v0_1"></script>
 </body>
 </html>
