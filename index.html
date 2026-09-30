@@ -4,174 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SparkleMc</title>
-
-    <meta name="description" content="SparkleMc is India's premier Minecraft network. Connect with an active community, battle rivals, and explore legendary realms. Join now via play.sparklemc.fun.">
+    <meta name="description" content="SparkleMc — India's premier competitive Minecraft network. Java: play.sparklemc.fun | Bedrock Port: 19133.">
+    
     <meta property="og:type" content="website">
     <meta property="og:title" content="SparkleMc">
-    <meta property="og:description" content="India's premier Minecraft network. Connect now via play.sparklemc.fun (Bedrock Port: 19133).">
+    <meta property="og:description" content="India's premier competitive Minecraft network. Join now!">
     <meta property="og:image" content="https://www.sparklemc.fun/logo.png">
     <meta name="theme-color" content="#ff2a4b">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
-    <link rel="shortcut icon" href="logo.png">
-
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=fresh_6.0">
+    <link rel="stylesheet" href="style.css?v=v0_1">
 </head>
 <body>
 
-    <!-- Top Header: ONLY Home, Store, Staff -->
-    <header class="site-header">
-        <div class="nav-wrap">
+    <header class="navbar">
+        <div class="nav-container">
             <a href="index.html" class="brand">
-                <img src="logo.png" alt="SparkleMc" class="brand-logo" onerror="this.style.display='none'">
+                <img src="logo.png" alt="SparkleMc Logo" class="brand-logo" onerror="this.style.display='none'">
                 <span>Sparkle<span class="highlight">Mc</span></span>
             </a>
             <nav class="nav-links">
-                <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
-                <a href="store.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Store</a>
-                <a href="staff.html" class="nav-link"><i class="fas fa-users-cog"></i> Staff</a>
+                <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> Home</a>
+                <a href="store.html" class="nav-item"><i class="fas fa-shopping-cart"></i> Store</a>
+                <a href="showcase.html" class="nav-item"><i class="fas fa-layer-group"></i> Showcase</a>
             </nav>
         </div>
     </header>
 
-    <!-- Main Page Hero Section -->
-    <section class="hero-sec">
-        <div class="hero-container">
-            <div class="pill-badge"><i class="fas fa-fire"></i> OFFICIAL MINECRAFT NETWORK</div>
-            <h1 class="hero-heading">WELCOME TO <span class="text-glow">SPARKLEMC</span></h1>
-            <p class="hero-subtext">Build your empire, compete with skilled warriors, and forge lasting alliances. Join active players across Java & Bedrock.</p>
+    <section class="hero-section">
+        <div class="hero-wrap">
+            <div class="server-badge"><i class="fas fa-fire"></i> OFFICIAL SERVER NETWORK</div>
+            <h1 class="hero-title">WELCOME TO <span class="glow-text">SPARKLEMC</span></h1>
+            <p class="hero-desc">Experience unmatched PvP, custom gear, and non-stop action on India's premier community-driven network.</p>
 
-            <!-- Server IP Cards -->
-            <div class="ip-row">
-                <div class="ip-card" onclick="copyIpAddress('play.sparklemc.fun', 'toastJava')">
-                    <div class="ip-text">
-                        <span class="platform-label"><i class="fas fa-desktop"></i> JAVA SERVER IP</span>
-                        <span class="address">play.sparklemc.fun</span>
+            <div class="ip-container">
+                <div class="ip-card" onclick="copyIp('play.sparklemc.fun', 'toastJava')">
+                    <div class="ip-meta">
+                        <span class="platform"><i class="fas fa-desktop"></i> JAVA SERVER IP</span>
+                        <span class="ip-val">play.sparklemc.fun</span>
                     </div>
-                    <span class="copy-icon"><i class="far fa-copy"></i></span>
-                    <div id="toastJava" class="copy-alert">Copied!</div>
+                    <i class="far fa-copy copy-icon"></i>
+                    <span id="toastJava" class="copy-toast">Copied!</span>
                 </div>
 
-                <div class="ip-card" onclick="copyIpAddress('play.sparklemc.fun:19133', 'toastBedrock')">
-                    <div class="ip-text">
-                        <span class="platform-label"><i class="fas fa-mobile-alt"></i> BEDROCK (PORT: 19133)</span>
-                        <span class="address">play.sparklemc.fun</span>
+                <div class="ip-card" onclick="copyIp('play.sparklemc.fun:19133', 'toastBedrock')">
+                    <div class="ip-meta">
+                        <span class="platform"><i class="fas fa-mobile-alt"></i> BEDROCK / PE (PORT: 19133)</span>
+                        <span class="ip-val">play.sparklemc.fun</span>
                     </div>
-                    <span class="copy-icon"><i class="far fa-copy"></i></span>
-                    <div id="toastBedrock" class="copy-alert">Copied!</div>
+                    <i class="far fa-copy copy-icon"></i>
+                    <span id="toastBedrock" class="copy-toast">Copied!</span>
                 </div>
             </div>
 
-            <!-- Front Action Row: Discord Join & Login System directly under IP -->
-            <div class="main-action-stack">
-                <!-- Discord Join Button -->
-                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="hero-discord-btn">
-                    <i class="fab fa-discord"></i> Join Discord Server
+            <div class="action-stack">
+                <a href="https://discord.gg/62xxMq2NKv" target="_blank" class="btn-discord-join">
+                    <i class="fab fa-discord"></i> Join Official Discord Server
                 </a>
+            </div>
 
-                <!-- Google Auth State Card / Button -->
-                <div id="heroAuthArea" class="hero-auth-box">
-                    <div id="loggedOutState">
-                        <button class="hero-login-btn" onclick="openAuthModal()">
-                            <i class="fab fa-google"></i> Login / Register with Google
-                        </button>
-                        <p class="auth-hint">Sign in to unlock Live Chat & store purchases</p>
-                    </div>
-
-                    <div id="loggedInState" style="display: none;">
-                        <div class="logged-user-card">
-                            <img id="userAvatarHero" src="" alt="Avatar" class="hero-user-avatar">
-                            <div class="hero-user-details">
-                                <span class="logged-greeting">Welcome back,</span>
-                                <strong id="userNameHero" class="user-display-name">Player</strong>
-                                <span id="userEmailHero" class="user-display-email">email@example.com</span>
-                            </div>
-                            <button class="hero-logout-btn" onclick="logoutGoogle()" title="Sign Out">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </button>
-                        </div>
-                    </div>
+            <div class="features-grid">
+                <div class="feat-card">
+                    <i class="fas fa-bolt feat-icon"></i>
+                    <h3>High Performance</h3>
+                    <p>Optimized 20 TPS server tickrates with low-latency Indian routing.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fas fa-shield-alt feat-icon"></i>
+                    <h3>DDoS Mitigation</h3>
+                    <p>Protected 24/7 with carrier-grade filtering for uninterrupted gameplay.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fas fa-trophy feat-icon"></i>
+                    <h3>Custom Content</h3>
+                    <p>Exclusive enchants, custom weapon models, and seasonal leaderboards.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Global Live Public Chat (Only on Main Page) -->
-    <div class="floating-chat">
-        <div id="chatBox" class="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="online-indicator"></div>
-                    <strong>Public Live Chat</strong>
-                </div>
-                <button class="chat-close" onclick="toggleChat()">&times;</button>
-            </div>
-            <div class="chat-messages" id="chatMsgs">
-                <div class="chat-bubble system">Global live chat active. Messages are visible across all visitors in real-time.</div>
-            </div>
-            
-            <!-- Lock prompt if user not logged in -->
-            <div id="chatAuthGate" class="chat-auth-gate">
-                <p>Login with Google to send messages</p>
-                <button class="hero-login-btn small-auth-btn" onclick="openAuthModal()">
-                    <i class="fab fa-google"></i> Login to Chat
-                </button>
-            </div>
-
-            <form id="chatForm" class="chat-input-row" onsubmit="sendGlobalChat(event)" style="display: none;">
-                <input type="text" id="chatInput" placeholder="Send a message to everyone..." autocomplete="off" required>
-                <button type="submit"><i class="fas fa-paper-plane"></i></button>
-            </form>
-        </div>
-        <button class="chat-toggle-btn" onclick="toggleChat()" title="Global Chat">
-            <i class="fas fa-comments"></i>
-        </button>
-    </div>
-
-    <!-- Login / Register Modal Dialog -->
-    <div id="authModal" class="modal-backdrop">
-        <div class="auth-dialog">
-            <button class="modal-close-btn" onclick="closeAuthModal()">&times;</button>
-            <div class="auth-dialog-header">
-                <div class="auth-logo-badge"><i class="fab fa-google"></i></div>
-                <h3>Sign In with Google</h3>
-                <p>Connect your account for order tracking & chat privileges</p>
-            </div>
-
-            <div class="auth-form-body">
-                <div class="auth-tabs">
-                    <button class="auth-tab active" id="tabLogin" onclick="switchAuthMode('login')">Sign In</button>
-                    <button class="auth-tab" id="tabRegister" onclick="switchAuthMode('register')">Register</button>
-                </div>
-
-                <form onsubmit="handleGoogleAuthSubmit(event)">
-                    <div class="form-group" id="nameGroup" style="display: none;">
-                        <label>Your Name / Minecraft IGN:</label>
-                        <input type="text" id="authNameInput" placeholder="e.g. Steve_01">
-                    </div>
-                    <div class="form-group">
-                        <label>Google Account Email:</label>
-                        <input type="email" id="authEmailInput" placeholder="yourname@gmail.com" required>
-                    </div>
-
-                    <button type="submit" class="btn-purchase full-width" style="margin-top: 15px;">
-                        <i class="fab fa-google"></i> <span id="authSubmitText">Continue with Google</span>
-                    </button>
-                </form>
-
-                <p class="auth-disclaimer">Your email will be directly linked to order delivery tickets sent to <strong>fzboy2008@gmail.com</strong>.</p>
-            </div>
-        </div>
-    </div>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 SparkleMc. All Rights Reserved. Not affiliated with Mojang Studios.</p>
+    <footer class="footer">
+        <p>&copy; 2026 SparkleMc Network. All Rights Reserved. Not affiliated with Mojang Studios.</p>
     </footer>
 
-    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-<script src="script.js?v=auth_fixed_99"></script>
+    <script src="script.js?v=v0_1"></script>
 </body>
 </html>
