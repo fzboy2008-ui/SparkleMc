@@ -136,43 +136,60 @@ function switchCategory(cat) {
     }
 }
 
-// --- Info Details Modal ---
+// --- Info Details Modal Fix ---
 function openDetails(key) {
     const item = storeCatalog[key];
-    if (!item) return;
+    if (!item) {
+        console.error("Item key not found in catalog:", key);
+        return;
+    }
 
-    document.getElementById('modalItemTitle').textContent = item.title;
-    document.getElementById('modalItemPrice').textContent = item.price;
-
+    const titleEl = document.getElementById('modalItemTitle');
+    const priceEl = document.getElementById('modalItemPrice');
     const sList = document.getElementById('modalSpecList');
-    sList.innerHTML = item.specs.map(s => `<li>${s}</li>`).join('');
-
     const cList = document.getElementById('modalCmdList');
-    cList.innerHTML = item.cmds.map(c => `<li>${c}</li>`).join('');
+    const orderBtn = document.getElementById('modalOrderNowBtn');
+    const modal = document.getElementById('infoModal');
 
-    document.getElementById('modalOrderNowBtn').onclick = function() {
-        closeDetails();
-        openGateway(item.title, item.cost);
-    };
+    if (titleEl) titleEl.textContent = item.title;
+    if (priceEl) priceEl.textContent = item.price;
 
-    document.getElementById('infoModal').style.display = 'flex';
+    if (sList && item.specs) {
+        sList.innerHTML = item.specs.map(s => `<li>${s}</li>`).join('');
+    }
+    if (cList && item.cmds) {
+        cList.innerHTML = item.cmds.map(c => `<li>${c}</li>`).join('');
+    }
+
+    if (orderBtn) {
+        orderBtn.onclick = function() {
+            closeDetails();
+            openGateway(item.title, item.cost);
+        };
+    }
+
+    if (modal) {
+        modal.style.setProperty('display', 'flex', 'important');
+    }
 }
 
 function closeDetails() {
     const el = document.getElementById('infoModal');
-    if (el) el.style.display = 'none';
+    if (el) el.style.setProperty('display', 'none', 'important');
 }
 
-// --- Paytm Gateway & Invoice Flow ---
+// --- Paytm Gateway & Invoice Flow Fix ---
 function openGateway(name, cost) {
     const isEffect = name.includes("Special Effect");
     currentOrder = { name, amount: cost, isEffect };
 
-    document.getElementById('gwItemName').textContent = name;
-    document.getElementById('gwAmount').textContent = cost;
-
-    // Toggle Effect Select dropdown
+    const nameEl = document.getElementById('gwItemName');
+    const amountEl = document.getElementById('gwAmount');
     const effectGroup = document.getElementById('effectSelectionGroup');
+    const modal = document.getElementById('gatewayModal');
+
+    if (nameEl) nameEl.textContent = name;
+    if (amountEl) amountEl.textContent = cost;
     if (effectGroup) effectGroup.style.display = isEffect ? 'block' : 'none';
 
     // Paytm Direct App Trigger Intent URL
@@ -180,15 +197,19 @@ function openGateway(name, cost) {
     const paytmDirectBtn = document.getElementById('paytmDirectBtn');
     if (paytmDirectBtn) paytmDirectBtn.href = upiPaytmIntent;
 
-    // Reset view steps
-    document.getElementById('gatewayFormStep').style.display = 'block';
-    document.getElementById('gatewaySuccessStep').style.display = 'none';
-    document.getElementById('gatewayModal').style.display = 'flex';
+    const formStep = document.getElementById('gatewayFormStep');
+    const successStep = document.getElementById('gatewaySuccessStep');
+    if (formStep) formStep.style.display = 'block';
+    if (successStep) successStep.style.display = 'none';
+
+    if (modal) {
+        modal.style.setProperty('display', 'flex', 'important');
+    }
 }
 
 function closeGateway() {
     const el = document.getElementById('gatewayModal');
-    if (el) el.style.display = 'none';
+    if (el) el.style.setProperty('display', 'none', 'important');
 }
 
 // --- Ticket Submission to Discord Webhook & Owner Email ---
